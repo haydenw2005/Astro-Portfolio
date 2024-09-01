@@ -8,14 +8,16 @@ import meImages from "../constants/Me_Images.json";
 import { techIcons } from '../constants/TechIcons';
 import Layout from '../layouts/Layout.astro';
 
-// Import all tech icons statically
-const techIconImages = await Astro.glob<{ default: ImageMetadata }>('/src/assets/TechIcons/*.(png|svg|jpg|jpeg|webp)');
+// Import all images
+const allImages = await Astro.glob<{ default: ImageMetadata }>('/src/assets/**/*.(png|svg|jpg|jpeg|webp)');
 
-// Import all Me images dynamically
-const meImageFiles = await Astro.glob<{ default: ImageMetadata }>('/src/assets/Me/*.(png|jpg|jpeg|webp)');
+console.log('All Images:', allImages.map(img => img.default.src));
 
-console.log('Tech Icon Images:', techIconImages.map(img => img.default.src));
-console.log('Me Images:', meImageFiles.map(img => img.default.src));
+// Filter for tech icons
+const techIconImages = allImages.filter(img => img.default.src.includes('/TechIcons/'));
+
+// Filter for Me images
+const meImageFiles = allImages.filter(img => img.default.src.includes('/Me/'));
 
 // Use the images
 const optimizedTechIcons = await Promise.all(techIcons.map(async (icon) => {
@@ -39,7 +41,7 @@ const optimizedTechIcons = await Promise.all(techIcons.map(async (icon) => {
   }
 }));
 
-// Similar process for meImages...
+// Process Me images
 const optimizedMeImages = await Promise.all(meImages.map(async (imagePath) => {
   const imageModule = meImageFiles.find(img => img.default.src.includes(imagePath));
   
@@ -60,6 +62,7 @@ const optimizedMeImages = await Promise.all(meImages.map(async (imagePath) => {
     return { original: imagePath, optimizedSrc: '' };
   }
 }));
+
 ---
 
 <Layout title="Hayden White" description="Explore the digital world of Hayden White.">
