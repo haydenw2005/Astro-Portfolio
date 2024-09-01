@@ -19,8 +19,8 @@ const AboutMe: React.FC = () => {
             </span>{" "}
             My name is Hayden and I'm a nineteen year-old student and software
             engineer studying computer science at{" "}
-            <span className="text-[#CEB888]">Purdue</span>{" "}
-            <span className="text-[#9D968D]">University</span>.
+            <span className="text-[#CEB888] glow-gold">Purdue</span>{" "}
+            <span className="text-[#9D968D] glow-silver">University</span>.
           </p>
           <p className="mb-4">
             I'm all about full-stack web development, but I like to keep my
@@ -54,7 +54,7 @@ const AboutMe: React.FC = () => {
             Enjoying the page? Keep scrolling to dive deeper into my projects,
             passions, and the tech that excites me.
           </p>
-          <a
+          {/* <a
             href="#coming-soon"
             className="mt-20 text-blue-400 hover:text-purple-400 transition-colors duration-300 cursor-pointer"
             onClick={() => {
@@ -62,10 +62,10 @@ const AboutMe: React.FC = () => {
             }}
           >
             Hell yea <i className="fa fa-arrow-down"></i>
-          </a>
+          </a> */}
         </div>
-        <div className="logos flex justify-center items-center w-full px-10">
-          <div className="mt-10 md:mt-6 grid grid-cols-6 md:grid-cols-3 gap-2 sm:gap-6 md:gap-4 w-full max-w-2xl mx-auto">
+        <div className="logos flex justify-center items-center  px-10">
+          <div className="mt-10 md:mt-6 grid grid-cols-4  sm:grid-cols-5 md:grid-cols-3 gap-6 sm:gap-6 md:gap-4 w-full max-w-2xl mx-auto">
             {[
               {
                 src: "/TechIcons/Typescript_logo_2020.svg.png",
@@ -104,7 +104,7 @@ const AboutMe: React.FC = () => {
             ].map((logo, index, array) => (
               <div
                 key={index}
-                className={`relative group w-12 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto ${
+                className={`relative group w-18 h-18 sm:w-20 sm:h-20 md:w-22 md:h-22 mx-auto ${
                   index >= array.length - (array.length % 3) &&
                   array.length % 3 !== 0
                     ? "md:col-start-2"
@@ -115,7 +115,7 @@ const AboutMe: React.FC = () => {
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="relative z-10 w-[75%] h-[75%] object-contain transform transition-transform duration-100 group-hover:scale-110"
+                  className="relative z-10 w-[100%] h-[100%] md:w-[75%] md:h-[75%] object-contain transform transition-transform duration-100 group-hover:scale-110"
                 />
               </div>
             ))}
