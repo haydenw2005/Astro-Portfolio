@@ -7,8 +7,8 @@ import meImages from "../constants/Me_Images.json";
 import { techIcons } from '../constants/TechIcons';
 import Layout from '../layouts/Layout.astro';
 
-const props = Astro.locals.netlify.context;
-console.log(props);
+// const props = Astro.locals.netlify.context;
+// console.log(props);
 
 
 //netlify cdn!!
@@ -17,7 +17,7 @@ const [optimizedTechIcons, optimizedMeImages] = await Promise.all([
   Promise.all(
     techIcons.map(async (icon) => {
       const optimizedImage = await getImage({
-        src: import(`../Assets/TechIcons${icon.src}`),
+        src: import(`../assets/TechIcons${icon.src}`),
         format: 'webp'
       });
       return { ...icon, optimizedSrc: optimizedImage.src };
@@ -26,7 +26,7 @@ const [optimizedTechIcons, optimizedMeImages] = await Promise.all([
   Promise.all(
     meImages.map(async (imagePath) => {
       const optimizedImage = await getImage({
-        src: import(`../Assets/Me/${imagePath}`), // Add file extension if possible
+        src: import(`../assets/Me/${imagePath}`), // Add file extension if possible
         format: 'webp'
       });
       return { original: imagePath, optimizedSrc: optimizedImage.src };
