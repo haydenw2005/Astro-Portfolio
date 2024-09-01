@@ -9,7 +9,7 @@ interface Star {
   dy: number;
 }
 
-const STARS_COUNT = 300;
+const STAR_FACTOR = 5;
 const EDGE_THRESHOLD = 8.5; // Maximum distance for edge creation (in percentage)
 
 export const DynamicStars: React.FC = () => {
@@ -17,7 +17,8 @@ export const DynamicStars: React.FC = () => {
 
   const generateStars = useCallback(() => {
     const newStars: Star[] = [];
-    const numStars = Math.floor(Math.random() * STARS_COUNT); // Generate between 50-100 stars
+    const starCount = window.innerWidth / STAR_FACTOR;
+    const numStars = Math.floor((Math.random() * 0.25 + 0.75) * starCount); // Generate between 50-100 stars
 
     for (let i = 0; i < numStars; i++) {
       newStars.push({

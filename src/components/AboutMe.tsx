@@ -1,56 +1,73 @@
 import React from "react";
-import meImages from "../constants/Me_Images.json";
-
-const imgDir = "/Me/";
 const NUM_IMAGES_TO_SHOW = 8; // Adjust this number as needed
 const CYCLE_SPEED = 24;
-const AboutMe: React.FC = () => {
+
+interface OptimizedTechIcon {
+  src: string;
+  alt: string;
+  optimizedSrc: string;
+}
+
+interface OptimizedMeImage {
+  original: string;
+  optimizedSrc: string;
+}
+
+const AboutMe: React.FC<{
+  optimizedTechIcons: OptimizedTechIcon[];
+  optimizedMeImages: OptimizedMeImage[];
+}> = ({ optimizedTechIcons, optimizedMeImages }) => {
   return (
     <>
       <div className=" about-me flex grid grid-cols-1 md:grid-cols-[60%_40%] xl:grid-cols-[40%_40%_20%]">
-        <div className="content  ">
-          <h1 className="text-6xl font-bold mb-5">
-            About <span className="text-purple-300">Me</span>{" "}
+        <div className="content">
+          <h1 className="text-6xl font-bold mb-5 text-white">
+            About <span className="text-purple-300 glow-purple">Me</span>{" "}
           </h1>
-          <p className="mb-4">
-            <span className="mb-4 font-bold  text-blue-300">
-              {" "}
+          <p className="mb-4 text-gray-200">
+            <span className="mb-4 font-bold text-blue-300 glow-blue">
               Nice to meet you.
             </span>{" "}
             My name is Hayden and I'm a nineteen year-old student and software
             engineer studying computer science at{" "}
-            <span className="text-[#CEB888] glow-gold">Purdue</span>{" "}
-            <span className="text-[#9D968D] glow-silver">University</span>.
+            <span className="font-bold bg-gradient-to-r from-[#CEB888] to-[#9D968D] text-transparent bg-clip-text glow-gold-silver">
+              Purdue University
+            </span>
+            .
           </p>
-          <p className="mb-4">
+          <p className="mb-4 text-gray-200">
             I'm all about full-stack web development, but I like to keep my
             options open. There's always something new to learn in this field,
             right?
           </p>
-          <p className="font-bold">
+          <p className="font-bold text-white">
             When I'm not coding or studying for midterms:
           </p>
-          <ul className="list-disc list-inside ml-8 mb-4">
+          <ul className="list-disc list-inside ml-8 mb-4 text-gray-200">
             <li>
               You might find me on the{" "}
-              <span className="mb-4 font-bold  text-blue-300"> ski slopes</span>
+              <span className="font-bold text-blue-300 glow-blue">
+                ski slopes
+              </span>
             </li>
             <li>
               Out{" "}
-              <span className="mb-4 font-bold  text-blue-400"> exploring</span>{" "}
+              <span className="font-bold text-blue-400 glow-blue">
+                exploring
+              </span>{" "}
               nature
             </li>
             <li>
-              Possibly engrossed in a
-              <span className="mb-4 font-bold  text-blue-300"> sci-fi</span>{" "}
+              Possibly engrossed in a{" "}
+              <span className="font-bold text-blue-300 glow-blue">sci-fi</span>{" "}
               novel
             </li>
             <li>
-              Putting in the hours at the
-              <span className="font-bold  text-blue-300"> gym</span>
+              Putting in the hours at the{" "}
+              <span className="font-bold text-blue-300 glow-blue">gym</span>
             </li>
           </ul>
-          <p className="mb-4 font-bold text-purple-300">
+          <p className="mb-4 font-bold text-purple-300 glow-purple">
             Enjoying the page? Keep scrolling to dive deeper into my projects,
             passions, and the tech that excites me.
           </p>
@@ -66,42 +83,7 @@ const AboutMe: React.FC = () => {
         </div>
         <div className="logos flex justify-center items-center  px-10">
           <div className="mt-10 md:mt-6 grid grid-cols-4  sm:grid-cols-5 md:grid-cols-3 gap-6 sm:gap-6 md:gap-4 w-full max-w-2xl mx-auto">
-            {[
-              {
-                src: "/TechIcons/Typescript_logo_2020.svg.png",
-                alt: "TypeScript",
-              },
-              {
-                src: "/TechIcons/Python-logo-notext.svg.png",
-                alt: "Python",
-              },
-              { src: "/TechIcons/c_language_img.png", alt: "C" },
-              {
-                src: "/TechIcons/java-programming-language-icon.png",
-                alt: "Java",
-              },
-              {
-                src: "/TechIcons/node-js-icon-454x512-nztofx17.png",
-                alt: "Node.js",
-              },
-              { src: "/TechIcons/React-icon.svg.png", alt: "React" },
-              { src: "/TechIcons/tailwindcss.png", alt: "Tailwind CSS" },
-              { src: "/TechIcons/mongodb.png", alt: "MongoDB" },
-              {
-                src: "/TechIcons/aws-logo-920x920-sue-v03.png",
-                alt: "AWS",
-              },
-              { src: "/TechIcons/stripe.png", alt: "Stripe" },
-              { src: "/TechIcons/Git_icon.svg.png", alt: "Git" },
-              { src: "/TechIcons/astro.png", alt: "Astro" },
-              { src: "/TechIcons/Amazon-S3-Logo.svg.png", alt: "S3" },
-              {
-                src: "/TechIcons/aws-ec2-icon-1696x2048-nhw31ife.png",
-                alt: "EC2",
-              },
-              { src: "/TechIcons/unity-loog.png", alt: "Unity" },
-              { src: "/TechIcons/express2.png", alt: "Express" },
-            ].map((logo, index, array) => (
+            {optimizedTechIcons.map((logo, index, array) => (
               <div
                 key={index}
                 className={`relative group w-18 h-18 sm:w-20 sm:h-20 md:w-22 md:h-22 mx-auto ${
@@ -113,7 +95,7 @@ const AboutMe: React.FC = () => {
               >
                 <div className="absolute inset-0 rounded-full bg-gray-800 opacity-30 blur-lg transform translate-y-1 group-hover:opacity-70 transition-all duration-300"></div>
                 <img
-                  src={logo.src}
+                  src={logo.optimizedSrc}
                   alt={logo.alt}
                   className="relative z-10 w-[100%] h-[100%] md:w-[75%] md:h-[75%] object-contain transform transition-transform duration-100 group-hover:scale-110"
                 />
@@ -132,14 +114,16 @@ const AboutMe: React.FC = () => {
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[83.33%] h-4 bg-purple-400 rounded-t-lg"></div>
           </div>
           <div className="xl:h-full w-full flex items-center justify-center xl:items-start xl:justify-start ">
-            {meImages.slice(0, NUM_IMAGES_TO_SHOW).map((imagePath, index) => (
-              <img
-                key={index}
-                src={imgDir + imagePath}
-                alt={`Me ${index + 1}`}
-                className="opacity-0 absolute w-[50%] xl:w-full h-auto max-h-[80%] border-2 object-cover rounded-2xl shadow-[0_0_15px_rgba(128,0,128,0.6)] transition-all duration-300 cycling-image xl:mask-image-fade-top"
-              />
-            ))}
+            {optimizedMeImages
+              .slice(0, NUM_IMAGES_TO_SHOW)
+              .map((image, index) => (
+                <img
+                  key={index}
+                  src={image.optimizedSrc}
+                  alt={`Me ${index + 1}`}
+                  className="opacity-0 absolute w-[50%] xl:w-full h-auto max-h-[80%] border-2 object-cover rounded-2xl shadow-[0_0_15px_rgba(128,0,128,0.6)] transition-all duration-300 cycling-image xl:mask-image-fade-top"
+                />
+              ))}
           </div>
         </div>
       </div>
