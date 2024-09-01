@@ -19,7 +19,10 @@ console.log('Me Images:', meImageFiles.map(img => img.default.src));
 
 // Use the images
 const optimizedTechIcons = await Promise.all(techIcons.map(async (icon) => {
-  const imageModule = techIconImages.find(img => img.default.src.includes(icon.src));
+  // Extract the base name without extension from icon.src
+  const baseName = icon.src.split('.').slice(0, -1).join('.');
+  
+  const imageModule = techIconImages.find(img => img.default.src.toLowerCase().includes(baseName.toLowerCase()));
   
   if (!imageModule) {
     console.error('Image not found:', icon.src);
@@ -41,8 +44,10 @@ const optimizedTechIcons = await Promise.all(techIcons.map(async (icon) => {
 
 // Similar process for meImages...
 const optimizedMeImages = await Promise.all(meImages.map(async (imagePath) => {
-  const imageModule = meImageFiles.find(img => img.default.src.includes(imagePath));
+  const baseName = imagePath.split('.').slice(0, -1).join('.');
   
+  const imageModule = meImageFiles.find(img => img.default.src.toLowerCase().includes(baseName.toLowerCase()));
+	
   if (!imageModule) {
     console.error('Image not found:', imagePath);
     return { original: imagePath, optimizedSrc: '' };

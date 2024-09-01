@@ -30,7 +30,7 @@ const AboutMe: React.FC<{
             </span>{" "}
             My name is Hayden and I'm a nineteen year-old student and software
             engineer studying computer science at{" "}
-            <span className="font-bold bg-gradient-to-r from-[#CEB888] to-[#9D968D] text-transparent bg-clip-text glow-gold-silver">
+            <span className="font-bold text-[#CEB888] bg-clip-text glow-gold-silver">
               Purdue University
             </span>
             .
