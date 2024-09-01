@@ -10,18 +10,14 @@ import { optimizeImage } from "../utils/ImageOptimization";
 // Import all tech icons statically
 
 const techIconImages = await Astro.glob<{ default: ImageMetadata }>('../images/TechIcons/*.(png|svg|jpg|jpeg|webp)');
-
-// Import all Me images dynamically
 const meImageFiles = await Astro.glob<{ default: ImageMetadata }>('../images/Me/*.(png|jpg|jpeg|webp)');
 
-// Use the images
 const optimizedTechIcons = await Promise.all(
   techIcons.map(async (icon) => {
     const optimized = await optimizeImage(icon, techIconImages, { width: 50, format: 'webp' });
     return { ...icon, optimizedSrc: optimized.optimizedSrc };
   })
 );
-
 const optimizedMeImages = await Promise.all(
   meImages.map(async (image, index) => {
     const optimized = await optimizeImage(image, meImageFiles, { width: 300, format: 'webp' });
@@ -29,8 +25,9 @@ const optimizedMeImages = await Promise.all(
   })
 );
 
-console.log('Optimized Tech Icons:', optimizedTechIcons);
-console.log('Optimized Me Images:', optimizedMeImages);
+const props = Astro?.locals?.netlify?.context;
+console.log(props);
+
 ---
 
 <Layout title="Hayden White" description="Explore the digital world of Hayden White.">
