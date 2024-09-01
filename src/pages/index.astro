@@ -9,10 +9,10 @@ import Layout from '../layouts/Layout.astro';
 
 // Import all tech icons statically
 
-const techIconImages = await Astro.glob<{ default: ImageMetadata }>('../../public/TechIcons/*.(png|svg|jpg|jpeg|webp)');
+const techIconImages = await Astro.glob<{ default: ImageMetadata }>('../images/TechIcons/*.(png|svg|jpg|jpeg|webp)');
 
 // Import all Me images dynamically
-const meImageFiles = await Astro.glob<{ default: ImageMetadata }>('../../public/Me/*.(png|jpg|jpeg|webp)');
+const meImageFiles = await Astro.glob<{ default: ImageMetadata }>('../images/Me/*.(png|jpg|jpeg|webp)');
 
 console.log('Tech Icon Images:', techIconImages.map(img => img.default.src));
 console.log('Me Images:', meImageFiles.map(img => img.default.src));
