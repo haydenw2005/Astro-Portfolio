@@ -1,10 +1,7 @@
 ---
-import { getImage } from "astro:assets";
 import AboutMe from '../components/AboutMe';
 import { DynamicStars } from '../components/DynamicStars';
 import Welcome from '../components/Welcome';
-import meImages from "../constants/Me_Images.json";
-import { techIcons } from '../constants/TechIcons';
 import Layout from '../layouts/Layout.astro';
 
 // Import all tech icons statically
@@ -24,27 +21,27 @@ console.log('techIconImages:', meImageFiles);
 
 //netlify cdn!!
 // Yes, this code executes all optimizations concurrently
-const optimizedTechIcons = await Promise.all(techIcons.map(async (icon) => {
-  const imagePath = `../assets/TechIcons${icon.src}`;
-  const imageModule: any = await techIconImages[imagePath]();
-  const optimizedImage = await getImage({
-    src: imageModule.default,
-    format: 'png',
-    width: 100
-  });
-  return { ...icon, optimizedSrc: optimizedImage.src };
-}));
+// const optimizedTechIcons = await Promise.all(techIcons.map(async (icon) => {
+//   const imagePath = `../assets/TechIcons${icon.src}`;
+//   const imageModule: any = await techIconImages[imagePath]();
+//   const optimizedImage = await getImage({
+//     src: imageModule.default,
+//     format: 'png',
+//     width: 100
+//   });
+//   return { ...icon, optimizedSrc: optimizedImage.src };
+// }));
 
-const optimizedMeImages = await Promise.all(meImages.map(async (imagePath) => {
-  const fileName = `../assets/Me/${imagePath}`;
-  const imageModule: any = await meImageFiles[fileName]();
-  const optimizedImage = await getImage({
-    src: imageModule.default,
-    format: 'webp',
-    width: 300
-  });
-  return { original: imagePath, optimizedSrc: optimizedImage.src };
-}));
+// const optimizedMeImages = await Promise.all(meImages.map(async (imagePath) => {
+//   const fileName = `../assets/Me/${imagePath}`;
+//   const imageModule: any = await meImageFiles[fileName]();
+//   const optimizedImage = await getImage({
+//     src: imageModule.default,
+//     format: 'webp',
+//     width: 300
+//   });
+//   return { original: imagePath, optimizedSrc: optimizedImage.src };
+// }));
 ---
 
 <Layout title="Hayden White" description="Explore the digital world of Hayden White.">
@@ -57,7 +54,7 @@ const optimizedMeImages = await Promise.all(meImages.map(async (imagePath) => {
 	<section id="about-me" >
 		<div class="overflow-hidden">
 			<div class="mx-auto p-4  max-w-[80%] text-white text-xl leading-relaxed flex items-center min-h-screen">
-				<AboutMe client:visible optimizedTechIcons={optimizedTechIcons} optimizedMeImages={optimizedMeImages}>
+				<AboutMe client:visible optimizedTechIcons={[]} optimizedMeImages={[]}>
 				</AboutMe>
 			</div>
 		</div>
