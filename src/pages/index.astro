@@ -1,7 +1,10 @@
 ---
+import { getImage } from "astro:assets";
 import AboutMe from '../components/AboutMe';
 import { DynamicStars } from '../components/DynamicStars';
 import Welcome from '../components/Welcome';
+import meImages from "../constants/Me_Images.json";
+import { techIcons } from '../constants/TechIcons';
 import Layout from '../layouts/Layout.astro';
 
 // const props = Astro.locals.netlify.context;
@@ -10,27 +13,23 @@ import Layout from '../layouts/Layout.astro';
 
 //netlify cdn!!
 // Yes, this code executes all optimizations concurrently
-// const [optimizedTechIcons, optimizedMeImages] = 
-// await Promise.all([
-//   Promise.all(
-//     techIcons.map(async (icon) => {
-//       const optimizedImage = await getImage({
-//         src: import(`../assets/TechIcons${icon.src}`),
-//         format: 'webp'
-//       });
-//       return { ...icon, optimizedSrc: optimizedImage.src };
-//     })
-//   ),
-//   Promise.all(
-//     meImages.map(async (imagePath) => {
-//       const optimizedImage = await getImage({
-//         src: import(`../assets/Me/${imagePath}`), // Add file extension if possible
-//         format: 'webp'
-//       });
-//       return { original: imagePath, optimizedSrc: optimizedImage.src };
-//     })
-//   )
-// ]);
+const optimizedTechIcons = await Promise.all(techIcons.map(async (icon) => {
+  const optimizedImage = await getImage({
+    src: import(`../assets/TechIcons${icon.src}`),
+    format: 'webp',
+    width: 100 // Adjust as needed
+  });
+  return { ...icon, optimizedSrc: optimizedImage.src };
+}));
+
+const optimizedMeImages = await Promise.all(meImages.map(async (imagePath) => {
+  const optimizedImage = await getImage({
+    src: import(`../assets/Me/${imagePath}`),
+    format: 'webp',
+    width: 300 // Adjust as needed
+  });
+  return { original: imagePath, optimizedSrc: optimizedImage.src };
+}));
 ---
 
 <Layout title="Hayden White" description="Explore the digital world of Hayden White.">
@@ -43,7 +42,7 @@ import Layout from '../layouts/Layout.astro';
 	<section id="about-me" >
 		<div class="overflow-hidden">
 			<div class="mx-auto p-4  max-w-[80%] text-white text-xl leading-relaxed flex items-center min-h-screen">
-				<AboutMe client:visible optimizedTechIcons={[]} optimizedMeImages={[]}>
+				<AboutMe client:visible optimizedTechIcons={optimizedTechIcons} optimizedMeImages={optimizedMeImages}>
 				</AboutMe>
 			</div>
 		</div>
