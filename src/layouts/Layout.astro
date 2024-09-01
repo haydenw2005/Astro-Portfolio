@@ -2,6 +2,7 @@
 interface Props {
 	title: string;
 }
+import '../styles/global.css';
 
 const { title } = Astro.props;
 ---
@@ -13,10 +14,17 @@ const { title } = Astro.props;
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
+		<script
+			src="https://kit.fontawesome.com/6c5f67b34a.js"
+			crossorigin="anonymous"
+		></script>
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="font-space-mono">
 		<slot />
 	</body>
 </html>
@@ -30,11 +38,16 @@ const { title } = Astro.props;
 			rgb(var(--accent)),
 			rgb(var(--accent-light)) 30%,
 			white 60%
-		);
+		);  --base-font-size: 8px;
+
 	}
+
 	html {
 		font-family: system-ui, sans-serif;
 		background: #13151a;
+		scroll-behavior: smooth;		
+		font-size: calc(var(--base-font-size) + 0.5vw);
+
 	}
 	code {
 		font-family:

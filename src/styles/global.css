@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.space-mono-regular {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.space-mono-bold {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.space-mono-regular-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.space-mono-bold-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+
+@keyframes cycleDown {
+  0% {
+    transform: translateY(-20%);
+    filter: blur(1px);
+    opacity: 0.7;
+    z-index: 20;
+  }
+  5% {
+    transform: translateY(-10%);
+    filter: blur(0px);
+    opacity: 1;
+    z-index: 20;
+  }
+  10% {
+    transform: translateY(0);
+    filter: blur(0px);
+    opacity: 1;
+    z-index: 0;
+  }
+  25%,
+  90% {
+    transform: translateY(50vh);
+    filter: blur(0px);
+    opacity: 0;
+    z-index: 0;
+  }
+  100% {
+    transform: translateY(-20%);
+    filter: blur(0px);
+    opacity: 1;
+    z-index: 0;
+  }
+}
+
+@keyframes cycleHorizontal {
+  0% {
+    transform: translatex(-60vw);
+    filter: blur(1px);
+    opacity: 1;
+    z-index: 20;
+  }
+  10% {
+    transform: translatex(10vw);
+    filter: blur(0px);
+    opacity: 1;
+    z-index: 20;
+  }
+
+  85% {
+    transform: translatex(120vw);
+    filter: blur(0px);
+    opacity: 0;
+    z-index: 0;
+  }
+  100% {
+    transform: translatex(-60vw);
+    filter: blur(0px);
+    opacity: 1;
+    z-index: 0;
+  }
+}
+
+.cycling-image {
+  will-change: transform, filter, opacity;
+  overflow-y: auto;
+}
+
+@media (min-width: 1280px) {
+  .cycling-image {
+    animation: cycleDown 24s infinite;
+  }
+}
+
+@media (max-width: 1279px) {
+  .cycling-image {
+    animation: cycleHorizontal 24s infinite;
+  }
+}
+
+.cycling-image:nth-child(1) {
+  animation-delay: 0s;
+}
+.cycling-image:nth-child(2) {
+  animation-delay: 3.5s;
+}
+.cycling-image:nth-child(3) {
+  animation-delay: 7.75s;
+}
+.cycling-image:nth-child(4) {
+  animation-delay: 8s;
+}
+.cycling-image:nth-child(5) {
+  animation-delay: 12.25s;
+}
+.cycling-image:nth-child(6) {
+  animation-delay: 16.5s;
+}
+.cycling-image:nth-child(7) {
+  animation-delay: 20.5s;
+}
+
+.cycling-image:nth-child(8) {
+  animation-delay: 24.5s;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    background-color: #9d4ccf;
+  } /* green-400 */
+  50% {
+    background-color: #a894ac;
+  } /* gray-400 */
+}
+
+.animate-flicker {
+  animation: flicker 3s infinite;
+}
