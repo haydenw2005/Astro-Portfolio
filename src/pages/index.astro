@@ -1,11 +1,11 @@
 ---
-import { getImage } from "astro:assets";
 import AboutMe from '../components/AboutMe';
 import { DynamicStars } from '../components/DynamicStars';
 import Welcome from '../components/Welcome';
 import meImages from "../constants/Me_Images.json";
 import { techIcons } from '../constants/TechIcons';
 import Layout from '../layouts/Layout.astro';
+import { optimizeImage } from "../utils/ImageOptimization";
 
 // Import all tech icons statically
 
@@ -14,57 +14,20 @@ const techIconImages = await Astro.glob<{ default: ImageMetadata }>('../images/T
 // Import all Me images dynamically
 const meImageFiles = await Astro.glob<{ default: ImageMetadata }>('../images/Me/*.(png|jpg|jpeg|webp)');
 
-console.log('Tech Icon Images:', techIconImages.map(img => img.default.src));
-console.log('Me Images:', meImageFiles.map(img => img.default.src));
-
 // Use the images
-const optimizedTechIcons = await Promise.all(techIcons.map(async (icon) => {
-  // Extract the base name without extension from icon.src
-  const baseName = icon.src.split('.').slice(0, -1).join('.');
-  
-  const imageModule = techIconImages.find(img => img.default.src.toLowerCase().includes(baseName.toLowerCase()));
-  
-  if (!imageModule) {
-    console.error('Image not found:', icon.src);
-    return { ...icon, optimizedSrc: '' };
-  }
+const optimizedTechIcons = await Promise.all(
+  techIcons.map(async (icon) => {
+    const optimized = await optimizeImage(icon, techIconImages, { width: 50, format: 'webp' });
+    return { ...icon, optimizedSrc: optimized.optimizedSrc };
+  })
+);
 
-  try {
-    const optimizedImage = await getImage({
-      src: imageModule.default,
-      format: 'webp',
-      width: 100
-    });
-    return { ...icon, optimizedSrc: optimizedImage.src };
-  } catch (error) {
-    console.error('Error processing icon:', icon.src, error);
-    return { ...icon, optimizedSrc: '' };
-  }
-}));
-
-// Similar process for meImages...
-const optimizedMeImages = await Promise.all(meImages.map(async (imagePath) => {
-  const baseName = imagePath.split('.').slice(0, -1).join('.');
-  
-  const imageModule = meImageFiles.find(img => img.default.src.toLowerCase().includes(baseName.toLowerCase()));
-	
-  if (!imageModule) {
-    console.error('Image not found:', imagePath);
-    return { original: imagePath, optimizedSrc: '' };
-  }
-
-  try {
-    const optimizedImage = await getImage({
-      src: imageModule.default,
-      format: 'webp',
-      width: 300
-    });
-    return { original: imagePath, optimizedSrc: optimizedImage.src };
-  } catch (error) {
-    console.error('Error processing image:', imagePath, error);
-    return { original: imagePath, optimizedSrc: '' };
-  }
-}));
+const optimizedMeImages = await Promise.all(
+  meImages.map(async (image, index) => {
+    const optimized = await optimizeImage(image, meImageFiles, { width: 300, format: 'webp' });
+    return { src: image, optimizedSrc: optimized.optimizedSrc, alt: `Me Image ${index}` };
+  })
+);
 
 console.log('Optimized Tech Icons:', optimizedTechIcons);
 console.log('Optimized Me Images:', optimizedMeImages);

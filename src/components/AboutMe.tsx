@@ -9,8 +9,9 @@ interface OptimizedTechIcon {
 }
 
 interface OptimizedMeImage {
-  original: string;
+  src: string;
   optimizedSrc: string;
+  alt: string;
 }
 
 const AboutMe: React.FC<{
@@ -120,7 +121,7 @@ const AboutMe: React.FC<{
                 <img
                   key={index}
                   src={image.optimizedSrc}
-                  alt={`Me ${index + 1}`}
+                  alt={image.alt}
                   className="opacity-0 absolute w-[50%] xl:w-full h-auto max-h-[80%] border-2 object-cover rounded-2xl shadow-[0_0_15px_rgba(128,0,128,0.6)] transition-all duration-300 cycling-image xl:mask-image-fade-top"
                 />
               ))}
