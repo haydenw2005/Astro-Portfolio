@@ -7,26 +7,37 @@ import meImages from "../constants/Me_Images.json";
 import { techIcons } from '../constants/TechIcons';
 import Layout from '../layouts/Layout.astro';
 
-// const props = Astro.locals.netlify.context;
-// console.log(props);
+// Import all tech icons statically
+
+const techIconImages = import.meta.glob('../assets/TechIcons/*');
+
+// Import all Me images dynamically
+const meImageFiles = import.meta.glob('../assets/Me/*');
+
+const props = Astro.locals.netlify.context;
+console.log(props);
 
 
 //netlify cdn!!
 // Yes, this code executes all optimizations concurrently
 const optimizedTechIcons = await Promise.all(techIcons.map(async (icon) => {
+  const imagePath = `../assets/TechIcons${icon.src}`;
+  const imageModule: any = await techIconImages[imagePath]();
   const optimizedImage = await getImage({
-    src: import(`../assets/TechIcons${icon.src}`),
-    format: 'webp',
-    width: 100 // Adjust as needed
+    src: imageModule.default,
+    format: 'png',
+    width: 100
   });
   return { ...icon, optimizedSrc: optimizedImage.src };
 }));
 
 const optimizedMeImages = await Promise.all(meImages.map(async (imagePath) => {
+  const fileName = `../assets/Me/${imagePath}`;
+  const imageModule: any = await meImageFiles[fileName]();
   const optimizedImage = await getImage({
-    src: import(`../assets/Me/${imagePath}`),
+    src: imageModule.default,
     format: 'webp',
-    width: 300 // Adjust as needed
+    width: 300
   });
   return { original: imagePath, optimizedSrc: optimizedImage.src };
 }));
