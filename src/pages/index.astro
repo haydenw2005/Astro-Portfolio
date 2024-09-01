@@ -60,6 +60,9 @@ const optimizedMeImages = await Promise.all(meImages.map(async (imagePath) => {
     return { original: imagePath, optimizedSrc: '' };
   }
 }));
+
+console.log('Optimized Tech Icons:', optimizedTechIcons);
+console.log('Optimized Me Images:', optimizedMeImages);
 ---
 
 <Layout title="Hayden White" description="Explore the digital world of Hayden White.">
