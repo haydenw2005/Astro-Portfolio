@@ -5,17 +5,20 @@ import Welcome from '../components/Welcome';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Hayden's Portfolio">
+<Layout title="Hayden White" description="Explore the digital world of Hayden White.">
 	<DynamicStars client:load />
 	<section id="welcome">
-		<div class="mx-auto p-4 max-w-3xl text-white text-xl leading-relaxed flex items-center min-h-screen ">
+		<div class="mx-auto p-4 max-w-[80%] text-white text-xl leading-relaxed flex items-center min-h-screen ">
 			<Welcome />
 		</div>
 	</section>
-	<section id="about-me">
-		<div class="mx-auto p-4  max-w-[80%] text-white text-xl leading-relaxed flex items-center min-h-screen">
-			<AboutMe client:load />
+	<section id="about-me" >
+		<div class="overflow-hidden">
 
+			<div class="mx-auto p-4  max-w-[80%] text-white text-xl leading-relaxed flex items-center min-h-screen">
+				<AboutMe client:load />
+				
+			</div>
 		</div>
 	</section>
 	<section id="projects">

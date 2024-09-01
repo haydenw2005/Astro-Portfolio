@@ -1,10 +1,12 @@
 ---
 interface Props {
 	title: string;
+	description: string;
 }
 import '../styles/global.css';
 
-const { title } = Astro.props;
+const { title, description  = "Default description of your website" } = Astro.props;
+
 ---
 
 <!doctype html>
@@ -13,7 +15,7 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/main_logo.png" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -23,6 +25,19 @@ const { title } = Astro.props;
 			crossorigin="anonymous"
 		></script>
 		<title>{title}</title>
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/Me/B5BC3818-8C25-4D85-9671-023F0EF5F730_4_5005_c.jpg" />
+
+		<!-- Twitter -->
+		<!-- <meta property="twitter:card" content="summary_large_image" /> -->
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content="/Me/B5BC3818-8C25-4D85-9671-023F0EF5F730_4_5005_c.jpg" />
 	</head>
 	<body class="font-space-mono">
 		<slot />

@@ -48,7 +48,7 @@ const AboutMe: React.FC = () => {
           </p>
         </div>
         <div className="logos flex justify-center items-center w-full px-10">
-          <div className="mt-10 md:mt-0 grid grid-cols-6 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto">
+          <div className="mt-10 md:mt-6 grid grid-cols-6 md:grid-cols-3 gap-2 sm:gap-6 md:gap-4 w-full max-w-2xl mx-auto">
             {[
               {
                 src: "/TechIcons/Typescript_logo_2020.svg.png",
