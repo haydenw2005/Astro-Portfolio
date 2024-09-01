@@ -2,7 +2,7 @@ import React from "react";
 import meImages from "../constants/Me_Images.json";
 
 const imgDir = "/Me/";
-const NUM_IMAGES_TO_SHOW = 9; // Adjust this number as needed
+const NUM_IMAGES_TO_SHOW = 8; // Adjust this number as needed
 const CYCLE_SPEED = 24;
 const AboutMe: React.FC = () => {
   return (
@@ -13,39 +13,56 @@ const AboutMe: React.FC = () => {
             About <span className="text-purple-300">Me</span>{" "}
           </h1>
           <p className="mb-4">
-            Hey, I'm [Your Name] - a Purdue University student originally from
-            Seattle, now diving into the world of tech in the Midwest.
+            <span className="mb-4 font-bold  text-blue-300">
+              {" "}
+              Nice to meet you.
+            </span>{" "}
+            My name is Hayden and I'm a nineteen year-old student and software
+            engineer studying computer science at{" "}
+            <span className="text-[#CEB888]">Purdue</span>{" "}
+            <span className="text-[#9D968D]">University</span>.
           </p>
           <p className="mb-4">
             I'm all about full-stack web development, but I like to keep my
             options open. There's always something new to learn in this field,
             right?
           </p>
-          <p>When I'm not coding:</p>
+          <p className="font-bold">
+            When I'm not coding or studying for midterms:
+          </p>
           <ul className="list-disc list-inside ml-8 mb-4">
             <li>
               You might find me on the{" "}
               <span className="mb-4 font-bold  text-blue-300"> ski slopes</span>
             </li>
             <li>
-              Or out{" "}
+              Out{" "}
               <span className="mb-4 font-bold  text-blue-400"> exploring</span>{" "}
               nature
             </li>
             <li>
-              Maybe nose-deep in a{" "}
+              Possibly engrossed in a
               <span className="mb-4 font-bold  text-blue-300"> sci-fi</span>{" "}
               novel
             </li>
             <li>
-              Or running around a{" "}
-              <span className="font-bold  text-blue-300"> lacrosse</span> field
+              Putting in the hours at the
+              <span className="font-bold  text-blue-300"> gym</span>
             </li>
           </ul>
-          <p className="mb-4 font-bold  text-purple-300">
-            Join me on this exciting journey as we push the boundaries of what's
-            possible in the world of software.
+          <p className="mb-4 font-bold text-purple-300">
+            Enjoying the page? Keep scrolling to dive deeper into my projects,
+            passions, and the tech that excites me.
           </p>
+          <a
+            href="#coming-soon"
+            className="mt-20 text-blue-400 hover:text-purple-400 transition-colors duration-300 cursor-pointer"
+            onClick={() => {
+              alert("Coming soon!");
+            }}
+          >
+            Hell yea <i className="fa fa-arrow-down"></i>
+          </a>
         </div>
         <div className="logos flex justify-center items-center w-full px-10">
           <div className="mt-10 md:mt-6 grid grid-cols-6 md:grid-cols-3 gap-2 sm:gap-6 md:gap-4 w-full max-w-2xl mx-auto">
@@ -94,7 +111,7 @@ const AboutMe: React.FC = () => {
                     : ""
                 }`}
               >
-                <div className="absolute inset-0 rounded-full bg-gray-800 opacity-50 blur-md transform translate-y-1 group-hover:opacity-70 transition-all duration-300"></div>
+                <div className="absolute inset-0 rounded-full bg-gray-800 opacity-30 blur-lg transform translate-y-1 group-hover:opacity-70 transition-all duration-300"></div>
                 <img
                   src={logo.src}
                   alt={logo.alt}

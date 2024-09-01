@@ -133,14 +133,16 @@
 
 @keyframes flicker {
   0%,
+  45%,
   100% {
-    background-color: #9d4ccf;
-  } /* green-400 */
-  50% {
-    background-color: #a894ac;
-  } /* gray-400 */
+    background-color: #9d4ccf; /* purple */
+  }
+  50%,
+  95% {
+    background-color: #249436; /* green */
+  }
 }
 
 .animate-flicker {
-  animation: flicker 3s infinite;
+  animation: flicker 3.25s infinite;
 }
