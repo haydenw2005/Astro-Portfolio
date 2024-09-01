@@ -9,8 +9,8 @@ interface Star {
   dy: number;
 }
 
-const STARS_COUNT = 250;
-const EDGE_THRESHOLD = 8; // Maximum distance for edge creation (in percentage)
+const STARS_COUNT = 300;
+const EDGE_THRESHOLD = 8.5; // Maximum distance for edge creation (in percentage)
 
 export const DynamicStars: React.FC = () => {
   const [stars, setStars] = useState<Star[]>([]);
