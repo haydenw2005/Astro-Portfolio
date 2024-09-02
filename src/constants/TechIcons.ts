@@ -55,7 +55,6 @@ export const slugs = [
   "netlify",
   "stripe",
   "cypress",
-  "jest",
   "cypress",
   "unity",
   "git",
