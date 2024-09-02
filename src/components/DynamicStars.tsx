@@ -44,9 +44,11 @@ export const DynamicStars: React.FC = () => {
       const welcomeSection = document.getElementById("welcome");
       if (welcomeSection) {
         const welcomeBottom = welcomeSection.getBoundingClientRect().bottom;
-        console.log(welcomeBottom);
-        setShowLines(welcomeBottom > 800);
-        setLineOpacity(welcomeBottom > 800 ? 1 : 0);
+        const screenHeight = window.innerHeight;
+        const threshold = screenHeight * 0.8; // 80% of screen height
+
+        setShowLines(welcomeBottom > threshold);
+        setLineOpacity(welcomeBottom > threshold ? 1 : 0);
 
         // Set animation as done when lines are hidden
         if (welcomeBottom <= 100) {
