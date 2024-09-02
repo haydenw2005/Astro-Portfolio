@@ -1,4 +1,6 @@
 import React from "react";
+import IconCloud from "../../@/components/magicui/icon-cloud";
+import { slugs } from "../constants/TechIcons";
 const NUM_IMAGES_TO_SHOW = 8; // Adjust this number as needed
 const CYCLE_SPEED = 24;
 
@@ -20,7 +22,7 @@ const AboutMe: React.FC<{
 }> = ({ optimizedTechIcons, optimizedMeImages }) => {
   return (
     <>
-      <div className=" about-me flex grid grid-cols-1 md:grid-cols-[60%_40%] xl:grid-cols-[40%_40%_20%]">
+      <div className=" about-me flex grid grid-cols-1 md:grid-cols-[50%_60%] xl:grid-cols-[40%_50%_20%]">
         <div className="content">
           <h1 className="text-6xl font-bold mb-5 text-white">
             About <span className="text-purple-300 glow-purple">Me</span>{" "}
@@ -68,10 +70,10 @@ const AboutMe: React.FC<{
               <span className="font-bold text-blue-300 glow-blue">gym</span>
             </li>
           </ul>
-          <p className="mb-4 font-bold text-purple-300 glow-purple">
+          {/* <p className="mb-4 font-bold text-purple-300 glow-purple">
             Enjoying the page? Keep scrolling to dive deeper into my projects,
             passions, and the tech that excites me.
-          </p>
+          </p> */}
           {/* <a
             href="#coming-soon"
             className="mt-20 text-blue-400 hover:text-purple-400 transition-colors duration-300 cursor-pointer"
@@ -82,37 +84,29 @@ const AboutMe: React.FC<{
             Hell yea <i className="fa fa-arrow-down"></i>
           </a> */}
         </div>
-        <div className="logos flex justify-center items-center  px-10">
-          <div className="mt-10 md:mt-6 grid grid-cols-4  sm:grid-cols-5 md:grid-cols-3 gap-6 sm:gap-6 md:gap-4 w-full max-w-2xl mx-auto">
-            {optimizedTechIcons.map((logo, index, array) => (
-              <div
-                key={index}
-                className={`relative group w-18 h-18 sm:w-20 sm:h-20 md:w-22 md:h-22 mx-auto ${
-                  index >= array.length - (array.length % 3) &&
-                  array.length % 3 !== 0
-                    ? "md:col-start-2"
-                    : ""
-                }`}
-              >
-                <div className="absolute inset-0 rounded-full bg-gray-800 opacity-30 blur-lg transform translate-y-1 group-hover:opacity-70 transition-all duration-300"></div>
-                <img
-                  src={logo.optimizedSrc}
-                  alt={logo.alt}
-                  className="relative z-10 w-[100%] h-[100%] md:w-[75%] md:h-[75%] object-contain transform transition-transform duration-100 group-hover:scale-110"
-                />
-              </div>
-            ))}
+        <div className="flex items-center justify-center ">
+          <div className="relative w-full h-full flex justify-center">
+            <div className="absolute w-[85%] top-20 h-[85%] bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full shadow-[0_0_100px_rgba(168,85,247,0.2)] animate-pulse-slow"></div>
+            <div className="absolute w-[85%] top-20 h-[85%] bg-gradient-radial from-transparent via-transparent to-black/50 rounded-full"></div>
+            <div className="relative z-10 w-[90%] h-[90%]">
+              <IconCloud iconSlugs={slugs} />
+            </div>
           </div>
         </div>
-        <div className="content xl:pr-8 relative h-[200px] xl:h-[600px] overflow-top-hidden flex mt-6 xl:mt-2 xl:mt-20 ">
-          <div className="absolute xl:-top-20 top-20 xl:left-1/2 transform rotate-90 xl:rotate-0 -translate-x-1/2 w-[50%] xl:w-[120%] h-32 bg-gray-300 rounded-lg shadow-lg z-50 border hidden xl:flex">
-            <div className="absolute top-2 left-2 w-8 h-8 rounded-full animate-flicker "></div>
-            <div className="absolute bottom-16 left-[80%] transform -translate-x-1/2 w-[40%] h-2 bg-gray-600 rounded-l-lg "></div>
+        <div className="content ml-10 xl:pr-8 relative h-[200px] xl:h-[600px] overflow-top-hidden flex mt-6 xl:mt-2 xl:mt-20 ">
+          <div className="absolute xl:-top-[12%] h-[15%] top-20 xl:left-1/2 transform rotate-90 xl:rotate-0 -translate-x-1/2 w-[50%] xl:w-[120%] h-32 bg-black rounded-lg shadow-lg z-50 border hidden xl:flex">
+            <div className="absolute top-2 left-2 w-6 h-6 rounded-full animate-flicker">
+              <div className="absolute inset-0 rounded-full bg-purple-500 opacity-70 blur-md"></div>
+              <div className="absolute inset-0 rounded-full bg-green-500 opacity-70 blur-md"></div>
+              <div className="absolute inset-0 rounded-full bg-white opacity-30 animate-pulse"></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-300 to-green-300 opacity-50 animate-spin-slow"></div>
+            </div>
+            <div className="absolute bottom-14 left-[80%] transform -translate-x-1/2 w-[40%] h-2 bg-gradient-to-r from-black to-blue-300 rounded-lg"></div>
 
-            <div className="absolute bottom-12 left-[70%] transform -translate-x-1/2 w-[60%] h-2 bg-gray-500 rounded-l-lg"></div>
+            <div className="absolute bottom-11 left-[70%] transform -translate-x-1/2 w-[60%] h-2 bg-gradient-to-r from-black to-blue-500 rounded-lg"></div>
 
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[90%] h-8 bg-gray-400 rounded-lg"></div>
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[83.33%] h-4 bg-purple-400 rounded-t-lg"></div>
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[90%] h-6 bg-gray-800 rounded-lg"></div>
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[83.33%] h-4 bg-gradient-to-b from-gray-800 to-purple-600 rounded-t-lg"></div>
           </div>
           <div className="xl:h-full w-full flex items-center justify-center xl:items-start xl:justify-start ">
             {optimizedMeImages

@@ -14,6 +14,9 @@ const EDGE_THRESHOLD = 8.5; // Maximum distance for edge creation (in percentage
 
 export const DynamicStars: React.FC = () => {
   const [stars, setStars] = useState<Star[]>([]);
+  const [showLines, setShowLines] = useState(true);
+  const [lineOpacity, setLineOpacity] = useState(0);
+  const [isAnimationDone, setIsAnimationDone] = useState(false);
 
   const generateStars = useCallback(() => {
     const newStars: Star[] = [];
@@ -36,6 +39,26 @@ export const DynamicStars: React.FC = () => {
 
   useEffect(() => {
     generateStars();
+
+    const handleScroll = () => {
+      const welcomeSection = document.getElementById("welcome");
+      if (welcomeSection) {
+        const welcomeBottom = welcomeSection.getBoundingClientRect().bottom;
+        console.log(welcomeBottom);
+        setShowLines(welcomeBottom > 800);
+        setLineOpacity(welcomeBottom > 800 ? 1 : 0);
+
+        // Set animation as done when lines are hidden
+        if (welcomeBottom <= 100) {
+          setTimeout(() => setIsAnimationDone(true), 500); // Wait for opacity transition
+        } else {
+          setIsAnimationDone(false);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial scroll position
 
     const animateStars = () => {
       setStars((prevStars) =>
@@ -68,7 +91,10 @@ export const DynamicStars: React.FC = () => {
 
     const animationInterval = setInterval(animateStars, 50); // Update every 50ms
 
-    return () => clearInterval(animationInterval);
+    return () => {
+      clearInterval(animationInterval);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [generateStars]);
 
   const calculateDistance = (star1: Star, star2: Star) => {
@@ -78,7 +104,7 @@ export const DynamicStars: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-full">
+    <div className="absolute inset-0 z-0 w-full h-full animate-fade-in opacity-[.9] ">
       {stars.map((star) => (
         <div
           key={star.id}
@@ -91,28 +117,30 @@ export const DynamicStars: React.FC = () => {
           }}
         />
       ))}
-      <svg className="fixed top-0 left-0 w-full h-full -z-10">
-        {stars.flatMap((star1, index) =>
-          stars.slice(index + 1).map((star2) => {
-            const distance = calculateDistance(star1, star2);
-            if (distance <= EDGE_THRESHOLD) {
-              return (
-                <line
-                  key={`${star1.id}-${star2.id}`}
-                  x1={`${star1.x}%`}
-                  y1={`${star1.y}%`}
-                  x2={`${star2.x}%`}
-                  y2={`${star2.y}%`}
-                  stroke="#5a1c61"
-                  strokeWidth=".75"
-                />
-              );
-            }
-            return null;
-          })
-        )}
+      <svg className="fixed w-full h-full -z-10">
+        {(showLines || !isAnimationDone) &&
+          stars.flatMap((star1, index) =>
+            stars.slice(index + 1).map((star2) => {
+              const distance = calculateDistance(star1, star2);
+              if (distance <= EDGE_THRESHOLD) {
+                return (
+                  <line
+                    key={`${star1.id}-${star2.id}`}
+                    x1={`${star1.x}%`}
+                    y1={`${star1.y}%`}
+                    x2={`${star2.x}%`}
+                    y2={`${star2.y}%`}
+                    stroke="#5a1c61"
+                    strokeWidth=".75"
+                    opacity={lineOpacity}
+                    style={{ transition: "opacity 0.5s ease-in-out" }}
+                  />
+                );
+              }
+              return null;
+            })
+          )}
       </svg>
-      <div className="bg-red-500 w-full h-full"> </div>
     </div>
   );
 };
