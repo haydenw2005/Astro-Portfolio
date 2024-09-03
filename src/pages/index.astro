@@ -1,7 +1,10 @@
 ---
+import { FileTree } from '@/components/FileNavigator';
+import { Projects } from '@/components/Projects';
+import Travel from '@/components/Travel';
+import '@/styles/global.css';
 import AboutMe from '../components/AboutMe';
 import { DynamicStars } from '../components/DynamicStars';
-import Projects from '../components/Projects';
 import Welcome from '../components/Welcome';
 import meImages from "../constants/Me_Images.json";
 import { techIcons } from '../constants/TechIcons';
@@ -40,44 +43,65 @@ console.log(props);
           <Welcome />
         </div>
       </section>
-      <section id="about-me" >
-        <div class="overflow-hidden">
-          <div class="mx-auto p-4  max-w-[80%] text-white text-xl leading-relaxed flex items-center min-h-screen">
-            <AboutMe client:visible optimizedTechIcons={optimizedTechIcons} optimizedMeImages={optimizedMeImages}>
-            </AboutMe>
-          </div>
-        </div>
-      </section>
-      <section id="projects">
-        <Projects client:visible />
-      </section>
-      <section id="interests">
+      <div class="flex">
         
-      </section>
+        <div class="flex-grow mt-[0%] min-h-screen">
 
-      <section id="contact"></section>
+          <FileTree client:load  />
+        </div>
+        <div class="flex-grow">
+          <section id="about-me">
+            <div class="overflow-hidden">
+              <div class="mx-auto pr-4 max-w-[90%] text-white text-xl leading-relaxed flex items-center min-h-screen">
+                <AboutMe client:visible optimizedTechIcons={optimizedTechIcons} optimizedMeImages={optimizedMeImages} />
+              </div>
+            </div>
+          </section>
+          <section id="projects">
+            <div class="mx-auto pr-4 max-w-[90%] text-white text-xl leading-relaxed flex items-center min-h-screen">
+              <Projects client:visible />
+            </div>
+          </section>
+         
+          <section id="travel">
+            <div class="mx-auto p-4 max-w-[90%] md:max-w-[50%] text-white text-xl leading-relaxed flex items-center">
+              <Travel client:visible />
+            </div>
+          </section>
+          <section id="contact">
+            <!-- Content for contact section -->
+          </section>
+        </div>
+      </div>
     </div>
   </div>
 </Layout>
 
-<style>
-  .relative {
-    position: relative;
-  }
-  .fixed {
-    position: fixed;
-  }
-  .inset-0 {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-  .z-0 {
-    z-index: 0;
-  }
-  .z-10 {
-    z-index: 10;
-  }
-</style>
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const newHash = `#${entry.target.id}`;
+        if (window.location.hash !== newHash) {
+          history.replaceState(null, '', newHash);
+          // Dispatch a custom hashchange event
+          window.dispatchEvent(new HashChangeEvent('hashchange'));
+        }
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+</script>
+
+
 

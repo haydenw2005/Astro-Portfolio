@@ -159,3 +159,17 @@
 .animate-fade-in {
   animation: fadeIn 1s ease-out;
 }
+
+.purpleGlow {
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+.purpleGlow :global(.file-tree-item:hover),
+.purpleGlow :global(.file-tree-item[data-selected="true"]) {
+  background-color: rgba(168, 85, 247, 0.2);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.purpleGlow :global(svg) {
+  filter: drop-shadow(0 0 5px rgba(168, 85, 247, 0.5));
+}

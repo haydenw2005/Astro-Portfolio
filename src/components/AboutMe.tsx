@@ -1,6 +1,6 @@
 import React from "react";
-import IconCloud from "../../@/components/magicui/icon-cloud";
-import { slugs } from "../constants/TechIcons";
+import { SpinningIcons } from "./SpinningIcons";
+
 const NUM_IMAGES_TO_SHOW = 8; // Adjust this number as needed
 const CYCLE_SPEED = 24;
 
@@ -22,8 +22,10 @@ const AboutMe: React.FC<{
 }> = ({ optimizedTechIcons, optimizedMeImages }) => {
   return (
     <>
-      <div className=" about-me flex grid grid-cols-1 md:grid-cols-[50%_60%] xl:grid-cols-[40%_50%_20%]">
-        <div className="content">
+      <div className=" about-me flex grid grid-cols-1 md:grid-cols-[50%_60%] xl:grid-cols-[50%_50%]">
+        <div className="content relative">
+          {" "}
+          {/* <div className="absolute inset-0 bg-gradient-radial from-purple-900/40 to-transparent -z-10"></div> */}
           <h1 className="text-6xl font-bold mb-5 text-white">
             About <span className="text-purple-300 glow-purple">Me</span>{" "}
           </h1>
@@ -70,30 +72,23 @@ const AboutMe: React.FC<{
               <span className="font-bold text-blue-300 glow-blue">gym</span>
             </li>
           </ul>
-          {/* <p className="mb-4 font-bold text-purple-300 glow-purple">
+          <p className="mb-4 font-bold text-purple-300 glow-purple">
             Enjoying the page? Keep scrolling to dive deeper into my projects,
             passions, and the tech that excites me.
-          </p> */}
-          {/* <a
-            href="#coming-soon"
+          </p>
+          <a
+            href="#projects"
             className="mt-20 text-blue-400 hover:text-purple-400 transition-colors duration-300 cursor-pointer"
-            onClick={() => {
-              alert("Coming soon!");
-            }}
           >
-            Hell yea <i className="fa fa-arrow-down"></i>
-          </a> */}
+            See my projects <i className="fa fa-arrow-down"></i>
+          </a>
         </div>
         <div className="flex items-center justify-center ">
           <div className="relative w-full h-full flex justify-center">
-            <div className="absolute w-[85%] top-20 h-[85%] bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full shadow-[0_0_100px_rgba(168,85,247,0.2)] animate-pulse-slow"></div>
-            <div className="absolute w-[85%] top-20 h-[85%] bg-gradient-radial from-transparent via-transparent to-black/50 rounded-full"></div>
-            <div className="relative z-10 w-[90%] h-[90%]">
-              <IconCloud iconSlugs={slugs} />
-            </div>
+            <SpinningIcons optimizedTechIcons={optimizedTechIcons} />
           </div>
         </div>
-        <div className="content ml-10 xl:pr-8 relative h-[200px] xl:h-[600px] overflow-top-hidden flex mt-6 xl:mt-2 xl:mt-20 ">
+        {/* <div className="content ml-10 xl:pr-8 relative h-[200px] xl:h-[600px] overflow-top-hidden flex mt-6 xl:mt-2 xl:mt-20 ">
           <div className="absolute xl:-top-[12%] h-[15%] top-20 xl:left-1/2 transform rotate-90 xl:rotate-0 -translate-x-1/2 w-[50%] xl:w-[120%] h-32 bg-black rounded-lg shadow-lg z-50 border hidden xl:flex">
             <div className="absolute top-2 left-2 w-6 h-6 rounded-full animate-flicker">
               <div className="absolute inset-0 rounded-full bg-purple-500 opacity-70 blur-md"></div>
@@ -120,7 +115,7 @@ const AboutMe: React.FC<{
                 />
               ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

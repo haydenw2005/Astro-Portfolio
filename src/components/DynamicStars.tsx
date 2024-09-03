@@ -106,7 +106,7 @@ export const DynamicStars: React.FC = () => {
   };
 
   return (
-    <div className="absolute inset-0 z-0 w-full h-full animate-fade-in opacity-[.9] ">
+    <div className="absolute inset-0 z-0 w-full h-full animate-fade-in opacity-[.9] pointer-events-none ">
       {stars.map((star) => (
         <div
           key={star.id}

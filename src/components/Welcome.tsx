@@ -2,7 +2,7 @@ const Welcome = () => {
   return (
     <>
       <div className="flex flex-col rounded-lg p-4">
-        <h1 className="text-6xl font-bold">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
           Hi. I'm <span className="text-purple-300">Hayden</span> 🖖
         </h1>
         <p className="text-2xl mt-4">
