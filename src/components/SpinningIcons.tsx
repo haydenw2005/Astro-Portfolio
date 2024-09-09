@@ -8,10 +8,11 @@ interface OptimizedTechIcon {
 
 export function SpinningIcons({
   optimizedTechIcons,
+  size = 1,
 }: {
   optimizedTechIcons: OptimizedTechIcon[];
+  size: Number;
 }) {
-  console.log(optimizedTechIcons);
   return (
     <div className="relative flex w-full h-full flex-col items-center justify-center overflow-hidden">
       {/* Glowing background */}
@@ -39,7 +40,7 @@ export function SpinningIcons({
           className="size-[30px] border-none "
           duration={25}
           delay={index * 5}
-          radius={90}
+          radius={90 * size}
         >
           <img
             src={icon.optimizedSrc}
@@ -54,7 +55,7 @@ export function SpinningIcons({
         <OrbitingCircles
           key={icon.alt}
           className="size-[50px] border-none"
-          radius={160}
+          radius={160 * size}
           duration={30}
           delay={index * 5.25}
           reverse
@@ -71,7 +72,7 @@ export function SpinningIcons({
         <OrbitingCircles
           key={icon.alt}
           className="size-[65px] border-none"
-          radius={250}
+          radius={250 * size}
           duration={40}
           delay={index * 7}
         >

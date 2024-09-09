@@ -1,73 +1,49 @@
-import {
-  BellIcon,
-  CalendarIcon,
-  FileTextIcon,
-  InputIcon,
-} from "@radix-ui/react-icons";
-
-import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
-
-const features = [
-  {
-    Icon: InputIcon,
-    name: "My Projects",
-    description: "Search through all your files in one place.",
-    href: "/",
-    cta: "Learn more",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-start-1 lg:col-end-1 lg:row-start-1 lg:row-end-2",
-  },
-  {
-    Icon: InputIcon,
-    name: "Full text search",
-    description: "Search through all your files in one place.",
-    href: "/",
-    cta: "Learn more",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-4",
-  },
-
-  {
-    Icon: FileTextIcon,
-    name: "UpliftMe",
-    description: "We automatically save your files as you type.",
-    href: "/",
-    cta: "Learn more",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-2",
-  },
-  {
-    Icon: CalendarIcon,
-    name: "Dagger",
-    description: "Use the calendar to filter your files by date.",
-    href: "/",
-    cta: "Learn more",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-3",
-  },
-  {
-    Icon: BellIcon,
-    name: "Travel the World",
-    description:
-      "Get notified when someone shares a file or mentions you in a comment.",
-    href: "/",
-    cta: "Learn more",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-start-3 lg:col-end-3 lg:row-start-3 lg:row-end-4",
-  },
-];
+import { Github } from "lucide-react";
+import FeatureProject from "./FeatureProject";
+import GithubCard from "./GithubCard";
+import HSeparator from "./HSeperator";
+import { MagicCard } from "./magicui/magic-card";
 
 export const Projects = () => {
   return (
     <div>
-      <h1 className="text-6xl font-bold mb-5 text-white mb-8">
-        My <span className="text-purple-300 glow-purple">Projects</span>{" "}
-      </h1>
-      <BentoGrid className="lg:grid-rows-3 h-[70vh]">
-        {features.map((feature) => (
-          <BentoCard key={feature.name} {...feature} />
-        ))}
-      </BentoGrid>
+      <MagicCard className="shadow-2xl p-8" gradientColor={"#262626"}>
+        <h1 className="text-6xl font-bold text-white mb-4">
+          My <span className="text-purple-300 glow-purple">Projects</span>{" "}
+        </h1>
+        <HSeparator />
+
+        <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-6">
+          <div className="w-full space-y-3">
+            <h3>Featured Projects</h3>
+            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className="md:col-span-2 space-y-3">
+                <FeatureProject className="h-48 md:h-64 lg:h-72" />
+                <FeatureProject className="h-48 md:h-64 lg:h-72" />
+              </div>
+              <div className="md:col-span-1">
+                <FeatureProject />
+              </div>
+            </div>
+          </div>
+          <div className="w-full space-y-3 ">
+            <h3>Featured Repositories</h3>
+
+            <GithubCard />
+            <GithubCard />
+            <GithubCard />
+            <p className="text-[16px] mt-4 font-bold flex items-center justify-center text-blue-300 hover:text-purple-400 transition-colors duration-300 cursor-pointer">
+              Want to see more? Check out my GitHub! <Github className="ml-2" />
+            </p>
+          </div>
+        </div>
+      </MagicCard>
     </div>
   );
 };
+
+// Projects
+// 1. UpliftMe
+// 2. Dagger
+// 3. Travel the World
+// 4. Location Analyzer

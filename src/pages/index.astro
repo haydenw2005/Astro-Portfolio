@@ -10,6 +10,7 @@ import meImages from "../constants/Me_Images.json";
 import { techIcons } from '../constants/TechIcons';
 import Layout from '../layouts/Layout.astro';
 import { optimizeImage } from "../utils/ImageOptimization";
+import Experience from '@/components/Experience';
 
 // Import all tech icons statically
 
@@ -37,34 +38,40 @@ console.log(props);
 <Layout title="Hayden White" description="Explore the digital world of Hayden White">
   <div class="relative">
     <DynamicStars client:load/>
-    <div class="relative z-10">
+    <div class="relative z-10 text-white text-xl">
       <section id="welcome">
-        <div class="mx-auto p-4 max-w-[95%] md:max-w-[50%] text-white text-xl leading-relaxed flex items-center min-h-screen">
+        <div class="mx-auto p-4 max-w-[95%] md:max-w-[50%]  leading-relaxed flex items-center min-h-screen">
           <Welcome />
         </div>
       </section>
-      <div class="flex">
+      <div class="flex mt-[20vh]">
         
-        <div class="flex-grow mt-[0%] min-h-screen">
-
+        <div class="flex-grow mt-[0%] min-h-screen pl-3 ">
           <FileTree client:load  />
         </div>
-        <div class="flex-grow">
+
+        <div class="flex-grow pr-3 pl-3 mx-auto">
           <section id="about-me">
             <div class="overflow-hidden">
-              <div class="mx-auto pr-4 max-w-[90%] text-white text-xl leading-relaxed flex items-center min-h-screen">
+              <div class=" leading-relaxed flex items-center mb-3">
                 <AboutMe client:visible optimizedTechIcons={optimizedTechIcons} optimizedMeImages={optimizedMeImages} />
               </div>
             </div>
           </section>
           <section id="projects">
-            <div class="mx-auto pr-4 max-w-[90%] text-white text-xl leading-relaxed flex items-center min-h-screen">
+            <div class=" leading-relaxed flex items-center mb-3">
               <Projects client:visible />
+            </div>
+          </section>
+
+          <section id="projects">
+            <div class=" leading-relaxed flex items-center mb-3">
+              <Experience client:visible />
             </div>
           </section>
          
           <section id="travel">
-            <div class="mx-auto p-4 max-w-[90%] md:max-w-[50%] text-white text-xl leading-relaxed flex items-center">
+            <div class="  leading-relaxed flex items-center mb-3">
               <Travel client:visible />
             </div>
           </section>
