@@ -26,7 +26,7 @@ export const techIcons = [
   { src: "/stripe.png", alt: "Stripe" },
   { src: "/Git_icon.svg.png", alt: "Git" },
   { src: "/astro.png", alt: "Astro" },
-  { src: "/Amazon-S3-Logo.svg.png", alt: "S3" },
+  { src: "/Amazon-S3-Logo.png", alt: "S3" },
   {
     src: "/aws-ec2-icon-1696x2048-nhw31ife.png",
     alt: "EC2",
