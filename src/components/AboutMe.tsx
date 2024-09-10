@@ -81,8 +81,8 @@ const AboutMe: React.FC<{
                 </li>
               </ul>
               <p className="mb-4  text-purple-300 glow-purple">
-                Enjoying the page? Keep scrolling to dive deeper into my
-                projects, passions, and the tech that excites me.
+                Want to learn more? Keep scrolling to dive deeper into my
+                projects, work, passions, and more!
               </p>
             </div>
             <a
@@ -92,7 +92,8 @@ const AboutMe: React.FC<{
               See my projects <ArrowBigDown className="ml-2 mt-1" size={25} />
             </a>
           </div>
-          <div className="relative w-[180%] h-full flex justify-center">
+          <div className="relative w-[100%] md:w-[180%] h-[52vh] sm:h-[60vh] md:h-full justify-center top-[100px] md:top-0">
+            {" "}
             <SpinningIcons optimizedTechIcons={optimizedTechIcons} size={1.2} />
           </div>
         </div>

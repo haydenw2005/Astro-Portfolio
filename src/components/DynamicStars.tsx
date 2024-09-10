@@ -13,6 +13,7 @@ const STAR_FACTOR = 5;
 const EDGE_THRESHOLD = 8.5; // Maximum distance for edge creation (in percentage)
 
 export const DynamicStars: React.FC = () => {
+  const [showElement, setShowElement] = useState<boolean>(true);
   const [stars, setStars] = useState<Star[]>([]);
   const [showLines, setShowLines] = useState(true);
   const [lineOpacity, setLineOpacity] = useState(0);
@@ -42,19 +43,29 @@ export const DynamicStars: React.FC = () => {
 
     const handleScroll = () => {
       const welcomeSection = document.getElementById("welcome");
-      if (welcomeSection) {
+      const bottomSection = document.getElementById("wip");
+      const aboutMeSection = document.getElementById("about-me");
+      if (welcomeSection && bottomSection && aboutMeSection) {
         const welcomeBottom = welcomeSection.getBoundingClientRect().bottom;
+        const bottomTop = bottomSection.getBoundingClientRect().top;
+        const aboutTop = aboutMeSection.getBoundingClientRect().top;
         const screenHeight = window.innerHeight;
-        const threshold = screenHeight * 0.8; // 80% of screen height
+        const showStars = aboutTop > 0 || bottomTop < screenHeight;
+        setShowElement(showStars);
 
-        setShowLines(welcomeBottom > threshold);
-        setLineOpacity(welcomeBottom > threshold ? 1 : 0);
+        if (showStars) {
+          const threshold = screenHeight * 0.8; // 80% of screen height
+          setShowLines(welcomeBottom > threshold || bottomTop <= screenHeight);
+          setLineOpacity(
+            welcomeBottom > threshold || bottomTop <= screenHeight ? 1 : 0
+          );
 
-        // Set animation as done when lines are hidden
-        if (welcomeBottom <= 100) {
-          setTimeout(() => setIsAnimationDone(true), 500); // Wait for opacity transition
-        } else {
-          setIsAnimationDone(false);
+          // Set animation as done when lines are hidden
+          if (welcomeBottom <= 100) {
+            setTimeout(() => setIsAnimationDone(true), 500); // Wait for opacity transition
+          } else {
+            setIsAnimationDone(false);
+          }
         }
       }
     };
@@ -106,43 +117,47 @@ export const DynamicStars: React.FC = () => {
   };
 
   return (
-    <div className="absolute inset-0 z-0 w-full h-full animate-fade-in opacity-[.9] pointer-events-none ">
-      {stars.map((star) => (
-        <div
-          key={star.id}
-          className="fixed rounded-full bg-white"
-          style={{
-            top: `${star.y}%`,
-            left: `${star.x}%`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-          }}
-        />
-      ))}
-      <svg className="fixed w-full h-full -z-10">
-        {(showLines || !isAnimationDone) &&
-          stars.flatMap((star1, index) =>
-            stars.slice(index + 1).map((star2) => {
-              const distance = calculateDistance(star1, star2);
-              if (distance <= EDGE_THRESHOLD) {
-                return (
-                  <line
-                    key={`${star1.id}-${star2.id}`}
-                    x1={`${star1.x}%`}
-                    y1={`${star1.y}%`}
-                    x2={`${star2.x}%`}
-                    y2={`${star2.y}%`}
-                    stroke="#5a1c61"
-                    strokeWidth=".75"
-                    opacity={lineOpacity}
-                    style={{ transition: "opacity 0.5s ease-in-out" }}
-                  />
-                );
-              }
-              return null;
-            })
-          )}
-      </svg>
-    </div>
+    <>
+      {showElement && (
+        <div className="absolute inset-0 z-0 w-full h-full animate-fade-in opacity-[.9] pointer-events-none ">
+          {stars.map((star) => (
+            <div
+              key={star.id}
+              className="fixed rounded-full bg-white"
+              style={{
+                top: `${star.y}%`,
+                left: `${star.x}%`,
+                width: `${star.size}px`,
+                height: `${star.size}px`,
+              }}
+            />
+          ))}
+          <svg className="fixed w-full h-full -z-10">
+            {(showLines || !isAnimationDone) &&
+              stars.flatMap((star1, index) =>
+                stars.slice(index + 1).map((star2) => {
+                  const distance = calculateDistance(star1, star2);
+                  if (distance <= EDGE_THRESHOLD) {
+                    return (
+                      <line
+                        key={`${star1.id}-${star2.id}`}
+                        x1={`${star1.x}%`}
+                        y1={`${star1.y}%`}
+                        x2={`${star2.x}%`}
+                        y2={`${star2.y}%`}
+                        stroke="#5a1c61"
+                        strokeWidth=".75"
+                        opacity={lineOpacity}
+                        style={{ transition: "opacity 0.5s ease-in-out" }}
+                      />
+                    );
+                  }
+                  return null;
+                })
+              )}
+          </svg>
+        </div>
+      )}
+    </>
   );
 };

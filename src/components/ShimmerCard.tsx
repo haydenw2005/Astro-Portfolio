@@ -9,12 +9,12 @@ export default function ShimmerCard({ children }: ShimmerCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="p-2">
+    <div className="p-1">
       <Card
         className={`relative overflow-hidden transition-all duration-300 ease-in-out ${
           isHovered
             ? "border-2 border-purple-500 shadow-lg"
-            : "border-transparent"
+            : "border-transparent border-2"
         }`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}

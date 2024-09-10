@@ -13,8 +13,8 @@ export function FileTree() {
         welcome: "4",
         "about-me": "5",
         projects: "6",
-        travel: "7",
-        contact: "9",
+        experience: "7",
+        wip: "8",
       };
       setSelectedId(fileMap[hash as keyof typeof fileMap] || "4"); // Default to welcome.md if hash doesn't match
     };
@@ -47,7 +47,6 @@ export function FileTree() {
             "9",
             "10",
           ]}
-          elements={ELEMENTS}
         >
           <a className="text-purple-300 glow-purple text-xl" href="#welcome">
             {" "}
@@ -76,28 +75,60 @@ export function FileTree() {
               </File>
 
               <File value="7" isSelect={selectedId === "7"}>
-                <a href="#travel">
-                  <p>travel.md</p>
+                <a href="#experience">
+                  <p>experience.md</p>
                 </a>
               </File>
-              <File value="9" isSelect={selectedId === "9"}>
+
+              <File value="8" isSelect={selectedId === "8"}>
+                <a href="#wip">
+                  <p>wip.md</p>
+                </a>
+              </File>
+              {/* <File value="9" isSelect={selectedId === "9"}>
                 <a href="#contact">
                   <p>contact.md</p>
                 </a>
-              </File>
+              </File> */}
             </Folder>
-            <Folder value="10" element="layouts">
+            <Folder value="9" element="contact">
+              <File value="10">
+                <a
+                  href="https://www.linkedin.com/in/hayden-s-white"
+                  target="_blank"
+                >
+                  <p>linkedin</p>
+                </a>
+              </File>
+
               <File value="11">
-                <p>Layout.astro</p>
+                <a href="https://github.com/haydenw2005" target="_blank">
+                  <p>github</p>{" "}
+                </a>
+              </File>
+
+              {/* <File value="11">
+                <p>X</p>
+              </File> */}
+
+              <File value="12">
+                <a href="mailto:white929@purdue.edu" target="_blank">
+                  <p>email</p>
+                </a>
               </File>
             </Folder>
+            {/* <Folder value="13" element="blog">
+              <File value="12">
+                <p>coming soon!</p>
+              </File>
+            </Folder> */}
           </Folder>
         </Tree>
         <div className="absolute bottom-4 left-0 right-0 px-4">
           <img
             src={Image}
             alt="Logo"
-            className="w-full h-auto opacity-50 object-contain"
+            className="w-full h-auto opacity-20 object-contain"
           />
         </div>
       </MagicCard>
@@ -105,62 +136,77 @@ export function FileTree() {
   );
 }
 
-const ELEMENTS = [
-  {
-    id: "1",
-    isSelectable: true,
-    name: "src",
-    children: [
-      {
-        id: "3",
-        isSelectable: true,
-        name: "components",
-        children: [
-          {
-            id: "4",
-            isSelectable: true,
-            name: "Welcome.md",
-            href: "/welcome",
-          },
-          {
-            id: "5",
-            isSelectable: true,
-            name: "AboutMe.md",
-            href: "/about-me",
-          },
-          {
-            id: "6",
-            isSelectable: true,
-            name: "Projects.md",
-            href: "/projects",
-          },
-          {
-            id: "7",
-            isSelectable: true,
-            name: "Travel.md",
-            href: "/travel",
-          },
+// const ELEMENTS = [
+//   {
+//     id: "1",
+//     isSelectable: true,
+//     name: "src",
+//     children: [
+//       {
+//         id: "3",
+//         isSelectable: true,
+//         name: "components",
+//         children: [
+//           {
+//             id: "4",
+//             isSelectable: true,
+//             name: "Welcome.md",
+//             href: "/welcome",
+//           },
+//           {
+//             id: "5",
+//             isSelectable: true,
+//             name: "AboutMe.md",
+//             href: "/about-me",
+//           },
+//           {
+//             id: "6",
+//             isSelectable: true,
+//             name: "Projects.md",
+//             href: "/projects",
+//           },
+//           {
+//             id: "7",
+//             isSelectable: true,
+//             name: "Travel.md",
+//             href: "/travel",
+//           },
 
-          {
-            id: "9",
-            isSelectable: true,
-            name: "contact.md",
-            href: "/contact",
-          },
-        ],
-      },
-      {
-        id: "10",
-        isSelectable: true,
-        name: "layouts",
-        children: [
-          {
-            id: "11",
-            isSelectable: true,
-            name: "Layout.astro",
-          },
-        ],
-      },
-    ],
-  },
-];
+//           {
+//             id: "9",
+//             isSelectable: true,
+//             name: "contact.md",
+//             href: "/contact",
+//           },
+//         ],
+//       },
+//       {
+//         id: "10",
+//         isSelectable: false,
+//         name: "contact",
+//         children: [
+//           {
+//             id: "11",
+//             isSelectable: false,
+//             name: "linkedin",
+//           },
+//           {
+//             id: "12",
+//             isSelectable: false,
+//             name: "GitHub",
+//           },
+//           {
+//             id: "13",
+//             isSelectable: false,
+//             name: "Email",
+//           },
+//           // {
+//           //   id: "11",
+//           //   isSelectable: true,
+//           //   name: "X",
+//           // },
+//         ],
+//       },
+//     ],
+//   },
+// ];

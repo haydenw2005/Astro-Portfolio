@@ -1,6 +1,32 @@
-import { Eye, GitFork, Star } from "lucide-react";
+interface GitHubProps {
+  repoLink: string;
+  repoName: string;
+  description: string;
+  stars: string;
+  forks: string;
+  views: string;
+  languages: string[];
+}
 
-export default function GithubCard() {
+const languageColorMap: { [key: string]: string } = {
+  TypeScript: "#2b7489",
+  Astro: "#FF8C00", // Example color, adjust if you have a specific one
+  CSS: "#563d7c",
+  JavaScript: "#f1e05a",
+  Python: "#3572A5",
+  HTML: "#e34c26",
+  Java: "#b07219",
+};
+
+export default function GithubCard({
+  repoLink,
+  repoName,
+  description,
+  stars,
+  forks,
+  views,
+  languages,
+}: GitHubProps) {
   return (
     <div className="border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 max-w-lg">
       <div className="p-3">
@@ -16,35 +42,41 @@ export default function GithubCard() {
             />
           </svg>
           <a
-            href="#"
+            href={repoLink}
             className="text-blue-300 text-md font-semibold hover:underline"
           >
-            haydenw2005 / repo-name
+            {repoName}
           </a>
         </div>
-        <p className="text-gray-100 text-sm mb-3">
-          A concise description of the repository. This project does something
-          really cool!
-        </p>
-        <div className="flex items-center text-sm text-gray-100">
+        <p className="text-gray-100 text-sm mb-3">{description}</p>
+        {/* <div className="flex items-center text-sm text-gray-100">
           <span className="flex items-center mr-4">
             <Star size={16} className="mr-1" />
-            1.5k
+            {stars}
           </span>
           <span className="flex items-center mr-4">
             <GitFork size={16} className="mr-1" />
-            230
+            {forks}
           </span>
           <span className="flex items-center">
             <Eye size={16} className="mr-1" />
-            45
+            {views}
           </span>
-        </div>
+        </div> */}
       </div>
       <div className="bg-gray-700 px-4 py-2 border-t border-gray-200">
-        <div className="flex items-center">
-          <span className="w-3 h-3 bg-yellow-400 rounded-full mr-2"></span>
-          <span className="text-sm text-gray-100">JavaScript</span>
+        <div className="flex items-center space-x-4">
+          {languages.map((language) => (
+            <div key={language} className="flex items-center">
+              <span
+                className="w-3 h-3 mt-[1px] rounded-full mr-2"
+                style={{
+                  backgroundColor: languageColorMap[language] || "#ccc",
+                }}
+              ></span>
+              <span className="text-sm text-gray-100">{language}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>

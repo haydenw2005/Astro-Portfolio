@@ -8,7 +8,7 @@ import { useSpring } from "react-spring";
 import { cn } from "@/lib/utils";
 
 const GLOBE_CONFIG: COBEOptions = {
-  width: 800,
+  width: 400,
   height: 800,
   onRender: () => {},
   devicePixelRatio: 2,

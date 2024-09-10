@@ -1,6 +1,5 @@
 import React from "react";
 import Globe from "./magicui/globe";
-import { MagicCard } from "./magicui/magic-card";
 
 interface TravelProps {
   // Add any props you need here
@@ -8,14 +7,21 @@ interface TravelProps {
 
 const Travel: React.FC<TravelProps> = (props) => {
   return (
-    <MagicCard className="shadow-2xl" gradientColor={"#262626"}>
-      <div className="relative flex h-[80vh] w-[80vw] items-center justify-center overflow-hidden rounded-lg">
-        <div className="w-full h-full relative">
-          <Globe className="w-full h-full" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-transparent to-background" />
+    <div className="w-full h-[100vh] ">
+      <div className="rounded-lg w-full h-1/2 relative items-center justify-center top-[25%] overflow-hidden">
+        <Globe />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-transparent to-background" />
+      </div>
+
+      <div className=" relative top-[200px]">
+        <div className="flex items-center justify-center mb-4 rounded-lg bg-purple-300 w-[35vh] sm:w-[60vh] mx-auto text-gray-800 border border-2 border-black">
+          <p> Thanks for stopping by ;)</p>
+        </div>
+        <div className="flex items-center justify-center mb-8 rounded-lg bg-purple-300  w-[28vh] sm:w-[50vh] mx-auto text-gray-800 border border-2 border-black">
+          <p> More stuff coming soon!</p>
         </div>
       </div>
-    </MagicCard>
+    </div>
   );
 };
 
