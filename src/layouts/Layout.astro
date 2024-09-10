@@ -11,14 +11,15 @@ const { title, description  = "Default description of your website" } = Astro.pr
 
 <!doctype html>
 <html lang="en">
+	
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" type="image/svg+xml" href="/main_logo3.png" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
@@ -30,11 +31,26 @@ const { title, description  = "Default description of your website" } = Astro.pr
 
 		<!-- Twitter -->
 		<!-- <meta property="twitter:card" content="summary_large_image" /> -->
+
 		<meta property="twitter:url" content={Astro.url} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content="/Me/B5BC3818-8C25-4D85-9671-023F0EF5F730_4_5005_c.jpg" />
+
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-WFKQ2VYERW"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-WFKQ2VYERW');
+		</script>
+
+		
+		
 	</head>
+	
 	<body class="font-space-mono">
 		<slot />
 	</body>
@@ -72,3 +88,4 @@ const { title, description  = "Default description of your website" } = Astro.pr
 			monospace;
 	}
 </style>
+
