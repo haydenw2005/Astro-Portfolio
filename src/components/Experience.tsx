@@ -116,7 +116,8 @@ const Experience = () => {
             <div className="text-center mt-3 flex justify-between h-1/3">
               <a
                 href={Resume}
-                download="Hayden_White_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center bg-purple-300 hover:bg-purple-600 text-gray-800 font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
               >
                 <span className="sm:block hidden sm:flex-grow">
