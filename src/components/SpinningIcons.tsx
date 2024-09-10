@@ -11,7 +11,7 @@ export function SpinningIcons({
   size = 1,
 }: {
   optimizedTechIcons: OptimizedTechIcon[];
-  size: Number;
+  size: number;
 }) {
   return (
     <div className="relative flex w-full h-full flex-col items-center justify-center overflow-hidden">
