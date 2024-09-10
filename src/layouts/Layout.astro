@@ -40,12 +40,17 @@ const { title, description  = "Default description of your website" } = Astro.pr
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-WFKQ2VYERW"></script>
 		<script>
+			declare global {
+				interface Window {
+					dataLayer: any[]; // Declare dataLayer here
+				}
+			}
 			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
+			function gtag(...args: any[]) { // Accept any number of arguments
+				window.dataLayer.push(args); // Push all arguments to dataLayer
+			}
 			gtag('js', new Date());
-
-			gtag('config', 'G-WFKQ2VYERW');
-		</script>
+			</script>
 
 		
 		
