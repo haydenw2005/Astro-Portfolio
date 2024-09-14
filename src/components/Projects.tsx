@@ -18,8 +18,9 @@ const githubCardsData = [
     languages: ["TypeScript", "Astro", "CSS"],
   },
   {
-    repoLink: "https://github.com/haydenw2005/repo3",
-    repoName: "haydenw2005 / Comp-Programming",
+    repoLink:
+      "https://github.com/haydenw2005/Competitive-Programming/tree/main",
+    repoName: "haydenw2005 / Competitive-Programming",
     description:
       "A repository with my latest solutions to competitive programming problems, seperated by topic and updated weekly.",
     stars: "750",
@@ -28,7 +29,7 @@ const githubCardsData = [
     languages: ["Python"],
   },
   {
-    repoLink: "https://github.com/haydenw2005/repo2",
+    repoLink: "https://github.com/haydenw2005/Java-Marketplace",
     repoName: "haydenw2005 / Java-Marketplace",
     description:
       "Source code for a Java Marketplace which uses Jackson to read/write JSON to simulate Marketplace transactions.",
