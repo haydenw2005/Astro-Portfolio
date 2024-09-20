@@ -22,7 +22,7 @@ const githubCardsData = [
       "https://github.com/haydenw2005/Competitive-Programming/tree/main",
     repoName: "haydenw2005 / Competitive-Programming",
     description:
-      "A repository with my latest solutions to competitive programming problems, seperated by topic and updated weekly.",
+      "A repository with my latest solutions to competitive programming problems, separated by topic and updated weekly.",
     stars: "750",
     forks: "100",
     views: "150",
@@ -74,9 +74,9 @@ export const Projects = () => {
   return (
     <div>
       <MagicCard className="shadow-2xl p-8" gradientColor={"#262626"}>
-        <h1 className="text-6xl font-bold text-white mb-4">
+        <h2 className="text-6xl font-bold text-white mb-4">
           My <span className="text-purple-300 glow-purple">Projects</span>{" "}
-        </h1>
+        </h2>
         <HSeparator />
 
         <div className="grid grid-cols-1 xl:grid-cols-[60%_40%] gap-6">

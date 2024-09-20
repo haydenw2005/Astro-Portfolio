@@ -110,9 +110,9 @@ const Experience = () => {
       <div className="relative flex items-center justify-center rounded-lg">
         <div className="w-full h-full relative p-8 ">
           <div className="flex justify-between">
-            <h1 className="text-6xl font-bold mb-3 text-white">
+            <h2 className="text-6xl font-bold mb-3 text-white">
               Ex<span className="text-purple-300 glow-purple">perience</span>
-            </h1>
+            </h2>
             <div className="text-center mt-3 flex justify-between h-1/3">
               <a
                 href={Resume}

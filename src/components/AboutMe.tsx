@@ -28,9 +28,9 @@ const AboutMe: React.FC<{
       <MagicCard className=" shadow-2xl " gradientColor={"#262626"}>
         <div className=" about-me flex grid grid-cols-1 md:grid-cols-[60%_40%] ">
           <div className="content relative p-8 ">
-            <h1 className="text-6xl font-bold mb-3 text-white">
+            <h2 className="text-6xl font-bold mb-3 text-white">
               About <span className="text-purple-300 glow-purple">Me</span>{" "}
-            </h1>{" "}
+            </h2>{" "}
             <HSeparator />
             <div className="text-[1.1rem]">
               <p className="mb-4 text-gray-200">

@@ -8,7 +8,7 @@ const Welcome = () => {
           Hi. I'm
           <span className="text-purple-300">
             {" "}
-            Hayden<span className="ml-3">🖖</span>
+            Hayden<span className="ml-3">👋</span>
           </span>
         </h1>
         <p className="text-xl mt-4">
