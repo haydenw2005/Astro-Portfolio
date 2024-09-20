@@ -48,11 +48,13 @@ export function FileTree() {
             "10",
           ]}
         >
-          <a className="text-purple-300 glow-purple text-xl" href="#welcome">
-            {" "}
-            {/* <span className="text-purple-400 glow-red text-2xl mr-1">$</span> */}
-            haydenwhite.me
-          </a>
+          <h3>
+            <a className="text-purple-300 glow-purple text-xl" href="#welcome">
+              {" "}
+              {/* <span className="text-purple-400 glow-red text-2xl mr-1">$</span> */}
+              haydenwhite.me
+            </a>
+          </h3>
           <Folder element="src" value="1">
             {/* <File value="2">
             <p>index.astro</p>

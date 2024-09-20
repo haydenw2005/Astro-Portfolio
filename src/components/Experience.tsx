@@ -145,7 +145,7 @@ const Experience = () => {
                           {exp.location}
                         </span>
                       </h3>
-                      <p className="text-white">{exp.position}</p>
+                      <h3 className="text-white">{exp.position}</h3>
                       <p className="text-gray-400 text-sm">
                         {exp.startDate} - {exp.endDate}
                       </p>
@@ -174,7 +174,7 @@ const Experience = () => {
                         {edu.location}
                       </span>
                     </h3>
-                    <p className="text-white">{edu.degree}</p>
+                    <h3 className="text-white">{edu.degree}</h3>
 
                     <p className="text-gray-400 text-sm">
                       Graduation: {edu.graduationDate}

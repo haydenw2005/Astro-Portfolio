@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       "space-mono": ['"Space Mono"', "monospace"],
+      "exo-2": ['"Exo 2"', "sans-serif"],
     },
     extend: {
       animation: {

@@ -21,21 +21,21 @@ export default function FeatureProject({
 }: FeatureProjectProps) {
   return (
     <motion.div
-      className={`relative flex flex-col h-full bg-gradient-to-br from-black via-indigo-950 to-gray-950 rounded-lg overflow-hidden shadow-lg  ${className}`}
+      className={`relative flex flex-col h-50 bg-gradient-to-br from-black via-indigo-950 to-gray-950 border border-purple-300 rounded-lg overflow-hidden shadow-lg `}
       whileHover={{ scale: 1.03 }}
     >
       <a href={linkUrl} target="_blank">
         <div className="absolute inset-0 overflow-hidden">
           <div className="stars"></div>
         </div>
-        <div className="h-[50%] p-3 flex justify-center">
+        <div className=" p-4 flex justify-center ">
           <img
             src={imageUrl}
             alt={title}
-            className={`${cropImage ? "w-1/2" : "w-full"} h-full object-cover rounded-lg `}
+            className={`${cropImage ? "w-1/2" : "w-full"} h-40  object-cover rounded-lg `}
           />
         </div>
-        <div className="flex flex-col justify-between px-4 h-[50%]">
+        <div className="justify-between px-6 mb-4">
           <div>
             <h2 className="text-lg font-bold text-white mb-2">{title}</h2>
             <p className="text-purple-100 text-sm mb-1">{description}</p>

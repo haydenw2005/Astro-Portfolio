@@ -26,6 +26,22 @@
   font-style: italic;
 }
 
+.exo-2-heavy {
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply space-mono-regular;
+}
+
 @keyframes cycleDown {
   0% {
     transform: translateY(-20%);
