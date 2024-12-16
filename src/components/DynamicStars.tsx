@@ -18,6 +18,7 @@ export const DynamicStars: React.FC = () => {
   const [showLines, setShowLines] = useState(true);
   const [lineOpacity, setLineOpacity] = useState(0);
   const [isAnimationDone, setIsAnimationDone] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const generateStars = useCallback(() => {
     const newStars: Star[] = [];
@@ -40,6 +41,10 @@ export const DynamicStars: React.FC = () => {
 
   useEffect(() => {
     generateStars();
+    // Trigger fade-in after a short delay
+    requestAnimationFrame(() => {
+      setIsLoaded(true);
+    });
 
     const handleScroll = () => {
       const welcomeSection = document.getElementById("welcome");
@@ -119,7 +124,11 @@ export const DynamicStars: React.FC = () => {
   return (
     <>
       {showElement && (
-        <div className="absolute inset-0 z-0 w-full h-full animate-fade-in opacity-[.9] pointer-events-none ">
+        <div
+          className={`absolute inset-0 z-0 w-full h-full pointer-events-none transition-opacity duration-1000 ${
+            isLoaded ? "opacity-90" : "opacity-0"
+          }`}
+        >
           {stars.map((star) => (
             <div
               key={star.id}

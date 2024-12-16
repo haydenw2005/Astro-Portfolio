@@ -10,24 +10,6 @@ import { techIcons } from '../constants/TechIcons';
 import Layout from '../layouts/Layout.astro';
 import Experience from '@/components/Experience';
 
-// Import all tech icons statically
-
-// const techIconImages = await Astro.glob<{ default: ImageMetadata }>('../images/TechIcons/*.(png|svg|jpg|jpeg|webp)');
-// const meImageFiles = await Astro.glob<{ default: ImageMetadata }>('../images/Me/*.(png|jpg|jpeg|webp)');
-
-// const optimizedTechIcons = await Promise.all(
-//   techIcons.map(async (icon) => {
-//     const optimized = await optimizeImage(icon, techIconImages, { width: 50, format: 'webp' });
-//     return { ...icon, optimizedSrc: optimized.optimizedSrc };
-//   })
-// );
-// const optimizedMeImages = await Promise.all(
-//   meImages.map(async (image, index) => {
-//     const optimized = await optimizeImage(image, meImageFiles, { width: 300, format: 'webp' });
-//     return { src: image, optimizedSrc: optimized.optimizedSrc, alt: `Me Image ${index}` };
-//   })
-// );
-
 const techIconImagesPath = '/images/TechIcons/';
 
 // Generate optimized image URLs for tech icons
