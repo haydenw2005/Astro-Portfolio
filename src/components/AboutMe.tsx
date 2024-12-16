@@ -38,9 +38,10 @@ const AboutMe: React.FC<{
                 .
               </p>
               <p className="mb-4 text-gray-200">
-                I'm all about full-stack web development, but I like to keep my
-                options open. There's always something new to learn in this
-                field, right?
+                I'm work both with full-stack web development and low-level
+                systems. It's exciting to work at both ends of
+                abstraction—building user-facing features while understanding
+                how things work under the hood.
               </p>
               <p className="font-bold text-white">
                 When I'm not coding or studying for midterms:
@@ -55,12 +56,12 @@ const AboutMe: React.FC<{
                 <li>
                   Out{" "}
                   <span className="font-bold text-purple-300 glow-purple">
-                    exploring
+                    climbing
                   </span>{" "}
-                  nature 🌲
+                  a mountain 🌲
                 </li>
                 <li>
-                  Possibly engrossed in a{" "}
+                  Re-reading my favorite{" "}
                   <span className="font-bold text-purple-300 glow-purple">
                     sci-fi
                   </span>{" "}

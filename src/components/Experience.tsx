@@ -113,24 +113,29 @@ const Experience = () => {
               Ex<span className="text-purple-300 glow-purple">perience</span>
             </h2>
             <div className="text-center mt-3 flex justify-center h-1/3">
-              <a
-                href={"/images/Hayden_White_Resume_September_2024.pdf?url"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center bg-purple-300 hover:bg-purple-600 text-gray-800 font-bold py-1 px-3 rounded transition duration-300 ease-in-out"
-              >
-                <span className="sm:block hidden sm:flex-grow">Resume </span>
-                <ExternalLink className="sm:ml-1 h-4 w-4" />
-              </a>
+              <div className="flex flex-col items-center">
+                <a
+                  href={"/images/Hayden_White_Resume_September_2024.pdf?url"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center bg-purple-300 hover:bg-purple-600 text-gray-800 font-bold py-1 px-3 rounded transition duration-300 ease-in-out"
+                >
+                  <span className="sm:block hidden sm:flex-grow">Resume </span>
+                  <ExternalLink className="sm:ml-1 h-4 w-4" />
+                </a>
+                <small className="text-gray-400 mt-1 text-xs">
+                  Updated August, 2024
+                </small>
+              </div>
             </div>
           </div>
           <HSeparator />
 
           <div className="grid grid-cols-2 gap-8 mt-6">
             <div>
-              <h2 className="text-2xl font-semibold mb-4 ml-3 text-white">
+              {/* <h2 className="text-2xl font-semibold mb-4 ml-3 text-white">
                 Relevant Work Experience
-              </h2>
+              </h2> */}
               {workExperiences.map((exp, index) => (
                 <a href={exp.website} target="_blank" key={index}>
                   <div key={index} className="relative overflow-hidden">
@@ -158,9 +163,9 @@ const Experience = () => {
             </div>
 
             <div>
-              <h2 className="text-2xl font-semibold mb-4 ml-2 text-white">
+              {/* <h2 className="text-2xl font-semibold mb-4 ml-2 text-white">
                 Education
-              </h2>
+              </h2> */}
               {educationExperiences.map((edu, index) => (
                 <a href={edu.website} target="_blank" key={index}>
                   <ShimmerCard>

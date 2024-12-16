@@ -38,7 +38,7 @@ const githubCardsData = [
     repoLink: "https://github.com/haydenw2005/Location-Analyzer",
     repoName: "haydenw2005 / Location Analyzer",
     description:
-      "After a completing a Data Structures and Algorithms self study, I created a geospatial graphing tool that runs graph algorithms on location data to highlight unique trends.",
+      "After a completing a DSA self study, I created a geospatial graphing tool that runs graph algorithms on location data to highlight unique trends.",
     stars: "2k",
     forks: "300",
     views: "500",
@@ -49,9 +49,9 @@ const githubCardsData = [
 const featureProjectsData = [
   {
     imageUrl: "../images/Projects/Arbitrade.png?url",
-    title: "Arbitrade",
+    title: "ArbiTrade",
     description:
-      "Arbitrade is a tool that integrates with Kalshi’s API, leveraging LLMs and vector stores to aggregate and analyze news, identifying inefficiencies and undervalued or overvalued prediction markets through sentiment analysis and real-time data.",
+      "ArbiTrade is a tool that leverages LLMs and vector stores to aggregate and analyze news, identifying inefficiencies and undervalued or overvalued Kalshi prediction markets through sentiment analysis and real-time data.",
     linkText: "See source code",
     linkUrl: "https://github.com/haydenw2005/ArbiTrade",
     className: "h-80 md:h-80 xl:h-[10%]", // Add height classes here
@@ -83,19 +83,19 @@ export const Projects = () => {
         <h2 className="text-6xl font-bold text-white mb-4">
           My <span className="text-purple-300 glow-purple">Projects</span>{" "}
         </h2>
-        <HSeparator />
+        <HSeparator className="mb-4" />
 
         <div className="grid grid-cols-1 xl:grid-cols-[1fr_1fr] gap-6">
           <div className="w-full">
-            <h3 className="text-2xl font-semibold ml-2 text-white mb-3">
+            {/* <h3 className="text-2xl font-semibold ml-2 text-white mb-3">
               Featured Projects
-            </h3>
+            </h3> */}
             <FeatureProjectsContainer />
           </div>
           <div className="w-full">
-            <h3 className="text-2xl font-semibold ml-2 text-white mb-3">
-              Featured Repositories
-            </h3>
+            {/* <h3 className="text-2xl font-semibold ml-2 text-white mb-3"> */}
+            {/* Featured Repositories
+            </h3> */}
             <div className="flex flex-col ">
               {githubCardsData.map((card, index) => (
                 <GithubCard
