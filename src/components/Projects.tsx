@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { Github } from "lucide-react";
 import FeatureProject from "./FeatureProject";
 import GithubCard from "./GithubCard";
 import HSeparator from "./HSeperator";
@@ -36,26 +34,36 @@ const githubCardsData = [
     views: "500",
     languages: ["Java"],
   },
+  {
+    repoLink: "https://github.com/haydenw2005/Location-Analyzer",
+    repoName: "haydenw2005 / Location Analyzer",
+    description:
+      "After a completing a Data Structures and Algorithms self study, I created a geospatial graphing tool that runs graph algorithms on location data to highlight unique trends.",
+    stars: "2k",
+    forks: "300",
+    views: "500",
+    languages: ["Java"],
+  },
 ];
 
 const featureProjectsData = [
   {
+    imageUrl: "../images/Projects/Arbitrade.png?url",
+    title: "Arbitrade",
+    description:
+      "Arbitrade is a tool that integrates with Kalshi’s API, leveraging LLMs and vector stores to aggregate and analyze news, identifying inefficiencies and undervalued or overvalued prediction markets through sentiment analysis and real-time data.",
+    linkText: "See source code",
+    linkUrl: "https://github.com/haydenw2005/ArbiTrade",
+    className: "h-80 md:h-80 xl:h-[10%]", // Add height classes here
+  },
+  {
     imageUrl: "../images/Projects/UpliftMe3.png?url",
     title: "UpliftMe - AI Roadmap Generator",
     description:
-      "My latest venture, a full stack web app which creates roadmap-structured learning plans for users using AI agents and a smart suggestion system.",
+      "UpliftMe is a full stack web app which creates roadmap-structured learning plans for users using AI agents and a smart resource suggestion system.",
     linkText: "Learn More",
     linkUrl: "https://upliftme.framer.website/",
     className: "h-80 md:h-80 xl:h-[36%] mb-4", // Add height classes here
-  },
-  {
-    imageUrl: "../images/Projects/Analyzer2.png?url",
-    title: "Location Analyzer - DSA Showcase",
-    description:
-      "One of my favorite projects, a geospatial graphing tool that runs graph algorithms on location data to highlight unique trends.",
-    linkText: "See source code",
-    linkUrl: "https://github.com/haydenw2005/Location-Analyzer",
-    className: "h-80 md:h-80 xl:h-[10%]", // Add height classes here
   },
   // {
   //   imageUrl: DaggerImage,
@@ -101,10 +109,10 @@ export const Projects = () => {
                   languages={card.languages}
                 />
               ))}
-              <a
+              {/* <a
                 href="https://github.com/haydenw2005"
                 target="_blank"
-                className="flex-grow mt-auto "
+                className="flex-grow h-full"
               >
                 <motion.div whileHover={{ scale: 1.05 }} className="h-full">
                   <div className="border bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 h-full flex items-center justify-center">
@@ -114,7 +122,7 @@ export const Projects = () => {
                     </p>
                   </div>
                 </motion.div>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

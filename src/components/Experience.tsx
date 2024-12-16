@@ -96,7 +96,7 @@ const educationExperiences: Education[] = [
       "Independent Study - Data Structures and Algorithms",
       "Advanced Computer Science - Senior Capstone Project",
       "CS 3-4 - Intro to Web Development",
-      "CS 1-2 - Intro to Jave and OOP",
+      "CS 1-2 - Intro to Java and OOP",
       "Calculus BC",
     ],
     website: "https://www.lakesideschool.org/",
@@ -112,17 +112,15 @@ const Experience = () => {
             <h2 className="text-6xl font-bold mb-3 text-white">
               Ex<span className="text-purple-300 glow-purple">perience</span>
             </h2>
-            <div className="text-center mt-3 flex justify-between h-1/3">
+            <div className="text-center mt-3 flex justify-center h-1/3">
               <a
                 href={"/images/Hayden_White_Resume_September_2024.pdf?url"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center bg-purple-300 hover:bg-purple-600 text-gray-800 font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+                className="inline-flex items-center bg-purple-300 hover:bg-purple-600 text-gray-800 font-bold py-1 px-3 rounded transition duration-300 ease-in-out"
               >
-                <span className="sm:block hidden sm:flex-grow">
-                  View Resume{" "}
-                </span>
-                <ExternalLink className="sm:ml-2 h-5 w-5" />
+                <span className="sm:block hidden sm:flex-grow">Resume </span>
+                <ExternalLink className="sm:ml-1 h-4 w-4" />
               </a>
             </div>
           </div>

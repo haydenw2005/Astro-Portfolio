@@ -46,7 +46,7 @@ export default function GithubCard({
                 />
               </svg>
               <h3>
-                <p className="text-blue-300 text-md font-semibold ">
+                <p className="text-blue-300 text-[18px] font-normal">
                   {repoName}
                 </p>
               </h3>
