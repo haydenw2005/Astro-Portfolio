@@ -38,10 +38,10 @@ const AboutMe: React.FC<{
                 .
               </p>
               <p className="mb-4 text-gray-200">
-                I'm work both with full-stack web development and low-level
-                systems. It's exciting to work at both ends of
-                abstraction—building user-facing features while understanding
-                how things work under the hood.
+                I work both with full-stack web development and low-level
+                systems. It's exciting to work at both ends of abstraction—
+                building user-facing features while understanding how things
+                work under the hood.
               </p>
               <p className="font-bold text-white">
                 When I'm not coding or studying for midterms:
