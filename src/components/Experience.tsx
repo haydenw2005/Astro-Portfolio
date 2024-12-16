@@ -1,5 +1,4 @@
 import { ExternalLink } from "lucide-react";
-import Resume from "../images/Hayden_White_Resume_September_2024.pdf";
 import HSeparator from "./HSeperator";
 import { MagicCard } from "./magicui/magic-card";
 import ShimmerCard from "./ShimmerCard";
@@ -115,7 +114,7 @@ const Experience = () => {
             </h2>
             <div className="text-center mt-3 flex justify-between h-1/3">
               <a
-                href={Resume}
+                href={"/images/Hayden_White_Resume_September_2024.pdf?url"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-purple-300 hover:bg-purple-600 text-gray-800 font-bold py-2 px-4 rounded transition duration-300 ease-in-out"

@@ -6,7 +6,6 @@ import '@/styles/global.css';
 import AboutMe from '../components/AboutMe';
 import { DynamicStars } from '../components/DynamicStars';
 import Welcome from '../components/Welcome';
-import meImages from "../constants/Me_Images.json";
 import { techIcons } from '../constants/TechIcons';
 import Layout from '../layouts/Layout.astro';
 import { optimizeImage } from "../utils/ImageOptimization";
@@ -14,24 +13,32 @@ import Experience from '@/components/Experience';
 
 // Import all tech icons statically
 
-const techIconImages = await Astro.glob<{ default: ImageMetadata }>('../images/TechIcons/*.(png|svg|jpg|jpeg|webp)');
-const meImageFiles = await Astro.glob<{ default: ImageMetadata }>('../images/Me/*.(png|jpg|jpeg|webp)');
+// const techIconImages = await Astro.glob<{ default: ImageMetadata }>('../images/TechIcons/*.(png|svg|jpg|jpeg|webp)');
+// const meImageFiles = await Astro.glob<{ default: ImageMetadata }>('../images/Me/*.(png|jpg|jpeg|webp)');
 
-const optimizedTechIcons = await Promise.all(
-  techIcons.map(async (icon) => {
-    const optimized = await optimizeImage(icon, techIconImages, { width: 50, format: 'webp' });
-    return { ...icon, optimizedSrc: optimized.optimizedSrc };
-  })
-);
-const optimizedMeImages = await Promise.all(
-  meImages.map(async (image, index) => {
-    const optimized = await optimizeImage(image, meImageFiles, { width: 300, format: 'webp' });
-    return { src: image, optimizedSrc: optimized.optimizedSrc, alt: `Me Image ${index}` };
-  })
-);
+// const optimizedTechIcons = await Promise.all(
+//   techIcons.map(async (icon) => {
+//     const optimized = await optimizeImage(icon, techIconImages, { width: 50, format: 'webp' });
+//     return { ...icon, optimizedSrc: optimized.optimizedSrc };
+//   })
+// );
+// const optimizedMeImages = await Promise.all(
+//   meImages.map(async (image, index) => {
+//     const optimized = await optimizeImage(image, meImageFiles, { width: 300, format: 'webp' });
+//     return { src: image, optimizedSrc: optimized.optimizedSrc, alt: `Me Image ${index}` };
+//   })
+// );
 
-const props = Astro?.locals?.netlify?.context;
-console.log(props);
+const techIconImagesPath = '/images/TechIcons/';
+
+// Generate optimized image URLs for tech icons
+const optimizedTechIcons = techIcons.map((icon) => {
+  const source = `${techIconImagesPath}${icon.src}`;
+  const optimized = `${source}?w=50&fm=webp`;
+  return { ...icon, optimizedSrc: optimized };
+});
+
+//const props = Astro?.locals?.netlify?.context;
 
 ---
 
@@ -54,7 +61,7 @@ console.log(props);
           <section id="about-me">
             <div class="overflow-hidden">
               <div class=" leading-relaxed flex items-center mb-3">
-                <AboutMe client:visible optimizedTechIcons={[]} optimizedMeImages={[]} />
+                <AboutMe client:visible optimizedTechIcons={optimizedTechIcons} />
               </div>
             </div>
           </section>

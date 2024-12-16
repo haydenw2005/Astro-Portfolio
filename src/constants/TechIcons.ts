@@ -1,3 +1,4 @@
+//generated with script
 export const techIcons = [
   {
     src: "/Typescript_logo_2020.svg.png",

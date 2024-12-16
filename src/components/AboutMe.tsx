@@ -13,16 +13,9 @@ interface OptimizedTechIcon {
   optimizedSrc: string;
 }
 
-interface OptimizedMeImage {
-  src: string;
-  optimizedSrc: string;
-  alt: string;
-}
-
 const AboutMe: React.FC<{
   optimizedTechIcons: OptimizedTechIcon[];
-  optimizedMeImages: OptimizedMeImage[];
-}> = ({ optimizedTechIcons, optimizedMeImages }) => {
+}> = ({ optimizedTechIcons }) => {
   return (
     <>
       <MagicCard className=" shadow-2xl " gradientColor={"#262626"}>

@@ -40,7 +40,7 @@ const githubCardsData = [
 
 const featureProjectsData = [
   {
-    imageUrl: "",
+    imageUrl: "../images/Projects/UpliftMe3.png?url",
     title: "UpliftMe - AI Roadmap Generator",
     description:
       "My latest venture, a full stack web app which creates roadmap-structured learning plans for users using AI agents and a smart suggestion system.",
@@ -49,7 +49,7 @@ const featureProjectsData = [
     className: "h-80 md:h-80 xl:h-[36%] mb-4", // Add height classes here
   },
   {
-    imageUrl: "",
+    imageUrl: "../images/Projects/Analyzer2.png?url",
     title: "Location Analyzer - DSA Showcase",
     description:
       "One of my favorite projects, a geospatial graphing tool that runs graph algorithms on location data to highlight unique trends.",
