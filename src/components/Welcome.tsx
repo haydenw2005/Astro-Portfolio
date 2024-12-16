@@ -12,8 +12,8 @@ const Welcome = () => {
           </span>
         </h1>
         <p className="text-xl mt-4">
-          I'm a software engineer and digital architect helping to push the
-          boundaries of the digital frontier.
+          I'm a software engineer and digital architect dedicated to advancing
+          the frontiers of technology and innovation.
         </p>
         <p className="text-xl mt-4 text-purple-300"> Based in Seattle, WA.</p>
 

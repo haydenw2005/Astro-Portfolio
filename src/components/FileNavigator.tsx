@@ -1,6 +1,5 @@
 import { File, Folder, Tree } from "@/components/magicui/file-tree";
 import { useEffect, useState } from "react";
-import Image from "../images/big_logo.png?url";
 import { MagicCard } from "./magicui/magic-card";
 
 export function FileTree() {
@@ -126,13 +125,13 @@ export function FileTree() {
             </Folder> */}
           </Folder>
         </Tree>
-        <div className="absolute bottom-4 left-0 right-0 px-4">
+        {/* <div className="absolute bottom-4 left-0 right-0 px-4">
           <img
             src={Image}
             alt="Logo"
             className="w-full h-auto opacity-20 object-contain"
           />
-        </div>
+        </div> */}
       </MagicCard>
     </div>
   );

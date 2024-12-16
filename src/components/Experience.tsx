@@ -77,11 +77,11 @@ const educationExperiences: Education[] = [
     classes: [
       "CS 251 - Data Structures and Algorithms",
       "CS 250 - Computer Architecture",
-      "CS 211 - Competetive Programming",
+      "CS 211 - Competitive Programming",
       "CS 240 - Programming in C",
       "CS 182 - Discrete Math",
       "CS 180 - Programming 1",
-      "MA 351 - Elementry Linear Algebra",
+      "MA 351 - Elementary Linear Algebra",
       "MA 261 - Multivariate Calculus",
       "STAT 350 - Intro to Statistics",
     ],
