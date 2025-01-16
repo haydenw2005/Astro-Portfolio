@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import { memo, Suspense, useMemo } from "react";
 import HSeparator from "./HSeperator";
 import { MagicCard } from "./magicui/magic-card";
 import ShimmerCard from "./ShimmerCard";
@@ -103,117 +104,165 @@ const educationExperiences: Education[] = [
   },
 ];
 
+const WorkExperienceItem = memo(
+  ({
+    exp,
+    index,
+    isLast,
+  }: {
+    exp: (typeof workExperiences)[number];
+    index: number;
+    isLast: boolean;
+  }) => (
+    <a href={exp.website} target="_blank" rel="noopener noreferrer">
+      <div className="relative overflow-hidden">
+        <ShimmerCard>
+          <h3 className="text-xl font-semibold text-purple-300 relative z-10">
+            {exp.company}
+            {" - "}
+            <span className="text-lg font-normal text-gray-400">
+              {exp.location}
+            </span>
+          </h3>
+          <h3 className="text-white">{exp.position}</h3>
+          <p className="text-gray-400 text-sm">
+            {exp.startDate} - {exp.endDate}
+          </p>
+          <p className="text-gray-200 text-sm mt-1">
+            {"• "}
+            {exp.responsibilities}
+          </p>
+        </ShimmerCard>
+        {!isLast && <HSeparator />}
+      </div>
+    </a>
+  )
+);
+
+const EducationItem = memo(
+  ({
+    edu,
+    index,
+    isLast,
+  }: {
+    edu: (typeof educationExperiences)[number];
+    index: number;
+    isLast: boolean;
+  }) => (
+    <a href={edu.website} target="_blank" rel="noopener noreferrer">
+      <ShimmerCard>
+        <h3 className="text-xl font-semibold text-purple-300">
+          {edu.institution}
+          {" - "}
+          <span className="text-lg font-normal text-gray-400">
+            {edu.location}
+          </span>
+        </h3>
+        <h3 className="text-white">{edu.degree}</h3>
+        <p className="text-gray-400 text-sm">
+          Graduation: {edu.graduationDate}
+        </p>
+        <ul className="list-disc list-inside mt-2">
+          {edu.activities.map((activity, idx) => (
+            <li key={idx} className="text-gray-300 text-sm">
+              {activity}
+            </li>
+          ))}
+        </ul>
+        <HSeparator />
+        <p className="text-gray-100 text-sm font-bold">Relevant Course Work:</p>
+        <div className="flex flex-wrap gap-1">
+          {edu.classes.map((edu_class, idx) => {
+            const [code, name] = edu_class.split(" - ");
+            return (
+              <span key={idx} className="text-xs">
+                {" • "}
+                <span className="text-purple-300">{code}</span>
+                <span className="text-gray-300"> - {name}</span>
+              </span>
+            );
+          })}
+        </div>
+      </ShimmerCard>
+      {!isLast && <HSeparator />}
+    </a>
+  )
+);
+
+const LoadingState = () => (
+  <div className="animate-pulse">
+    <div className="h-12 bg-gray-700 rounded w-1/3 mb-4"></div>
+    <div className="space-y-3">
+      <div className="h-4 bg-gray-700 rounded w-3/4"></div>
+      <div className="h-4 bg-gray-700 rounded w-1/2"></div>
+    </div>
+  </div>
+);
+
 const Experience = () => {
+  const resumeLink = useMemo(
+    () => (
+      <div className="text-center mt-3 flex justify-center h-1/3">
+        <div className="flex flex-col items-center">
+          <a
+            href={"/images/Hayden_White_Resume_Jan_2025-1.pdf?url"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center bg-purple-300 hover:bg-purple-600 text-gray-800 font-bold py-1 px-3 rounded transition duration-300 ease-in-out"
+          >
+            <span className="sm:block hidden sm:flex-grow">Resume </span>
+            <ExternalLink className="sm:ml-1 h-4 w-4" />
+          </a>
+          <small className="text-gray-400 mt-1 text-xs">
+            Updated August, 2024
+          </small>
+        </div>
+      </div>
+    ),
+    []
+  );
+
   return (
-    <MagicCard className="shadow-2xl" gradientColor={"#262626"}>
-      <div className="relative flex items-center justify-center rounded-lg">
-        <div className="w-full h-full relative p-8 ">
-          <div className="flex justify-between">
-            <h2 className="text-6xl font-bold mb-3 text-white">
-              Ex<span className="text-purple-300 glow-purple">perience</span>
-            </h2>
-            <div className="text-center mt-3 flex justify-center h-1/3">
-              <div className="flex flex-col items-center">
-                <a
-                  href={"/images/Hayden_White_Resume_September_2024.pdf?url"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center bg-purple-300 hover:bg-purple-600 text-gray-800 font-bold py-1 px-3 rounded transition duration-300 ease-in-out"
-                >
-                  <span className="sm:block hidden sm:flex-grow">Resume </span>
-                  <ExternalLink className="sm:ml-1 h-4 w-4" />
-                </a>
-                <small className="text-gray-400 mt-1 text-xs">
-                  Updated August, 2024
-                </small>
+    <Suspense fallback={<LoadingState />}>
+      <MagicCard className="shadow-2xl" gradientColor={"#262626"}>
+        <div className="relative flex items-center justify-center rounded-lg">
+          <div className="w-full h-full relative p-8">
+            <div className="flex justify-between">
+              <h2 className="text-6xl font-bold mb-3 text-white">
+                Ex<span className="text-purple-300 glow-purple">perience</span>
+              </h2>
+              {resumeLink}
+            </div>
+            <HSeparator />
+
+            <div className="grid grid-cols-2 gap-8 mt-6">
+              <div>
+                {workExperiences.map((exp, index) => (
+                  <WorkExperienceItem
+                    key={exp.company}
+                    exp={exp}
+                    index={index}
+                    isLast={index === workExperiences.length - 1}
+                  />
+                ))}
+              </div>
+
+              <div>
+                {educationExperiences.map((edu, index) => (
+                  <EducationItem
+                    key={edu.institution}
+                    edu={edu}
+                    index={index}
+                    isLast={index === educationExperiences.length - 1}
+                  />
+                ))}
               </div>
             </div>
           </div>
-          <HSeparator />
-
-          <div className="grid grid-cols-2 gap-8 mt-6">
-            <div>
-              {/* <h2 className="text-2xl font-semibold mb-4 ml-3 text-white">
-                Relevant Work Experience
-              </h2> */}
-              {workExperiences.map((exp, index) => (
-                <a href={exp.website} target="_blank" key={index}>
-                  <div key={index} className="relative overflow-hidden">
-                    <ShimmerCard>
-                      <h3 className="text-xl font-semibold text-purple-300 relative z-10">
-                        {exp.company}
-                        {" - "}
-                        <span className="text-lg font-normal text-gray-400">
-                          {exp.location}
-                        </span>
-                      </h3>
-                      <h3 className="text-white">{exp.position}</h3>
-                      <p className="text-gray-400 text-sm">
-                        {exp.startDate} - {exp.endDate}
-                      </p>
-                      <p className="text-gray-200 text-sm mt-1">
-                        {"• "}
-                        {exp.responsibilities}
-                      </p>
-                    </ShimmerCard>
-                    {index < workExperiences.length - 1 && <HSeparator />}
-                  </div>
-                </a>
-              ))}
-            </div>
-
-            <div>
-              {/* <h2 className="text-2xl font-semibold mb-4 ml-2 text-white">
-                Education
-              </h2> */}
-              {educationExperiences.map((edu, index) => (
-                <a href={edu.website} target="_blank" key={index}>
-                  <ShimmerCard>
-                    <h3 className="text-xl font-semibold text-purple-300">
-                      {edu.institution}
-                      {" - "}
-                      <span className="text-lg font-normal text-gray-400">
-                        {edu.location}
-                      </span>
-                    </h3>
-                    <h3 className="text-white">{edu.degree}</h3>
-
-                    <p className="text-gray-400 text-sm">
-                      Graduation: {edu.graduationDate}
-                    </p>
-                    <ul className="list-disc list-inside mt-2">
-                      {edu.activities.map((activity, idx) => (
-                        <li key={idx} className="text-gray-300 text-sm">
-                          {activity}
-                        </li>
-                      ))}
-                    </ul>
-                    <HSeparator />
-                    <p className="text-gray-100 text-sm font-bold">
-                      Relevant Course Work:
-                    </p>
-                    <div className="flex flex-wrap gap-1">
-                      {edu.classes.map((edu_class, index) => {
-                        const [code, name] = edu_class.split(" - ");
-                        return (
-                          <span key={index} className="text-xs">
-                            {" • "}
-                            <span className="text-purple-300">{code}</span>
-                            <span className="text-gray-300"> - {name}</span>
-                          </span>
-                        );
-                      })}
-                    </div>
-                  </ShimmerCard>
-                  {index < educationExperiences.length - 1 && <HSeparator />}
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
-      </div>
-    </MagicCard>
+      </MagicCard>
+    </Suspense>
   );
 };
 
-export default Experience;
+export default memo(Experience);

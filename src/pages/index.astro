@@ -1,14 +1,18 @@
 ---
-import { FileTree } from '@/components/FileNavigator';
-import { Projects } from '@/components/Projects';
-import Travel from '@/components/Travel';
-import '@/styles/global.css';
-import AboutMe from '../components/AboutMe';
-import { DynamicStars } from '../components/DynamicStars';
-import Welcome from '../components/Welcome';
-import { techIcons } from '../constants/TechIcons';
 import Layout from '../layouts/Layout.astro';
-import Experience from '@/components/Experience';
+import '@/styles/global.css';
+
+// Only import DynamicStars directly since it needs to load immediately
+import { DynamicStars } from '../components/DynamicStars';
+import { techIcons } from '../constants/TechIcons';
+
+// Import components normally since Astro handles code splitting automatically
+import Welcome from '../components/Welcome';
+import { FileTree } from '../components/FileNavigator';
+import AboutMe from '../components/AboutMe';
+import { Projects } from '../components/Projects';
+import Experience from '../components/Experience';
+import Travel from '../components/Travel';
 
 const techIconImagesPath = '/images/TechIcons/';
 
@@ -18,9 +22,6 @@ const optimizedTechIcons = techIcons.map((icon) => {
   const optimized = `${source}?w=50&fm=webp`;
   return { ...icon, optimizedSrc: optimized };
 });
-
-//const props = Astro?.locals?.netlify?.context;
-
 ---
 
 <Layout title="Hayden White | Personal Site & Portfolio" description="Explore the digital world of Hayden White. Discover my latest projects in web development and computer science.">
@@ -28,44 +29,40 @@ const optimizedTechIcons = techIcons.map((icon) => {
     <DynamicStars client:load/>
     <div class="relative z-10 text-white text-xl">
       <section id="welcome">
-        <div class="mx-auto p-4  sm:max-w-[50%]  leading-relaxed flex items-center min-h-screen">
-          <Welcome />
+        <div class="mx-auto p-4 sm:max-w-[50%] leading-relaxed flex items-center min-h-screen">
+          <Welcome client:visible />
         </div>
       </section>
       <div class="flex mt-[20vh]">
         
         <div class="hidden md:flex-grow mt-[0%] min-h-screen pl-3 md:block">
-          <FileTree client:visible />
+          <FileTree client:idle />
         </div>
 
         <div class="flex-grow pr-3 pl-3 mx-auto">
           <section id="about-me">
             <div class="overflow-hidden">
-              <div class=" leading-relaxed flex items-center mb-3">
+              <div class="leading-relaxed flex items-center mb-3">
                 <AboutMe client:visible optimizedTechIcons={optimizedTechIcons} />
               </div>
             </div>
           </section>
+          
           <section id="projects">
-            <div class=" leading-relaxed flex items-center mb-3">
+            <div class="leading-relaxed flex items-center mb-3">
               <Projects client:visible />
             </div>
           </section>
 
           <section id="experience">
-            <div class=" leading-relaxed flex items-center">
+            <div class="leading-relaxed flex items-center">
               <Experience client:visible />
             </div>
           </section>
-         
-          
-          <!-- <section id="contact">
-            <div class=" leading-relaxed flex items-center">
-              <Contact client:visible />
-            </div>
-          </section> -->
         </div>
-      </div><section id="wip">
+      </div>
+      
+      <section id="wip">
         <div class="leading-relaxed flex items-center mb-3">
           <Travel client:visible />
         </div>

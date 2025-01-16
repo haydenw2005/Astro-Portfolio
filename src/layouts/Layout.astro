@@ -55,6 +55,14 @@ const { title, description  = "Default description of your website" } = Astro.pr
 			gtag('config', 'G-WFKQ2VYERW');
 			</script>
 
+		<!-- Preload critical assets -->
+		<link rel="preload" href="/images/TechIcons/React-icon.svg.png" as="image" />
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" as="style" />
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style" />
+
+		<!-- Prefetch other routes -->
+		<link rel="prefetch" href="/images/Hayden_White_Resume_Jan_2025-1.pdf" />
+
 		
 		
 	</head>
