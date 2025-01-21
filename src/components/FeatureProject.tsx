@@ -12,7 +12,7 @@ interface FeatureProjectProps {
 
 export default function FeatureProject({
   className = "",
-  imageUrl,
+  imageUrl = "",
   title = "Featured Project",
   description = "Short project description here.",
   linkText = "Learn More",
@@ -28,11 +28,12 @@ export default function FeatureProject({
         <div className="absolute inset-0 overflow-hidden">
           <div className="stars"></div>
         </div>
-        <div className=" p-4 flex justify-center ">
+        <div className="p-4 flex justify-center">
           <img
             src={imageUrl}
             alt={title}
-            className={`${cropImage ? "w-1/2" : "w-full"} h-40  object-cover rounded-lg `}
+            className={`${cropImage ? "w-1/2" : "w-full"} h-40 object-cover rounded-lg`}
+            loading="lazy"
           />
         </div>
         <div className="justify-between px-6 mb-4">
@@ -40,12 +41,6 @@ export default function FeatureProject({
             <h2 className="text-lg font-bold text-white mb-2">{title}</h2>
             <p className="text-purple-100 text-sm mb-1">{description}</p>
           </div>
-          {/* <a
-          href={linkUrl}
-          className="inline-flex items-center text-white text-sm font-semibold hover:underline mt-2"
-        >
-          {linkText} */}
-          {/* <ArrowUpRight size={16} className="ml-1" /> */}
         </div>
       </a>
     </motion.div>

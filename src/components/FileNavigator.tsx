@@ -126,10 +126,12 @@ export function FileTree() {
           </Folder>
         </Tree>
         {/* <div className="absolute bottom-4 left-0 right-0 px-4">
-          <img
+          <Image
             src={Image}
             alt="Logo"
-            className="w-full h-auto opacity-20 object-contain"
+            width={200}
+            height={200}
+            class="w-full h-auto opacity-20 object-contain"
           />
         </div> */}
       </MagicCard>

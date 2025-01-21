@@ -46,6 +46,7 @@ export function SpinningIcons({
             src={icon.optimizedSrc}
             alt={icon.alt}
             className="size-full object-contain"
+            loading="lazy"
           />
         </OrbitingCircles>
       ))}
@@ -64,6 +65,7 @@ export function SpinningIcons({
             src={icon.optimizedSrc}
             alt={icon.alt}
             className="size-full object-contain"
+            loading="lazy"
           />
         </OrbitingCircles>
       ))}
@@ -80,6 +82,7 @@ export function SpinningIcons({
             src={icon.optimizedSrc}
             alt={icon.alt}
             className="size-full object-contain"
+            loading="lazy"
           />
         </OrbitingCircles>
       ))}
