@@ -214,7 +214,7 @@ const Experience = () => {
             <ExternalLink className="sm:ml-1 h-4 w-4" />
           </a>
           <small className="text-gray-400 mt-1 text-xs">
-            Updated August, 2024
+            Updated January, 2025
           </small>
         </div>
       </div>
