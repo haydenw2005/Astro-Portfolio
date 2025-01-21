@@ -1,4 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
+import debounce from "lodash/debounce";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 interface Star {
   id: number;
@@ -9,8 +16,19 @@ interface Star {
   dy: number;
 }
 
+// Constants moved outside component
 const STAR_FACTOR = 5;
-const EDGE_THRESHOLD = 8.5; // Maximum distance for edge creation (in percentage)
+const EDGE_THRESHOLD = 8.5;
+const ANIMATION_FRAME_RATE = 1000 / 60; // 60 FPS
+const SCROLL_THRESHOLD = 0.8;
+const SCROLL_DEBOUNCE_MS = 16;
+
+// Utility functions moved outside
+const calculateDistance = (star1: Star, star2: Star) => {
+  const dx = star1.x - star2.x;
+  const dy = star1.y - star2.y;
+  return Math.sqrt(dx * dx + dy * dy);
+};
 
 export const DynamicStars: React.FC = () => {
   const [showElement, setShowElement] = useState<boolean>(true);
@@ -20,65 +38,76 @@ export const DynamicStars: React.FC = () => {
   const [isAnimationDone, setIsAnimationDone] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const animationFrameRef = useRef<number>();
+  const lastUpdateTimeRef = useRef<number>(0);
+
+  // Memoized star generation
   const generateStars = useCallback(() => {
-    const newStars: Star[] = [];
-    const starCount = window.innerWidth / STAR_FACTOR;
-    const numStars = Math.floor((Math.random() * 0.25 + 0.75) * starCount); // Generate between 50-100 stars
+    const starCount = Math.floor(window.innerWidth / STAR_FACTOR);
+    const numStars = Math.floor((Math.random() * 0.25 + 0.75) * starCount);
 
-    for (let i = 0; i < numStars; i++) {
-      newStars.push({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 2 + 1, // Star size between 1-3px
-        dx: (Math.random() - 0.5) * 0.1, // Random x velocity
-        dy: (Math.random() - 0.5) * 0.1, // Random y velocity
-      });
-    }
-
-    setStars(newStars);
+    return Array.from({ length: numStars }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+      dx: (Math.random() - 0.5) * 0.1,
+      dy: (Math.random() - 0.5) * 0.1,
+    }));
   }, []);
 
-  useEffect(() => {
-    generateStars();
-    // Trigger fade-in after a short delay
-    requestAnimationFrame(() => {
-      setIsLoaded(true);
-    });
+  // Memoized connections calculation
+  const starConnections = useMemo(() => {
+    if (!showLines && isAnimationDone) return [];
 
-    const handleScroll = () => {
+    const connections: Array<[Star, Star]> = [];
+    for (let i = 0; i < stars.length; i++) {
+      for (let j = i + 1; j < stars.length; j++) {
+        if (calculateDistance(stars[i], stars[j]) <= EDGE_THRESHOLD) {
+          connections.push([stars[i], stars[j]]);
+        }
+      }
+    }
+    return connections;
+  }, [stars, showLines, isAnimationDone]);
+
+  // Optimized scroll handler
+  const handleScroll = useCallback(
+    debounce(() => {
       const welcomeSection = document.getElementById("welcome");
       const bottomSection = document.getElementById("wip");
       const aboutMeSection = document.getElementById("about-me");
-      if (welcomeSection && bottomSection && aboutMeSection) {
-        const welcomeBottom = welcomeSection.getBoundingClientRect().bottom;
-        const bottomTop = bottomSection.getBoundingClientRect().top;
-        const aboutTop = aboutMeSection.getBoundingClientRect().top;
-        const screenHeight = window.innerHeight;
-        const showStars = aboutTop > 0 || bottomTop < screenHeight;
-        setShowElement(showStars);
 
-        if (showStars) {
-          const threshold = screenHeight * 0.8; // 80% of screen height
-          setShowLines(welcomeBottom > threshold || bottomTop <= screenHeight);
-          setLineOpacity(
-            welcomeBottom > threshold || bottomTop <= screenHeight ? 1 : 0
-          );
+      if (!welcomeSection || !bottomSection || !aboutMeSection) return;
 
-          // Set animation as done when lines are hidden
-          if (welcomeBottom <= 100) {
-            setTimeout(() => setIsAnimationDone(true), 500); // Wait for opacity transition
-          } else {
-            setIsAnimationDone(false);
-          }
+      const welcomeBottom = welcomeSection.getBoundingClientRect().bottom;
+      const bottomTop = bottomSection.getBoundingClientRect().top;
+      const aboutTop = aboutMeSection.getBoundingClientRect().top;
+      const screenHeight = window.innerHeight;
+      const threshold = screenHeight * SCROLL_THRESHOLD;
+
+      const showStars = aboutTop > 0 || bottomTop < screenHeight;
+      setShowElement(showStars);
+
+      if (showStars) {
+        const shouldShowLines =
+          welcomeBottom > threshold || bottomTop <= screenHeight;
+        setShowLines(shouldShowLines);
+        setLineOpacity(shouldShowLines ? 1 : 0);
+
+        if (welcomeBottom <= 100) {
+          setTimeout(() => setIsAnimationDone(true), 500);
+        } else {
+          setIsAnimationDone(false);
         }
       }
-    };
+    }, SCROLL_DEBOUNCE_MS),
+    []
+  );
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check initial scroll position
-
-    const animateStars = () => {
+  // Optimized animation using requestAnimationFrame
+  const animateStars = useCallback((timestamp: number) => {
+    if (timestamp - lastUpdateTimeRef.current >= ANIMATION_FRAME_RATE) {
       setStars((prevStars) =>
         prevStars.map((star) => {
           let newX = star.x + star.dx;
@@ -86,7 +115,6 @@ export const DynamicStars: React.FC = () => {
           let newDx = star.dx;
           let newDy = star.dy;
 
-          // Bounce off walls
           if (newX <= 0 || newX >= 100) {
             newDx = -newDx;
             newX = Math.max(0, Math.min(100, newX));
@@ -96,30 +124,31 @@ export const DynamicStars: React.FC = () => {
             newY = Math.max(0, Math.min(100, newY));
           }
 
-          return {
-            ...star,
-            x: newX,
-            y: newY,
-            dx: newDx,
-            dy: newDy,
-          };
+          return { ...star, x: newX, y: newY, dx: newDx, dy: newDy };
         })
       );
-    };
+      lastUpdateTimeRef.current = timestamp;
+    }
+    animationFrameRef.current = requestAnimationFrame(animateStars);
+  }, []);
 
-    const animationInterval = setInterval(animateStars, 50); // Update every 50ms
+  useEffect(() => {
+    setStars(generateStars());
+    requestAnimationFrame(() => setIsLoaded(true));
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    animationFrameRef.current = requestAnimationFrame(animateStars);
 
     return () => {
-      clearInterval(animationInterval);
       window.removeEventListener("scroll", handleScroll);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      handleScroll.cancel();
     };
-  }, [generateStars]);
-
-  const calculateDistance = (star1: Star, star2: Star) => {
-    const dx = star1.x - star2.x;
-    const dy = star1.y - star2.y;
-    return Math.sqrt(dx * dx + dy * dy);
-  };
+  }, [generateStars, handleScroll, animateStars]);
 
   return (
     <>
@@ -134,36 +163,27 @@ export const DynamicStars: React.FC = () => {
               key={star.id}
               className="fixed rounded-full bg-white"
               style={{
-                top: `${star.y}%`,
-                left: `${star.x}%`,
+                transform: `translate(${star.x}%, ${star.y}%)`,
                 width: `${star.size}px`,
                 height: `${star.size}px`,
+                willChange: "transform",
               }}
             />
           ))}
           <svg className="fixed w-full h-full -z-10">
-            {(showLines || !isAnimationDone) &&
-              stars.flatMap((star1, index) =>
-                stars.slice(index + 1).map((star2) => {
-                  const distance = calculateDistance(star1, star2);
-                  if (distance <= EDGE_THRESHOLD) {
-                    return (
-                      <line
-                        key={`${star1.id}-${star2.id}`}
-                        x1={`${star1.x}%`}
-                        y1={`${star1.y}%`}
-                        x2={`${star2.x}%`}
-                        y2={`${star2.y}%`}
-                        stroke="#5a1c61"
-                        strokeWidth=".75"
-                        opacity={lineOpacity}
-                        style={{ transition: "opacity 0.5s ease-in-out" }}
-                      />
-                    );
-                  }
-                  return null;
-                })
-              )}
+            {starConnections.map(([star1, star2]) => (
+              <line
+                key={`${star1.id}-${star2.id}`}
+                x1={`${star1.x}%`}
+                y1={`${star1.y}%`}
+                x2={`${star2.x}%`}
+                y2={`${star2.y}%`}
+                stroke="#5a1c61"
+                strokeWidth=".4"
+                opacity={lineOpacity}
+                style={{ transition: "opacity 0.5s ease-in-out" }}
+              />
+            ))}
           </svg>
         </div>
       )}
