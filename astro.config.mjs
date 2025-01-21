@@ -6,12 +6,14 @@ import { defineConfig } from "astro/config";
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    react(),
+    react({
+      include: ["**/react/*", "**/components/*"],
+    }),
     tailwind({
       applyBaseStyles: true,
     }),
   ],
-  output: "server",
+  output: "hybrid",
   adapter: netlify(),
   image: {
     service: {
@@ -45,6 +47,9 @@ export default defineConfig({
     },
     ssr: {
       noExternal: ["@radix-ui/*"],
+    },
+    optimizeDeps: {
+      include: ["react", "react-dom", "framer-motion"],
     },
   },
 });
