@@ -8,17 +8,11 @@ export default defineConfig({
   integrations: [
     react(),
     tailwind({
-      applyBaseStyles: false,
+      applyBaseStyles: true,
     }),
   ],
   output: "server",
-  adapter: netlify({
-    imageCDN: true,
-    imageService: true,
-    dist: {
-      compression: true,
-    },
-  }),
+  adapter: netlify(),
   image: {
     service: {
       entrypoint: "@astrojs/image/netlify",
@@ -32,13 +26,13 @@ export default defineConfig({
     ],
   },
   build: {
-    inlineStylesheets: "auto",
+    inlineStylesheets: "always",
     assets: "assets",
     assetsPrefix: "https://cdn.netlify.app",
   },
   vite: {
     build: {
-      cssCodeSplit: true,
+      cssCodeSplit: false,
       assetsInlineLimit: 4096, // 4kb
       rollupOptions: {
         output: {
