@@ -7,49 +7,32 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   integrations: [
     react({
-      include: ["**/react/*", "**/components/*"],
+      include: ["**/*.{jsx,tsx}"],
     }),
     tailwind({
       applyBaseStyles: true,
     }),
   ],
-  output: "hybrid",
+  output: "server",
   adapter: netlify(),
-  image: {
-    service: {
-      entrypoint: "@astrojs/image/netlify",
-    },
-    domains: ["netlify.app"],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "*.netlify.app",
-      },
-    ],
-  },
-  build: {
-    inlineStylesheets: "always",
-    assets: "assets",
-    assetsPrefix: "https://cdn.netlify.app",
-  },
+
   vite: {
+    ssr: {
+      noExternal: ["@radix-ui/*", "framer-motion", "react-icon-cloud"],
+    },
+    optimizeDeps: {
+      include: ["react", "react-dom", "framer-motion", "react-icon-cloud"],
+    },
     build: {
       cssCodeSplit: false,
-      assetsInlineLimit: 4096, // 4kb
       rollupOptions: {
         output: {
           manualChunks: {
             "react-vendor": ["react", "react-dom"],
-            "ui-components": ["@/components/ui", "@/components/magicui"],
           },
         },
+        external: ["virtual:image-service"],
       },
-    },
-    ssr: {
-      noExternal: ["@radix-ui/*"],
-    },
-    optimizeDeps: {
-      include: ["react", "react-dom", "framer-motion"],
     },
   },
 });
