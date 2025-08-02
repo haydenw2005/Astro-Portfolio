@@ -37,6 +37,56 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   class CoastalRoadTripGame {
+    // Canvas and context
+    canvas: HTMLCanvasElement;
+    ctx: CanvasRenderingContext2D;
+    
+    // Game state
+    score: number;
+    lives: number;
+    gameRunning: boolean;
+    gameSpeed: number;
+    gameTime: number;
+    
+    // Player object
+    player: {
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+      speed: number;
+      targetX: number;
+      moveSpeed: number;
+      bobOffset: number;
+    };
+    
+    // Game objects arrays
+    obstacles: any[];
+    seals: any[];
+    roadLines: any[];
+    oceanWaves: any[];
+    landscapeElements: any[];
+    particles: any[];
+    
+    // Animations
+    crashAnimation: any;
+    
+    // Touch controls
+    touchStartX: number;
+    touchStartY: number;
+    
+    // Responsive ratios
+    oceanRatio: number;
+    roadRatio: number;
+    landscapeRatio: number;
+    
+    // Calculated dimensions
+    oceanWidth: number;
+    roadStart: number;
+    roadWidth: number;
+    landscapeStart: number;
+    landscapeWidth: number;
+    
     constructor() {
       this.canvas = document.getElementById('gameCanvas') as HTMLCanvasElement;
       this.ctx = this.canvas.getContext('2d')!;
