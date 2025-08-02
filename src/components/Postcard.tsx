@@ -35,9 +35,7 @@ const Postcard: React.FC<PostcardProps> = ({
       <div className="bg-white rounded-lg shadow-xl overflow-hidden border-4 border-white relative">
         {/* Image */}
         <div className="w-72 h-84 bg-gradient-to-br from-pink-100 to-blue-100 flex items-center justify-center relative overflow-hidden">
-          {src.includes(".svg") ? (
-            <div className="text-6xl opacity-50">🎨</div>
-          ) : src.includes("placeholder") ? (
+          {src.includes("placeholder") ? (
             <div className="text-gray-400 text-center p-4">
               <div className="text-4xl mb-2">📷</div>
               <div className="text-sm">Photo placeholder</div>

@@ -1,1 +1,91 @@
- 
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sky background -->
+  <rect width="300" height="150" fill="#87CEEB"/>
+  
+  <!-- Ground -->
+  <rect y="150" width="300" height="150" fill="#90EE90"/>
+  
+  <!-- House -->
+  <rect x="80" y="100" width="140" height="100" fill="#DEB887" stroke="#8B4513" stroke-width="2"/>
+  
+  <!-- Roof -->
+  <polygon points="70,100 150,60 230,100" fill="#CD853F" stroke="#8B4513" stroke-width="2"/>
+  
+  <!-- Door -->
+  <rect x="140" y="150" width="20" height="40" fill="#8B4513"/>
+  <circle cx="156" cy="170" r="1" fill="#FFD700"/>
+  
+  <!-- Windows -->
+  <rect x="100" y="120" width="20" height="20" fill="#87CEEB" stroke="#000" stroke-width="1"/>
+  <rect x="180" y="120" width="20" height="20" fill="#87CEEB" stroke="#000" stroke-width="1"/>
+  <line x1="110" y1="120" x2="110" y2="140" stroke="#000"/>
+  <line x1="100" y1="130" x2="120" y2="130" stroke="#000"/>
+  <line x1="190" y1="120" x2="190" y2="140" stroke="#000"/>
+  <line x1="180" y1="130" x2="200" y2="130" stroke="#000"/>
+  
+  <!-- Chimney -->
+  <rect x="180" y="70" width="15" height="35" fill="#CD853F" stroke="#8B4513" stroke-width="1"/>
+  
+  <!-- Smoke -->
+  <circle cx="190" cy="65" r="3" fill="#D3D3D3"/>
+  <circle cx="195" cy="58" r="4" fill="#D3D3D3"/>
+  <circle cx="188" cy="50" r="3" fill="#D3D3D3"/>
+  
+  <!-- Stick figure couple -->
+  <!-- Person 1 (left) -->
+  <circle cx="110" cy="220" r="8" fill="#FFDBAC" stroke="#000" stroke-width="1"/>
+  <line x1="110" y1="228" x2="110" y2="260" stroke="#000" stroke-width="2"/>
+  <line x1="110" y1="240" x2="95" y2="250" stroke="#000" stroke-width="2"/>
+  <line x1="110" y1="240" x2="125" y2="250" stroke="#000" stroke-width="2"/>
+  <line x1="110" y1="260" x2="100" y2="280" stroke="#000" stroke-width="2"/>
+  <line x1="110" y1="260" x2="120" y2="280" stroke="#000" stroke-width="2"/>
+  <!-- Hair -->
+  <path d="M 102 215 Q 110 205 118 215" fill="#8B4513" stroke="#000" stroke-width="1"/>
+  <!-- Smile -->
+  <path d="M 106 222 Q 110 225 114 222" fill="none" stroke="#000" stroke-width="1"/>
+  
+  <!-- Person 2 (right) -->
+  <circle cx="190" cy="220" r="8" fill="#FFDBAC" stroke="#000" stroke-width="1"/>
+  <line x1="190" y1="228" x2="190" y2="260" stroke="#000" stroke-width="2"/>
+  <line x1="190" y1="240" x2="175" y2="250" stroke="#000" stroke-width="2"/>
+  <line x1="190" y1="240" x2="205" y2="250" stroke="#000" stroke-width="2"/>
+  <line x1="190" y1="260" x2="180" y2="280" stroke="#000" stroke-width="2"/>
+  <line x1="190" y1="260" x2="200" y2="280" stroke="#000" stroke-width="2"/>
+  <!-- Hair -->
+  <path d="M 182 210 Q 190 200 198 210" fill="#654321" stroke="#000" stroke-width="1"/>
+  <!-- Smile -->
+  <path d="M 186 222 Q 190 225 194 222" fill="none" stroke="#000" stroke-width="1"/>
+  
+  <!-- Hearts between them -->
+  <path d="M 145 210 Q 148 207 151 210 Q 154 207 157 210 Q 154 216 151 220 Q 148 216 145 210" fill="#FF69B4"/>
+  
+  <!-- Cats -->
+  <!-- Cat 1 -->
+  <ellipse cx="60" cy="270" rx="12" ry="8" fill="#FF8C00"/>
+  <circle cx="60" cy="260" r="6" fill="#FF8C00"/>
+  <polygon points="56,256 58,252 60,256" fill="#FF8C00"/>
+  <polygon points="60,256 62,252 64,256" fill="#FF8C00"/>
+  <line x1="50" y1="265" x2="35" y2="262" stroke="#000" stroke-width="1"/>
+  <circle cx="57" cy="258" r="1" fill="#000"/>
+  <circle cx="63" cy="258" r="1" fill="#000"/>
+  
+  <!-- Cat 2 -->
+  <ellipse cx="240" cy="270" rx="12" ry="8" fill="#696969"/>
+  <circle cx="240" cy="260" r="6" fill="#696969"/>
+  <polygon points="236,256 238,252 240,256" fill="#696969"/>
+  <polygon points="240,256 242,252 244,256" fill="#696969"/>
+  <line x1="250" y1="265" x2="265" y2="262" stroke="#000" stroke-width="1"/>
+  <circle cx="237" cy="258" r="1" fill="#000"/>
+  <circle cx="243" cy="258" r="1" fill="#000"/>
+  
+  <!-- Sun -->
+  <circle cx="250" cy="50" r="15" fill="#FFD700"/>
+  <line x1="250" y1="25" x2="250" y2="15" stroke="#FFD700" stroke-width="2"/>
+  <line x1="275" y1="50" x2="285" y2="50" stroke="#FFD700" stroke-width="2"/>
+  <line x1="250" y1="75" x2="250" y2="85" stroke="#FFD700" stroke-width="2"/>
+  <line x1="225" y1="50" x2="215" y2="50" stroke="#FFD700" stroke-width="2"/>
+  <line x1="268" y1="32" x2="275" y2="25" stroke="#FFD700" stroke-width="2"/>
+  <line x1="268" y1="68" x2="275" y2="75" stroke="#FFD700" stroke-width="2"/>
+  <line x1="232" y1="68" x2="225" y2="75" stroke="#FFD700" stroke-width="2"/>
+  <line x1="232" y1="32" x2="225" y2="25" stroke="#FFD700" stroke-width="2"/>
+</svg>

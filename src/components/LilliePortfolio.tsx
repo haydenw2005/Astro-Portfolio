@@ -38,7 +38,7 @@ const LilliePortfolio: React.FC = () => {
     {
       id: "purdue-6",
       src: "/images/Lillie/Purdue/C1357BE9-6607-4F28-A821-21E505577706_1_102_a.jpeg",
-      caption: "On of out first pircutes togther 😲",
+      caption: "On of out first pictures together 😲",
       rotation: 3,
       section: "Purdue Days 🎓",
     },
@@ -99,28 +99,21 @@ const LilliePortfolio: React.FC = () => {
       src: "/images/future1.svg",
       caption: "Our dream home with cats 🏠🐱",
       rotation: -3,
-      section: "Our Future Together ✨",
+      section: "Our Future Together <3",
     },
     {
       id: "future-2",
       src: "/images/future2.svg",
-      caption: "Tiger lily garden 🌺",
+      caption: "Our tiger lily garden 🌺",
       rotation: 2,
-      section: "Our Future Together ✨",
+      section: "Our Future Together <3",
     },
     {
       id: "future-3",
       src: "/images/future3.svg",
-      caption: "Adventures around the world 🌍",
+      caption: "Our roadtrip adventures 🚗🦭",
       rotation: -1,
-      section: "Our Future Together ✨",
-    },
-    {
-      id: "future-4",
-      src: "/images/future4.svg",
-      caption: "Growing old together 👵🏻👴🏻",
-      rotation: 3,
-      section: "Our Future Together ✨",
+      section: "Our Future Together <3",
     },
   ];
 
@@ -285,13 +278,14 @@ const LilliePortfolio: React.FC = () => {
             letterSpacing: "0.02em",
           }}
         >
-          For My Beautiful Lillie
+          for my love
         </h1>
         <p
           className="text-lg md:text-xl text-gray-600 font-light animate-fade-in-delay"
           style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
         >
-          Happy International Girlfriend Day! 💝
+          Happy International Girlfriend Day to my bae - attached are some of my
+          favorite memories with you :)
         </p>
         <div className="flex justify-center gap-2 mt-4 animate-fade-in-delay-2">
           <span
@@ -379,15 +373,27 @@ const LilliePortfolio: React.FC = () => {
       {/* Love message */}
       <div className="text-center mt-24 max-w-2xl mx-auto relative z-10">
         <p className="text-lg text-gray-600 italic">
-          "Every moment with you is a treasure. From our days at Purdue to our
-          adventures in San Francisco, and all the dreams we have for our future
-          together. You make every day brighter, Lillie. I love you more than
-          all the tiger lilies in the world! 🌺"
+          Lillie, I love you so much - I'm the luckiest person to have you in my
+          life. I'm always thinking about you and loving you even when I'm busy
+          and might not have the time to show it. Your support means the world
+          to me and it never goes unnoticed! I can't wait to see you in Seattle
+          and to drive to California. Visiting Purdue to see you will also be
+          amazing, we have to go to dos amigos and get mango mango, 7brew, and
+          go on random adventures. Keep being you, pretty, beautiful, funny, and
+          lets conquer the world tyshi ❤️ 💕
         </p>
-        <p className="mt-4 text-2xl">With Love, Hayden</p>
+        <p className="mt-4 text-2xl">Yours truly, Hayden</p>
+        <div className="mt-8">
+          <button
+            onClick={() => (window.location.href = "/game")}
+            className="bg-gradient-to-r from-pink-400 to-purple-500 hover:from-pink-500 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-in-out animate-pulse"
+          >
+            Click me
+          </button>
+        </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%,
           100% {
