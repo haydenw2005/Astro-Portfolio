@@ -990,7 +990,11 @@ import Layout from '../layouts/Layout.astro';
   
   // Start the game when page loads
   document.addEventListener('DOMContentLoaded', () => {
-    new CoastalRoadTripGame();
+    // Only initialize if we're on the game page and the canvas exists
+    const canvas = document.getElementById('gameCanvas');
+    if (canvas) {
+      new CoastalRoadTripGame();
+    }
   });
 </script>
 
