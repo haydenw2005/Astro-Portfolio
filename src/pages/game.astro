@@ -70,7 +70,39 @@ import Layout from '../layouts/Layout.astro';
       this.touchStartX = 0;
       this.touchStartY = 0;
       
+      // Responsive sizing
+      this.getResponsiveSizes();
+      
       this.init();
+    }
+    
+    getResponsiveSizes() {
+      const viewportWidth = window.innerWidth;
+      
+      // Define responsive ratios based on viewport width
+      if (viewportWidth < 600) {
+        // Mobile: smaller margins, same road
+        this.oceanRatio = 0.15;  // 15% for ocean (was 30%)
+        this.roadRatio = 0.5;    // 50% for road (was 40%)
+        this.landscapeRatio = 0.35; // 35% for landscape (was 30%)
+      } else if (viewportWidth < 900) {
+        // Tablet: medium margins
+        this.oceanRatio = 0.25;  // 25% for ocean
+        this.roadRatio = 0.45;   // 45% for road
+        this.landscapeRatio = 0.3; // 30% for landscape
+      } else {
+        // Desktop: original ratios
+        this.oceanRatio = 0.3;   // 30% for ocean
+        this.roadRatio = 0.4;    // 40% for road
+        this.landscapeRatio = 0.3; // 30% for landscape
+      }
+      
+      // Calculate actual sizes
+      this.oceanWidth = this.canvas.width * this.oceanRatio;
+      this.roadWidth = this.canvas.width * this.roadRatio;
+      this.roadStart = this.oceanWidth;
+      this.landscapeStart = this.roadStart + this.roadWidth;
+      this.landscapeWidth = this.canvas.width * this.landscapeRatio;
     }
     
     init() {
@@ -88,11 +120,12 @@ import Layout from '../layouts/Layout.astro';
     resizeCanvas() {
       this.canvas.width = window.innerWidth;
       this.canvas.height = window.innerHeight;
+      this.getResponsiveSizes(); // Recalculate responsive sizes
       this.setupPlayer();
     }
     
     setupPlayer() {
-      this.player.x = this.canvas.width * 0.5 - this.player.width / 2;
+      this.player.x = this.roadStart + this.roadWidth/2 - this.player.width / 2;
       this.player.targetX = this.player.x;
       this.player.y = 100; // Move car to top of screen
     }
@@ -111,7 +144,7 @@ import Layout from '../layouts/Layout.astro';
       this.oceanWaves = [];
       for (let i = 0; i < 15; i++) {
         this.oceanWaves.push({
-          x: Math.random() * (this.canvas.width * 0.3),
+          x: Math.random() * this.oceanWidth,
           y: i * 40 - 600, // Start waves higher up
           amplitude: 10 + Math.random() * 15,
           frequency: 0.01 + Math.random() * 0.02
@@ -122,7 +155,7 @@ import Layout from '../layouts/Layout.astro';
       this.landscapeElements = [];
       for (let i = 0; i < 10; i++) {
         this.landscapeElements.push({
-          x: this.canvas.width * 0.7 + Math.random() * (this.canvas.width * 0.3),
+          x: this.landscapeStart + Math.random() * this.landscapeWidth,
           y: i * 80 - 800, // Start landscape elements higher up
           type: Math.random() > 0.5 ? 'tree' : 'hill',
           size: 20 + Math.random() * 40
@@ -135,10 +168,10 @@ import Layout from '../layouts/Layout.astro';
       document.addEventListener('keydown', (e) => {
         if (!this.gameRunning) return;
         
-        if (e.key === 'ArrowLeft' && this.player.targetX > this.canvas.width * 0.3 + 10) {
+        if (e.key === 'ArrowLeft' && this.player.targetX > this.roadStart + 10) {
           this.player.targetX -= this.player.speed * 4;
         }
-        if (e.key === 'ArrowRight' && this.player.targetX < this.canvas.width * 0.7 - this.player.width - 10) {
+        if (e.key === 'ArrowRight' && this.player.targetX < this.roadStart + this.roadWidth - this.player.width - 10) {
           this.player.targetX += this.player.speed * 4;
         }
       });
@@ -165,9 +198,9 @@ import Layout from '../layouts/Layout.astro';
         
         // Only respond to horizontal swipes
         if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 30) {
-          if (deltaX > 0 && this.player.targetX < this.canvas.width * 0.7 - this.player.width - 10) {
+          if (deltaX > 0 && this.player.targetX < this.roadStart + this.roadWidth - this.player.width - 10) {
             this.player.targetX += this.player.speed * 8;
-          } else if (deltaX < 0 && this.player.targetX > this.canvas.width * 0.3 + 10) {
+          } else if (deltaX < 0 && this.player.targetX > this.roadStart + 10) {
             this.player.targetX -= this.player.speed * 8;
           }
         }
@@ -192,13 +225,11 @@ import Layout from '../layouts/Layout.astro';
       
       const types = ['rock', 'car', 'cop'];
       const type = types[Math.floor(Math.random() * types.length)];
-      const roadWidth = this.canvas.width * 0.4; // Road is 40% of screen width
-      const roadStart = this.canvas.width * 0.3;
-      const laneWidth = roadWidth / 3;
+      const laneWidth = this.roadWidth / 3;
       const lane = Math.floor(Math.random() * 3);
       
       this.obstacles.push({
-        x: roadStart + (lane * laneWidth) + (laneWidth - 50) / 2,
+        x: this.roadStart + (lane * laneWidth) + (laneWidth - 50) / 2,
         y: this.canvas.height + 100,
         width: 50,
         height: 80,
@@ -210,13 +241,11 @@ import Layout from '../layouts/Layout.astro';
     spawnSeal() {
       if (!this.gameRunning) return;
       
-      const roadWidth = this.canvas.width * 0.4;
-      const roadStart = this.canvas.width * 0.3;
-      const laneWidth = roadWidth / 3;
+      const laneWidth = this.roadWidth / 3;
       const lane = Math.floor(Math.random() * 3);
       
       this.seals.push({
-        x: roadStart + (lane * laneWidth) + (laneWidth - 40) / 2,
+        x: this.roadStart + (lane * laneWidth) + (laneWidth - 40) / 2,
         y: this.canvas.height + 60,
         width: 40,
         height: 40,
@@ -240,7 +269,7 @@ import Layout from '../layouts/Layout.astro';
         wave.y -= this.gameSpeed;
         if (wave.y < -40) {
           wave.y = this.canvas.height + 40;
-          wave.x = Math.random() * (this.canvas.width * 0.3);
+          wave.x = Math.random() * this.oceanWidth;
         }
       });
       
@@ -249,7 +278,7 @@ import Layout from '../layouts/Layout.astro';
         element.y -= this.gameSpeed * 1.5;
         if (element.y < -80) {
           element.y = this.canvas.height + 80;
-          element.x = this.canvas.width * 0.7 + Math.random() * (this.canvas.width * 0.3);
+          element.x = this.landscapeStart + Math.random() * this.landscapeWidth;
         }
       });
       
@@ -341,20 +370,20 @@ import Layout from '../layouts/Layout.astro';
       // Clear canvas
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       
-      // Draw ocean (left 30% of screen)
-      const gradient = this.ctx.createLinearGradient(0, 0, this.canvas.width * 0.3, 0);
+      // Draw ocean (responsive width)
+      const gradient = this.ctx.createLinearGradient(0, 0, this.oceanWidth, 0);
       gradient.addColorStop(0, '#1E3A8A');
       gradient.addColorStop(0.5, '#3B82F6');
       gradient.addColorStop(1, '#60A5FA');
       this.ctx.fillStyle = gradient;
-      this.ctx.fillRect(0, 0, this.canvas.width * 0.3, this.canvas.height);
+      this.ctx.fillRect(0, 0, this.oceanWidth, this.canvas.height);
       
       // Draw ocean waves
       this.ctx.fillStyle = '#FFFFFF';
       this.oceanWaves.forEach(wave => {
         this.ctx.globalAlpha = 0.6;
         this.ctx.beginPath();
-        for (let x = 0; x < this.canvas.width * 0.3; x += 5) {
+        for (let x = 0; x < this.oceanWidth; x += 5) {
           const y = wave.y + Math.sin((x + wave.x) * wave.frequency) * wave.amplitude;
           if (x === 0) {
             this.ctx.moveTo(x, y);
@@ -366,17 +395,17 @@ import Layout from '../layouts/Layout.astro';
         this.ctx.globalAlpha = 1;
       });
       
-      // Draw road (middle 40% of screen)
+      // Draw road (responsive width)
       this.ctx.fillStyle = '#404040';
-      this.ctx.fillRect(this.canvas.width * 0.3, 0, this.canvas.width * 0.4, this.canvas.height);
+      this.ctx.fillRect(this.roadStart, 0, this.roadWidth, this.canvas.height);
       
-      // Draw landscape (right 30% of screen)
-      const landscapeGradient = this.ctx.createLinearGradient(this.canvas.width * 0.7, 0, this.canvas.width, 0);
+      // Draw landscape (responsive width)
+      const landscapeGradient = this.ctx.createLinearGradient(this.landscapeStart, 0, this.canvas.width, 0);
       landscapeGradient.addColorStop(0, '#16A34A');
       landscapeGradient.addColorStop(0.5, '#22C55E');
       landscapeGradient.addColorStop(1, '#4ADE80');
       this.ctx.fillStyle = landscapeGradient;
-      this.ctx.fillRect(this.canvas.width * 0.7, 0, this.canvas.width * 0.3, this.canvas.height);
+      this.ctx.fillRect(this.landscapeStart, 0, this.landscapeWidth, this.canvas.height);
       
       // Draw landscape elements
       this.landscapeElements.forEach(element => {
@@ -390,17 +419,15 @@ import Layout from '../layouts/Layout.astro';
       // Draw road lines (center of road)
       this.ctx.fillStyle = '#FFD700';
       this.roadLines.forEach(line => {
-        const newX = this.canvas.width * 0.5 - 2; // Center the road lines
+        const newX = this.roadStart + this.roadWidth/2 - 2; // Center the road lines
         this.ctx.fillRect(newX, line.y, line.width, line.height);
       });
       
       // Draw lane dividers
       this.ctx.fillStyle = '#FFFFFF';
-      const roadWidth = this.canvas.width * 0.4;
-      const roadStart = this.canvas.width * 0.3;
-      const laneWidth = roadWidth / 3;
+      const laneWidth = this.roadWidth / 3;
       for (let i = 1; i < 3; i++) {
-        const x = roadStart + (i * laneWidth) - 1;
+        const x = this.roadStart + (i * laneWidth) - 1;
         this.ctx.fillRect(x, 0, 2, this.canvas.height);
       }
       
@@ -680,10 +707,27 @@ import Layout from '../layouts/Layout.astro';
       this.ctx.ellipse(x + 3*width/4 + 3, y + height/3 - 2, 1, 1, 0, 0, 2 * Math.PI);
       this.ctx.fill();
       
-      // Girl hair (longer)
-      this.ctx.fillStyle = '#DAA520';
+      // Girl hair (longer brown hair)
+      this.ctx.fillStyle = '#8B4513'; // Brown hair color
       this.ctx.beginPath();
-      this.ctx.ellipse(x + 3*width/4, y + height/3 - 8, 10, 8, 0, 0, 2 * Math.PI);
+      // Main hair volume (bigger and longer)
+      this.ctx.ellipse(x + 3*width/4, y + height/3 - 10, 12, 12, 0, 0, 2 * Math.PI);
+      this.ctx.fill();
+      
+      // Hair flowing down sides (long hair)
+      this.ctx.beginPath();
+      this.ctx.ellipse(x + 3*width/4 - 8, y + height/3 - 2, 4, 8, -0.3, 0, 2 * Math.PI);
+      this.ctx.fill();
+      this.ctx.beginPath();
+      this.ctx.ellipse(x + 3*width/4 + 8, y + height/3 - 2, 4, 8, 0.3, 0, 2 * Math.PI);
+      this.ctx.fill();
+      
+      // Hair strands for length
+      this.ctx.beginPath();
+      this.ctx.ellipse(x + 3*width/4 - 6, y + height/3 + 3, 3, 6, -0.2, 0, 2 * Math.PI);
+      this.ctx.fill();
+      this.ctx.beginPath();
+      this.ctx.ellipse(x + 3*width/4 + 6, y + height/3 + 3, 3, 6, 0.2, 0, 2 * Math.PI);
       this.ctx.fill();
       
       // Girl smile
@@ -787,14 +831,14 @@ import Layout from '../layouts/Layout.astro';
       const titleX = this.canvas.width - 20;
       const titleY = 40;
       
-      // Draw background box for better readability
+      // Draw background box for better readability (responsive)
       this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)'; // Semi-transparent black background
-      this.ctx.fillRect(this.canvas.width * 0.7 + 10, titleY - 25, this.canvas.width * 0.3 - 20, 180);
+      this.ctx.fillRect(this.landscapeStart + 10, titleY - 25, this.landscapeWidth - 20, 180);
       
       // Draw border for the box
       this.ctx.strokeStyle = '#FFD700';
       this.ctx.lineWidth = 2;
-      this.ctx.strokeRect(this.canvas.width * 0.7 + 10, titleY - 25, this.canvas.width * 0.3 - 20, 180);
+      this.ctx.strokeRect(this.landscapeStart + 10, titleY - 25, this.landscapeWidth - 20, 180);
       
       // Set up text styling for a cool retro look with better contrast
       this.ctx.fillStyle = '#FFD700'; // Bright gold for main title
