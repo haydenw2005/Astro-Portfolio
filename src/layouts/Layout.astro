@@ -24,6 +24,7 @@ const { title, description  = "Default description of your website" } = Astro.pr
 		<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<slot name="head" />
 
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={Astro.url} />
