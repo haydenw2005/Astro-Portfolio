@@ -41,16 +41,11 @@ const { title, description  = "Default description of your website" } = Astro.pr
 		<meta property="twitter:image" content="/Me/B5BC3818-8C25-4D85-9671-023F0EF5F730_4_5005_c.jpg" />
 
 		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-WFKQ2VYERW"></script>
-		<script>
-			declare global {
-				interface Window {
-					dataLayer: any[]; // Declare dataLayer here
-				}
-			}
+		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-WFKQ2VYERW"></script>
+		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
-			function gtag(...args: any[]) { // Accept any number of arguments
-				window.dataLayer.push(args); // Push all arguments to dataLayer
+			function gtag() {
+				dataLayer.push(arguments);
 			}
 			gtag('js', new Date());
 			gtag('config', 'G-WFKQ2VYERW');
