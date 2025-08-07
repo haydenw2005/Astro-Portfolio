@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Reusable dotted background (works in prod builds) */
+.dots-bg {
+  background-image: radial-gradient(#d9dbe4 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+  background-position: 0 0;
+}
+
 .space-mono-regular {
   font-family: "Space Mono", monospace;
   font-weight: 400;

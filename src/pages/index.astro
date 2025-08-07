@@ -5,16 +5,7 @@ import LightLayout from '../layouts/LightLayout.astro';
 
 <LightLayout title="Hayden White" description="A concise, research-style overview of Hayden White's work and experience.">
   <div class="relative">
-    <div class="absolute inset-0 -z-10">
-      <svg class="absolute inset-0 h-full w-full" aria-hidden="true">
-        <defs>
-          <pattern id="dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
-            <circle cx="1" cy="1" r="1.25" fill="#d9dbe4" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#dots)" />
-      </svg>
-    </div>
+    <div class="absolute inset-0 z-0 dots-bg pointer-events-none"></div>
     <main class="relative z-10">
       <section class="min-h-[20vh] pt-16 pb-6">
         <div class="mx-auto max-w-5xl px-6">
