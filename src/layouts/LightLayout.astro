@@ -1,0 +1,59 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+import '../styles/global.css';
+
+const { title, description = 'Default description of your website' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/main_logo3.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <slot name="head" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/Me/B5BC3818-8C25-4D85-9671-023F0EF5F730_4_5005_c.jpg" />
+
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="/Me/B5BC3818-8C25-4D85-9671-023F0EF5F730_4_5005_c.jpg" />
+
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-WFKQ2VYERW"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-WFKQ2VYERW');
+    </script>
+
+    <link rel="preload" href="/images/TechIcons/React-icon.svg.png" as="image" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" as="style" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style" />
+    <link rel="prefetch" href="/images/Hayden_White_Resume_Jan_2025-1.pdf" />
+  </head>
+  <body class="font-exo-2 bg-[#f6f7fb] text-[#0b0c10]">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+</style>
+
+

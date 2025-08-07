@@ -29,7 +29,7 @@ export function FileTree() {
   }, []);
 
   return (
-    <div className="relative flex h-screen flex-col items-center justify-center rounded-lg sticky top-0 z-50 ">
+    <div className="relative flex h-full flex-col items-center justify-start rounded-lg">
       <MagicCard className="shadow-2xl relative" gradientColor={"#262626"}>
         <Tree
           className={`p-2 rounded-md text-white purpleGlow `}

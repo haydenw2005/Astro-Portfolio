@@ -26,6 +26,15 @@ interface Education {
 
 const workExperiences: WorkExperience[] = [
   {
+    company: "Revyl.ai",
+    location: "Remote",
+    position: "Founding Engineer",
+    startDate: "2025",
+    endDate: "Present",
+    responsibilities: ["Building web and mobile agents for automated QA"],
+    website: "https://revyl.ai/",
+  },
+  {
     company: "Oneshot.ai",
     location: "Remote",
     position: "Part-Time Full-Stack Software Engineer",
@@ -227,15 +236,15 @@ const Experience = () => {
       <MagicCard className="shadow-2xl" gradientColor={"#262626"}>
         <div className="relative flex items-center justify-center rounded-lg">
           <div className="w-full h-full relative p-8">
-            <div className="flex justify-between">
-              <h2 className="text-6xl font-bold mb-3 text-white">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+              <h2 className="text-5xl md:text-6xl font-bold mb-1 text-white">
                 Ex<span className="text-purple-300 glow-purple">perience</span>
               </h2>
               {resumeLink}
             </div>
             <HSeparator />
 
-            <div className="grid grid-cols-2 gap-8 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-8">
               <div>
                 {workExperiences.map((exp, index) => (
                   <WorkExperienceItem

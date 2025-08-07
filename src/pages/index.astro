@@ -1,103 +1,157 @@
 ---
-import Layout from '../layouts/Layout.astro';
 import '@/styles/global.css';
-
-// Only import DynamicStars directly since it needs to load immediately
-import { DynamicStars } from '../components/DynamicStars';
-import { techIcons } from '../constants/TechIcons';
-
-// Import components normally since Astro handles code splitting automatically
-import Welcome from '../components/Welcome';
-import { FileTree } from '../components/FileNavigator';
-import AboutMe from '../components/AboutMe';
-import { Projects } from '../components/Projects';
-import Experience from '../components/Experience';
-import Travel from '../components/Travel';
-
-const techIconImagesPath = '/images/TechIcons/';
-
-// Generate optimized image URLs for tech icons
-const optimizedTechIcons = techIcons.map((icon) => {
-  const source = `${techIconImagesPath}${icon.src}`;
-  const optimized = `${source}?w=50&fm=webp`;
-  return { ...icon, optimizedSrc: optimized };
-});
+import LightLayout from '../layouts/LightLayout.astro';
 ---
 
-<Layout title="Hayden White | Personal Site & Portfolio" description="Explore the digital world of Hayden White. Discover my latest projects in web development and computer science.">
+<LightLayout title="Hayden White" description="A concise, research-style overview of Hayden White's work and experience.">
   <div class="relative">
-    <DynamicStars client:only="react" />
-    <div class="relative z-10 text-white text-xl">
-      <section id="welcome">
-        <div class="mx-auto p-4 sm:max-w-[50%] leading-relaxed flex items-center min-h-screen">
-          <Welcome client:only="react" />
-        </div>
-      </section>
-      <div class="flex mt-[20vh]">
-        
-        <div class="hidden md:flex-grow mt-[0%] min-h-screen pl-3 md:block">
-          <FileTree client:only="react" />
-        </div>
-
-        <div class="flex-grow pr-3 pl-3 mx-auto">
-          <section id="about-me">
-            <div class="overflow-hidden">
-              <div class="leading-relaxed flex items-center mb-3">
-                <AboutMe client:only="react" optimizedTechIcons={optimizedTechIcons} />
+    <div class="absolute inset-0 -z-10">
+      <svg class="absolute inset-0 h-full w-full" aria-hidden="true">
+        <defs>
+          <pattern id="dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="1" class="fill-gray-300" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dots)" />
+      </svg>
+    </div>
+    <main class="relative z-10">
+      <section class="min-h-[20vh] pt-16 pb-6">
+        <div class="mx-auto max-w-5xl px-6">
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-[220px_1fr]">
+            <div class="lg:pt-2">
+              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">OVERVIEW</h2>
+            </div>
+            <div>
+              <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-[#0b0c10]">Hayden White</h1>
+              <p class="mt-1 text-base text-[#20232a]/80">Software Engineer • 20</p>
+              <div class="mt-4 flex flex-wrap gap-3 text-sm">
+                <a class="text-purple-700 hover:text-purple-800" href="https://github.com/haydenw2005" target="_blank">GitHub</a>
+                <a class="text-purple-700 hover:text-purple-800" href="https://x.com/hxxwhite" target="_blank">Twitter</a>
+                <a class="text-purple-700 hover:text-purple-800" href="mailto:white929@purdue.edu">Email</a>
               </div>
             </div>
-          </section>
-          
-          <section id="projects">
-            <div class="leading-relaxed flex items-center mb-3">
-              <Projects client:only="react" />
-            </div>
-          </section>
-
-          <section id="experience">
-            <div class="leading-relaxed flex items-center">
-              <Experience client:only="react" />
-            </div>
-          </section>
-        </div>
-      </div>
-      
-      <section id="wip">
-        <div class="leading-relaxed flex items-center mb-3">
-          <Travel client:only="react" />
+          </div>
         </div>
       </section>
-    </div>
+
+      <section class="py-8">
+        <div class="mx-auto max-w-5xl px-6">
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[220px_1fr]">
+            <div>
+              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">NOW</h2>
+            </div>
+            <ul class="list-disc list-inside mt-1 space-y-1.5 text-[#20232a]">
+            <li>
+              Founding Engineer at
+              <a class="ml-1 text-purple-700 hover:text-purple-800 underline-offset-4 hover:underline" href="https://revyl.ai/" target="_blank">Revyl.ai</a>
+              — building web and mobile agents for automated QA.
+            </li>
+              <li>Originally from Seattle; currently in San Francisco • CS @ Purdue University (’27)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-8">
+        <div class="mx-auto max-w-5xl px-6">
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[220px_1fr]">
+            <div>
+              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">PROJECTS</h2>
+            </div>
+            <ul class="list-disc list-inside mt-1 space-y-1.5 text-[#20232a]">
+            <li>
+              <a href="https://github.com/haydenw2005/ArbiTrade" target="_blank" class="text-purple-700 hover:text-purple-800">ArbiTrade</a>
+              — LLM + vector aggregation to surface mispriced Kalshi markets via sentiment and real‑time data.
+            </li>
+            <li>
+              <a href="https://upliftme.framer.website/" target="_blank" class="text-purple-700 hover:text-purple-800">UpliftMe</a>
+              — AI roadmap generator; agentic planning + curated resource suggestions.
+            </li>
+            <li>
+              <a href="https://github.com/haydenw2005/Location-Analyzer" target="_blank" class="text-purple-700 hover:text-purple-800">Location Analyzer</a>
+              — geospatial graphing; pathfinding + clustering on location data.
+            </li>
+            <li>
+              <a href="https://github.com/haydenw2005/Competitive-Programming/tree/main" target="_blank" class="text-purple-700 hover:text-purple-800">Competitive Programming</a>
+              — ongoing problem‑solving archive (Python/algorithms).
+            </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-8">
+        <div class="mx-auto max-w-5xl px-6">
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[220px_1fr]">
+            <div>
+              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">EXPERIENCE</h2>
+            </div>
+            <ul class="list-disc list-inside mt-1 space-y-1.5 text-[#20232a]">
+            <li><a class="text-purple-700 hover:text-purple-800" href="https://revyl.ai" target="_blank">Revyl.ai</a> — Founding Engineer (Mar 25' - Present): automated QA agents for mobile and web apps.</li>
+            <li><a class="text-purple-700 hover:text-purple-800" href="https://www.oneshot.ai" target="_blank">Oneshot.ai</a> — Full‑Stack SWE (Oct ’23–Jul ’24): outbound prospecting agents for sales teams.</li>
+            <li><a class="text-purple-700 hover:text-purple-800" href="https://floopedu.com" target="_blank">Floop</a> — SWE Intern (Summer ’22): feedback‑driven education platform for students and teachers.</li>
+            <li><a class="text-purple-700 hover:text-purple-800" href="https://www.genui.com" target="_blank">GenUI</a> — Intern (Summer ’21): software consulting for enterprise clients.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-8">
+        <div class="mx-auto max-w-5xl px-6">
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[220px_1fr]">
+            <div>
+              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">EDUCATION</h2>
+            </div>
+            <ul class="list-disc list-inside mt-1 space-y-1.5 text-[#20232a]">
+            <li>Purdue University — B.S. Computer Science (’27) • Dean’s List; Data Mine. </li>
+            <li>
+              Systems architecture, computer security, artificial intelligence
+            </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-10 pb-16">
+        <div class="mx-auto max-w-5xl px-6">
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[220px_1fr]">
+            <div>
+              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">CURRENT INTERESTS</h2>
+            </div>
+            <ul class="list-disc list-inside mt-1 space-y-1.5 text-[#20232a]">
+              <li>Mobile/Computer-use agents, VLMs, and automation</li>
+              <li>Scalable distributed systems and agent infrastructure</li>
+              <li>Full-stack development and developer UX</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-8 pb-16">
+        <div class="mx-auto max-w-5xl px-6">
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[220px_1fr]">
+            <div>
+              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">FAVORITE BOOKS</h2>
+            </div>
+            <ul class="list-disc list-inside mt-1 space-y-1.5 text-[#20232a]">
+              <li>Foundation — Isaac Asimov</li>
+              <li>Exhalation — Ted Chiang</li>
+              <li>Prisoners of Geography — Tim Marshall</li>
+              <li>Snowcrash — Neal Stephenson</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
-</Layout>
+</LightLayout>
 
-<script>
-  // Wait for the DOM to be fully loaded
-  document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section[id]');
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const newHash = `#${entry.target.id}`;
-          if (window.location.hash !== newHash) {
-            history.replaceState(null, '', newHash);
-            window.dispatchEvent(new HashChangeEvent('hashchange'));
-          }
-        }
-      });
-    }, observerOptions);
-
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-  });
-</script>
-
+<style>
+  .fill-gray-300 { fill: #e7e9f0; }
+  @media (prefers-color-scheme: dark) {
+    .fill-gray-300 { fill: #d9dbe4; }
+  }
+</style>
 
 

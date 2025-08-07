@@ -4,25 +4,32 @@ const Welcome = () => {
   return (
     <>
       <div className="flex flex-col rounded-lg p-4">
-        <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold tracking-tighter">
-          Hi. I'm
-          <span className="text-purple-300">
-            {" "}
-            Hayden<span className="ml-3">👋</span>
-          </span>
-        </h1>
-        <p className="text-xl mt-4">
-          I'm a software engineer and digital architect dedicated to advancing
-          the frontiers of technology and innovation.
+        <p className="text-purple-300 text-sm uppercase tracking-widest">
+          Software Engineer
         </p>
-        <p className="text-xl mt-4 text-purple-300"> Based in Seattle, WA.</p>
-
-        <a
-          href="#about-me"
-          className="mt-20 text-purple-300 hover:text-purple-400 transition-colors duration-300 cursor-pointer flex items-center"
-        >
-          Learn more <ArrowBigDown className="ml-2 mt-1" size={25} />
-        </a>
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mt-2">
+          Hi, I'm <span className="text-purple-300">Hayden</span>{" "}
+          <span className="ml-2">👋</span>
+        </h1>
+        <p className="text-xl md:text-2xl mt-4 max-w-2xl text-gray-200">
+          I build reliable full‑stack products and thoughtful interfaces. I care
+          about clarity, speed, and craftsmanship.
+        </p>
+        <div className="flex gap-3 mt-8">
+          <a
+            href="#projects"
+            className="inline-flex items-center rounded-md bg-purple-300 px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-purple-400 transition-colors"
+          >
+            View Projects
+          </a>
+          <a
+            href="#about-me"
+            className="inline-flex items-center text-purple-300 hover:text-purple-400 transition-colors text-sm"
+          >
+            Learn more <ArrowBigDown className="ml-2 mt-[2px]" size={18} />
+          </a>
+        </div>
+        <p className="text-sm mt-6 text-gray-400">Based in Seattle, WA</p>
       </div>
     </>
   );

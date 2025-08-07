@@ -80,13 +80,13 @@ export const Projects = () => {
   return (
     <div>
       <MagicCard className="shadow-2xl p-8" gradientColor={"#262626"}>
-        <h2 className="text-6xl font-bold text-white mb-4">
+        <h2 className="text-5xl md:text-6xl font-bold text-white mb-2">
           My <span className="text-purple-300 glow-purple">Projects</span>{" "}
         </h2>
-        <HSeparator className="mb-4" />
+        <HSeparator className="mb-8" />
 
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_1fr] gap-6">
-          <div className="w-full">
+        <div className="grid grid-cols-1 xl:grid-cols-[1fr_1fr] gap-10">
+          <div className="w-full space-y-8">
             {/* <h3 className="text-2xl font-semibold ml-2 text-white mb-3">
               Featured Projects
             </h3> */}
@@ -96,7 +96,7 @@ export const Projects = () => {
             {/* <h3 className="text-2xl font-semibold ml-2 text-white mb-3"> */}
             {/* Featured Repositories
             </h3> */}
-            <div className="flex flex-col ">
+            <div className="flex flex-col gap-5">
               {githubCardsData.map((card, index) => (
                 <GithubCard
                   key={index}

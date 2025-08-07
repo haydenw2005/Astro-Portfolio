@@ -17,7 +17,7 @@ interface Star {
 }
 
 // Constants moved outside component
-const STAR_FACTOR = 5;
+const STAR_FACTOR = 7; // fewer stars → calmer background
 const EDGE_THRESHOLD = 8.5;
 const ANIMATION_FRAME_RATE = 1000 / 60; // 60 FPS
 const SCROLL_THRESHOLD = 0.8;
@@ -161,7 +161,7 @@ export const DynamicStars: React.FC = () => {
           {stars.map((star) => (
             <div
               key={star.id}
-              className="fixed rounded-full bg-white"
+              className="fixed rounded-full bg-white/80"
               style={{
                 transform: `translate(${star.x}%, ${star.y}%)`,
                 width: `${star.size}px`,
@@ -179,7 +179,7 @@ export const DynamicStars: React.FC = () => {
                 x2={`${star2.x}%`}
                 y2={`${star2.y}%`}
                 stroke="#5a1c61"
-                strokeWidth=".4"
+                strokeWidth=".35"
                 opacity={lineOpacity}
                 style={{ transition: "opacity 0.5s ease-in-out" }}
               />

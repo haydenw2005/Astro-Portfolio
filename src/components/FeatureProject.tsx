@@ -21,8 +21,8 @@ export default function FeatureProject({
 }: FeatureProjectProps) {
   return (
     <motion.div
-      className={`relative flex flex-col h-50 bg-gradient-to-br from-black via-indigo-950 to-gray-950 border border-purple-300 rounded-lg overflow-hidden shadow-lg `}
-      whileHover={{ scale: 1.03 }}
+      className={`relative flex flex-col h-50 bg-gradient-to-br from-black via-indigo-950/50 to-gray-950/50 border border-white/10 rounded-lg overflow-hidden shadow-lg`}
+      whileHover={{ scale: 1.02 }}
     >
       <a href={linkUrl} target="_blank">
         <div className="absolute inset-0 overflow-hidden">

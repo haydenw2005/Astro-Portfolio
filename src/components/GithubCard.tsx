@@ -12,7 +12,7 @@ interface GitHubProps {
 
 const languageColorMap: { [key: string]: string } = {
   TypeScript: "#2b7489",
-  Astro: "#FF8C00", // Example color, adjust if you have a specific one
+  Astro: "#FF8C00",
   CSS: "#563d7c",
   JavaScript: "#f1e05a",
   Python: "#3572A5",
@@ -31,12 +31,12 @@ export default function GithubCard({
 }: GitHubProps) {
   return (
     <a href={repoLink} target="_blank">
-      <motion.div whileHover={{ scale: 1.03 }}>
-        <div className="border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 mb-3">
-          <div className="p-3">
-            <div className="flex items-center mb-2">
+      <motion.div whileHover={{ scale: 1.02 }}>
+        <div className="mb-4 overflow-hidden rounded-lg border border-white/10 bg-gradient-to-br from-black via-indigo-950/40 to-gray-950/40 shadow-md transition-shadow hover:shadow-lg">
+          <div className="p-4">
+            <div className="mb-1 flex items-center">
               <svg
-                className="w-4 h-4 text-gray-100 mr-2"
+                className="mr-2 h-4 w-4 text-gray-100"
                 viewBox="0 0 16 16"
                 fill="currentColor"
               >
@@ -45,34 +45,20 @@ export default function GithubCard({
                   d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"
                 />
               </svg>
-              <h3>
-                <p className="text-blue-300 text-[18px] font-normal">
-                  {repoName}
-                </p>
+              <h3 className="text-[16px] font-semibold tracking-tight text-blue-300 sm:text-[18px]">
+                {repoName}
               </h3>
             </div>
-            <p className="text-gray-100 text-sm mb-3">{description}</p>
-            {/* <div className="flex items-center text-sm text-gray-100">
-          <span className="flex items-center mr-4">
-            <Star size={16} className="mr-1" />
-            {stars}
-          </span>
-          <span className="flex items-center mr-4">
-            <GitFork size={16} className="mr-1" />
-            {forks}
-          </span>
-          <span className="flex items-center">
-            <Eye size={16} className="mr-1" />
-            {views}
-          </span>
-        </div> */}
+            <p className="mb-1 line-clamp-2 text-sm text-gray-200">
+              {description}
+            </p>
           </div>
-          <div className="bg-gray-700 px-4 py-2 border-t border-gray-200">
-            <div className="flex items-center space-x-4">
+          <div className="border-t border-white/10 bg-gray-800/60 px-4 py-2">
+            <div className="flex flex-wrap items-center gap-4">
               {languages.map((language) => (
                 <div key={language} className="flex items-center">
                   <span
-                    className="w-2 h-2 mt-[1px] rounded-full mr-2"
+                    className="mr-2 mt-[1px] h-2.5 w-2.5 rounded-full"
                     style={{
                       backgroundColor: languageColorMap[language] || "#ccc",
                     }}
