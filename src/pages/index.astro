@@ -4,145 +4,410 @@ import LightLayout from '../layouts/LightLayout.astro';
 ---
 
 <LightLayout title="Hayden White" description="A concise, research-style overview of Hayden White's work and experience.">
-  <div class="relative">
-    <div class="absolute inset-0 z-0 dots-bg pointer-events-none"></div>
-    <main class="relative z-10">
-      <section class="min-h-[20vh] pt-16 pb-6">
-        <div class="mx-auto max-w-5xl px-6">
-          <div class="grid grid-cols-1 gap-8 lg:grid-cols-[220px_1fr]">
-            <div class="lg:pt-2">
-              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">OVERVIEW</h2>
-            </div>
-            <div>
-              <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-[#0b0c10]">Hayden White</h1>
-              <p class="mt-1 text-base text-[#20232a]/80">Software Engineer • 20</p>
-              <div class="mt-4 flex flex-wrap gap-3 text-sm">
-                <a class="text-purple-700 hover:text-purple-800" href="https://github.com/haydenw2005" target="_blank">GitHub</a>
-                <a class="text-purple-700 hover:text-purple-800" href="https://x.com/hxxwhite" target="_blank">Twitter</a>
-                <a class="text-purple-700 hover:text-purple-800" href="mailto:white929@purdue.edu">Email</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  <main class="mx-auto max-w-[640px] px-6 pt-24 pb-16 md:pt-36">
 
-      <section class="py-8">
-        <div class="mx-auto max-w-5xl px-6">
-          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[220px_1fr]">
-            <div>
-              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">NOW</h2>
-            </div>
-            <ul class="list-disc list-inside mt-1 space-y-1.5 text-[#20232a]">
-            <li>
-              Founding Engineer at
-              <a class="ml-1 text-purple-700 hover:text-purple-800 underline-offset-4 hover:underline" href="https://revyl.ai/" target="_blank">Revyl.ai</a>
-              — building web and mobile agents for automated QA.
-            </li>
-              <li>Originally from Seattle; currently in San Francisco • CS @ Purdue University (’27)</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+    <header class="pb-12 mb-12 border-b border-[#ebebeb] fade-up" style="--i:0">
+      <h1 class="text-[1.85rem] md:text-[2.1rem] font-semibold tracking-[-0.03em] text-[#111] leading-[1.15]">Hayden White</h1>
+      <p class="mt-2.5 text-[15px] text-[#888]">Software Engineer • 20</p>
+      <nav class="mt-5 flex items-center gap-5 text-[13px]">
+        <a class="nav-link" href="https://github.com/haydenw2005" target="_blank">GitHub<span class="arrow">&#8599;</span></a>
+        <a class="nav-link" href="https://x.com/hxxwhite" target="_blank">Twitter<span class="arrow">&#8599;</span></a>
+        <a class="nav-link" href="mailto:white929@purdue.edu">Email</a>
+      </nav>
+    </header>
 
-      <section class="py-8">
-        <div class="mx-auto max-w-5xl px-6">
-          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[220px_1fr]">
-            <div>
-              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">PROJECTS</h2>
-            </div>
-            <ul class="list-disc list-inside mt-1 space-y-1.5 text-[#20232a]">
-            <li>
-              <a href="https://github.com/haydenw2005/ArbiTrade" target="_blank" class="text-purple-700 hover:text-purple-800">ArbiTrade</a>
-              — LLM + vector aggregation to surface mispriced Kalshi markets via sentiment and real‑time data.
-            </li>
-            <li>
-              <a href="https://upliftme.framer.website/" target="_blank" class="text-purple-700 hover:text-purple-800">UpliftMe</a>
-              — AI roadmap generator; agentic planning + curated resource suggestions.
-            </li>
-            <li>
-              <a href="https://github.com/haydenw2005/Location-Analyzer" target="_blank" class="text-purple-700 hover:text-purple-800">Location Analyzer</a>
-              — geospatial graphing; pathfinding + clustering on location data.
-            </li>
-            <li>
-              <a href="https://github.com/haydenw2005/Competitive-Programming/tree/main" target="_blank" class="text-purple-700 hover:text-purple-800">Competitive Programming</a>
-              — ongoing problem‑solving archive (Python/algorithms).
-            </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+    <section class="mb-12 fade-up" style="--i:1">
+      <h2 class="section-label">About</h2>
+      <p class="about-text">
+        I'm a founding engineer at <a class="inline-link" href="https://revyl.com" target="_blank">Revyl</a>, where I built our Mac infrastructure, designed the core product, and work on mobile-use agents. Before that, I focused on GTM automation and agentic prospecting tooling. Originally from Seattle, studied CS at Purdue before dropping out in 2025 to work full-time in San Francisco.
+      </p>
+    </section>
 
-      <section class="py-8">
-        <div class="mx-auto max-w-5xl px-6">
-          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[220px_1fr]">
-            <div>
-              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">EXPERIENCE</h2>
-            </div>
-            <ul class="list-disc list-inside mt-1 space-y-1.5 text-[#20232a]">
-            <li><a class="text-purple-700 hover:text-purple-800" href="https://revyl.ai" target="_blank">Revyl.ai</a> — Founding Engineer (Mar 25' - Present): automated QA agents for mobile and web apps.</li>
-            <li><a class="text-purple-700 hover:text-purple-800" href="https://www.oneshot.ai" target="_blank">Oneshot.ai</a> — Full‑Stack SWE (Oct ’23–Jul ’24): outbound prospecting agents for sales teams.</li>
-            <li><a class="text-purple-700 hover:text-purple-800" href="https://floopedu.com" target="_blank">Floop</a> — SWE Intern (Summer ’22): feedback‑driven education platform for students and teachers.</li>
-            <li><a class="text-purple-700 hover:text-purple-800" href="https://www.genui.com" target="_blank">GenUI</a> — Intern (Summer ’21): software consulting for enterprise clients.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+    <section class="mb-12 fade-up" style="--i:2">
+      <h2 class="section-label">Projects</h2>
+      <ul class="entry-list">
+        <li>
+          <a href="https://github.com/haydenw2005/ArbiTrade" target="_blank" class="inline-link">ArbiTrade</a>:
+          LLM + vector db aggregation to surface mispriced Kalshi markets via sentiment and real-time data. Turned $20 -> $5.3k over three months using the tool in 2024 when markets were less efficient
+        </li>
+        <li>
+          <a href="https://upliftme.framer.website/" target="_blank" class="inline-link">UpliftMe</a>:
+          AI roadmap generator; agentic planning + curated resource suggestions. Was an early experiment into tool use and structured output generation. Project is inactive
+        </li>
+        <li>
+          <a href="https://github.com/haydenw2005/Competitive-Programming/tree/main" target="_blank" class="inline-link">Competitive Programming</a>:
+          ongoing problem-solving archive (Python/algorithms).
+        </li>
+      </ul>
+    </section>
 
-      <section class="py-8">
-        <div class="mx-auto max-w-5xl px-6">
-          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[220px_1fr]">
-            <div>
-              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">EDUCATION</h2>
-            </div>
-            <ul class="list-disc list-inside mt-1 space-y-1.5 text-[#20232a]">
-            <li>Purdue University — B.S. Computer Science (’27) • Dean’s List; Data Mine. </li>
-            <li>
-              Systems architecture, computer security, artificial intelligence
-            </li>
-            </ul>
-          </div>
+    <section class="mb-12 fade-up" style="--i:3">
+      <h2 class="section-label">Experience</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-date">Mar 2025 - Present</span>
+          <p class="tl-role"><a class="inline-link" href="https://revyl.ai" target="_blank">Revyl.ai</a>, Founding Engineer</p>
+          <p class="tl-desc">Infrastructure and agents for mobile app development.</p>
         </div>
-      </section>
+        <div class="tl-item">
+          <span class="tl-date">Oct 2023 - Jul 2024</span>
+          <p class="tl-role"><a class="inline-link" href="https://www.oneshot.ai" target="_blank">Oneshot.ai</a>, Full-Stack SWE</p>
+          <p class="tl-desc">Outbound prospecting agents for sales teams.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-date">Summer 2022</span>
+          <p class="tl-role"><a class="inline-link" href="https://floopedu.com" target="_blank">Floop</a>, SWE Intern</p>
+          <p class="tl-desc">Feedback-driven education platform for students and teachers.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-date">Winter 2022</span>
+          <p class="tl-role"><a class="inline-link" href="https://summitatsnoqualmie.com" target="_blank">Summit at Snoqualmie</a>, Ski Instructor</p>
+          <p class="tl-desc">Teaching kids intermediate skiing.</p>
 
-      <section class="py-10 pb-16">
-        <div class="mx-auto max-w-5xl px-6">
-          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[220px_1fr]">
-            <div>
-              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">CURRENT INTERESTS</h2>
-            </div>
-            <ul class="list-disc list-inside mt-1 space-y-1.5 text-[#20232a]">
-              <li>Mobile/Computer-use agents, VLMs, and automation</li>
-              <li>Scalable distributed systems and agent infrastructure</li>
-              <li>Full-stack development and developer UX</li>
-            </ul>
-          </div>
         </div>
-      </section>
+        <div class="tl-item">
+          <span class="tl-date">Summer 2021</span>
+          <p class="tl-role"><a class="inline-link" href="https://www.genui.com" target="_blank">GenUI</a>, Intern</p>
+          <p class="tl-desc">Software consulting for enterprise clients.</p>
+        </div>
+      </div>
+    </section>
 
-      <section class="py-8 pb-16">
-        <div class="mx-auto max-w-5xl px-6">
-          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[220px_1fr]">
-            <div>
-              <h2 class="text-sm font-semibold tracking-widest text-purple-700/80">FAVORITE BOOKS</h2>
-            </div>
-            <ul class="list-disc list-inside mt-1 space-y-1.5 text-[#20232a]">
-              <li>Foundation — Isaac Asimov</li>
-              <li>Exhalation — Ted Chiang</li>
-              <li>Prisoners of Geography — Tim Marshall</li>
-              <li>Snowcrash — Neal Stephenson</li>
-            </ul>
-          </div>
+    <section class="mb-12 fade-up" style="--i:4">
+      <h2 class="section-label">Education</h2>
+      <div class="edu-card">
+        <div class="edu-header">
+          <p class="edu-school">Purdue University</p>
+          <span class="edu-years">2023 - 2025</span>
         </div>
-      </section>
-    </main>
-  </div>
+        <p class="edu-degree">B.S. Computer Science</p>
+        <div class="edu-tags">
+          <span>Dean's List</span>
+          <span>Data Mine</span>
+          <span>Systems Architecture</span>
+          <span>Computer Security</span>
+          <span>Artificial Intelligence</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12 fade-up" style="--i:5">
+      <h2 class="section-label">Current Interests</h2>
+      <div class="interest-tags">
+        <span>Mobile agents</span>
+        <span>Computer-use</span>
+        <span>Device automation</span>
+        <span>Mac infrastructure</span>
+        <span>Systems tooling</span>
+        <span>Product design</span>
+        <span>Developer experience</span>
+        <span>LLMs</span>
+        <span>Structured generation</span>
+        <span>Agent architectures</span>
+      </div>
+    </section>
+
+    <section class="mb-12 fade-up" style="--i:6">
+      <h2 class="section-label">Favorite Books</h2>
+      <div class="book-grid">
+        <div class="book">
+          <img src="/images/books/foundation.jpg" alt="Foundation by Isaac Asimov" loading="lazy" />
+          <p class="book-title">Foundation</p>
+          <p class="book-author">Isaac Asimov</p>
+        </div>
+        <div class="book">
+          <img src="/images/books/exhalation.jpg" alt="Exhalation by Ted Chiang" loading="lazy" />
+          <p class="book-title">Exhalation</p>
+          <p class="book-author">Ted Chiang</p>
+        </div>
+        <div class="book">
+          <img src="/images/books/prisoners-of-geography.jpg" alt="Prisoners of Geography by Tim Marshall" loading="lazy" />
+          <p class="book-title">Prisoners of Geography</p>
+          <p class="book-author">Tim Marshall</p>
+        </div>
+        <div class="book">
+          <img src="/images/books/snow-crash.jpg" alt="Snow Crash by Neal Stephenson" loading="lazy" />
+          <p class="book-title">Snow Crash</p>
+          <p class="book-author">Neal Stephenson</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-8 pt-10 border-t border-[#ebebeb] fade-up" style="--i:7">
+      <p class="text-[12px] text-[#b5b5b5]">Hayden White &middot; 2026</p>
+    </footer>
+
+  </main>
 </LightLayout>
 
 <style>
-  .fill-gray-300 { fill: #e7e9f0; }
-  @media (prefers-color-scheme: dark) {
-    .fill-gray-300 { fill: #d9dbe4; }
+  .section-label {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: #a3a3a3;
+    margin-bottom: 1rem;
+  }
+
+  .about-text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #404040;
+  }
+
+  .nav-link {
+    color: #737373;
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .nav-link:hover {
+    color: #171717;
+    border-bottom-color: #171717;
+  }
+
+  .arrow {
+    display: inline-block;
+    margin-left: 1px;
+    font-size: 10px;
+    opacity: 0;
+    transform: translateY(0.5px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .nav-link:hover .arrow {
+    opacity: 1;
+    transform: translate(1px, -1px);
+  }
+
+  .inline-link {
+    color: #171717;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: #d4d4d4;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  .inline-link:hover {
+    text-decoration-color: #525252;
+  }
+
+  .entry-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    color: #404040;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  .entry-list li {
+    padding: 0.5rem 0 0.5rem 1.125rem;
+    position: relative;
+    border-radius: 6px;
+    transition: background-color 0.15s ease;
+    margin-left: -0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .entry-list li:hover {
+    background-color: #f5f5f4;
+  }
+
+  .entry-list li::before {
+    content: '';
+    position: absolute;
+    left: 0.625rem;
+    top: 1rem;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #d4d4d4;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 10px;
+    bottom: 6px;
+    width: 1px;
+    background: #ebebeb;
+  }
+
+  .tl-item {
+    position: relative;
+    padding-bottom: 24px;
+  }
+
+  .tl-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 7px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d4d4d4;
+  }
+
+  .tl-item:first-child::before {
+    background: #171717;
+  }
+
+  .tl-date {
+    display: block;
+    font-size: 12px;
+    color: #a3a3a3;
+    letter-spacing: 0.01em;
+    margin-bottom: 3px;
+  }
+
+  .tl-role {
+    font-size: 15px;
+    color: #404040;
+    line-height: 1.5;
+  }
+
+  .tl-desc {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.5;
+    margin-top: 2px;
+  }
+
+  .edu-card {
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.15s ease;
+  }
+
+  .edu-card:hover {
+    border-color: #d4d4d4;
+  }
+
+  .edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .edu-school {
+    font-size: 15px;
+    font-weight: 500;
+    color: #171717;
+  }
+
+  .edu-years {
+    font-size: 12px;
+    color: #a3a3a3;
+  }
+
+  .edu-degree {
+    font-size: 14px;
+    color: #737373;
+    margin-top: 2px;
+  }
+
+  .edu-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.875rem;
+  }
+
+  .edu-tags span {
+    font-size: 12px;
+    color: #737373;
+    background: #f5f5f4;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .interest-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .interest-tags span {
+    font-size: 13px;
+    color: #525252;
+    background: #f5f5f4;
+    padding: 5px 14px;
+    border-radius: 100px;
+    border: 1px solid #ebebeb;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .interest-tags span:hover {
+    border-color: #d4d4d4;
+    color: #171717;
+  }
+
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    .book-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  .book img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .book:hover img {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .book-title {
+    margin-top: 0.625rem;
+    font-size: 13px;
+    font-weight: 500;
+    color: #171717;
+    line-height: 1.3;
+  }
+
+  .book-author {
+    margin-top: 0.125rem;
+    font-size: 12px;
+    color: #a3a3a3;
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeUp 0.5s ease-out forwards;
+    animation-delay: calc(var(--i, 0) * 60ms);
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
-
-
