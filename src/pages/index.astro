@@ -3,411 +3,915 @@ import '@/styles/global.css';
 import LightLayout from '../layouts/LightLayout.astro';
 ---
 
-<LightLayout title="Hayden White" description="A concise, research-style overview of Hayden White's work and experience.">
-  <main class="mx-auto max-w-[640px] px-6 pt-24 pb-16 md:pt-36">
+<LightLayout title="Me" metaTitle="Hayden" description="sci-fi, mobile agents, etc." image="/images/space-banner.jpeg">
+  <Fragment slot="head">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
 
-    <header class="pb-12 mb-12 border-b border-[#ebebeb] fade-up" style="--i:0">
-      <h1 class="text-[1.85rem] md:text-[2.1rem] font-semibold tracking-[-0.03em] text-[#111] leading-[1.15]">Hayden White</h1>
-      <p class="mt-2.5 text-[15px] text-[#888]">Software Engineer • 20</p>
-      <nav class="mt-5 flex items-center gap-5 text-[13px]">
-        <a class="nav-link" href="https://github.com/haydenw2005" target="_blank">GitHub<span class="arrow">&#8599;</span></a>
-        <a class="nav-link" href="https://x.com/hxxwhite" target="_blank">Twitter<span class="arrow">&#8599;</span></a>
-        <a class="nav-link" href="mailto:white929@purdue.edu">Email</a>
-      </nav>
-    </header>
+  <main class="resume-page">
+    <div class="hero-frame">
+      <img class="hero-banner" src="/images/space-banner.jpeg" alt="Painted orbital landscape banner" />
+    </div>
+    <div class="image-peel">
+      <img
+        class="collage-image collage-main"
+        src="/images/space-banner.jpeg"
+        alt="Painted orbital landscape banner"
+      />
+      <img
+        class="collage-image collage-hari"
+        src="/images/print-hari.jpg"
+        alt="Illustration of Hari Seldon in a futuristic city"
+      />
+      <img
+        class="collage-image collage-cylinder"
+        src="/images/space-collage-2.jpg"
+        alt="Illustrated O'Neill cylinder habitat"
+      />
+      <figure class="collage-quote">
+        <blockquote>Not only the world as it is, but the world as it will be.</blockquote>
+        <figcaption>Isaac Asimov</figcaption>
+      </figure>
+    </div>
 
-    <section class="mb-12 fade-up" style="--i:1">
-      <h2 class="section-label">About</h2>
-      <p class="about-text">
-        I'm a founding engineer at <a class="inline-link" href="https://revyl.com" target="_blank">Revyl</a>, where I built our Mac infrastructure, designed the core product, and work on mobile-use agents. Before that, I focused on GTM automation and agentic prospecting tooling. Originally from Seattle, studied CS at Purdue before dropping out in 2025 to work full-time in San Francisco.
-      </p>
-    </section>
+    <div class="resume-shell">
+      <div class="left-column">
+        <header class="intro">
+          <div class="type-lockup">
+            <h1><span>Hayden</span> <span>White</span></h1>
+          </div>
+          <nav aria-label="Contact links">
+            <a href="mailto:hayden@revyl.ai" aria-label="Email Hayden">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16v12H4z" />
+                <path d="m4 7 8 6 8-6" />
+              </svg>
+            </a>
+            <a href="https://github.com/haydenw2005" target="_blank" aria-label="Hayden on GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.75a9.25 9.25 0 0 0-2.93 18.03c.46.08.63-.2.63-.44v-1.63c-2.57.56-3.11-1.1-3.11-1.1-.42-1.06-1.03-1.34-1.03-1.34-.84-.57.06-.56.06-.56.93.07 1.42.96 1.42.96.82 1.41 2.16 1 2.69.77.08-.59.32-1 .58-1.23-2.05-.23-4.2-1.02-4.2-4.56 0-1.01.36-1.83.95-2.47-.1-.23-.41-1.17.09-2.44 0 0 .78-.25 2.55.94a8.8 8.8 0 0 1 4.64 0c1.77-1.19 2.55-.94 2.55-.94.5 1.27.19 2.21.09 2.44.59.64.95 1.46.95 2.47 0 3.55-2.16 4.32-4.22 4.55.33.29.63.86.63 1.73v2.56c0 .25.17.53.64.44A9.25 9.25 0 0 0 12 2.75Z" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/hayden-s-white/" target="_blank" aria-label="Hayden on LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.94 8.93V19H3.7V8.93h3.24ZM5.33 4a1.88 1.88 0 1 1 0 3.76 1.88 1.88 0 0 1 0-3.76Zm7.01 4.93.1 1.44c.69-1.07 1.72-1.69 3.14-1.69 2.28 0 4.02 1.52 4.02 4.78V19h-3.25v-5.07c0-1.59-.58-2.42-1.77-2.42-1.08 0-1.76.72-1.99 1.42-.08.25-.1.61-.1.96V19H9.24V8.93h3.1Z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/haydensw_/" target="_blank" aria-label="Hayden on Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="4" width="16" height="16" rx="4.5" />
+                <circle cx="12" cy="12" r="3.6" />
+                <circle cx="16.8" cy="7.2" r="0.8" />
+              </svg>
+            </a>
+            <a href="https://x.com/hxxwhite" target="_blank" aria-label="Hayden on X">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h4.5l3.9 5.25L17.15 4H20l-6.25 6.9L20.6 20h-4.5l-4.3-5.75L6.6 20H3.75l6.7-7.4L4 4Zm3.45 1.55 9.45 12.9h1.25L8.7 5.55H7.45Z" />
+              </svg>
+            </a>
+            <button class="orbit-dial" type="button" aria-label="Reveal banner image">
+              <img src="/favicon.png" alt="" />
+            </button>
+          </nav>
+          <p class="bio">
+            Currently a founding engineer at <a href="https://revyl.com/" target="_blank"><strong>Revyl</strong></a>, I
+            built our Mac infrastructure, designed core product surfaces, and architected our mobile-use agent. Before
+            that, I built GTM prospecting agents and agentic trading terminals for prediction markets. I studied
+            systems, AI, and math at Purdue before dropping out.
+            <br /><br />
+            I'm obsessed with sci-fi, optimization, and <span class="bio-highlight">leverage</span>.
+          </p>
+        </header>
 
-    <section class="mb-12 fade-up" style="--i:2">
-      <h2 class="section-label">Projects</h2>
-      <ul class="entry-list">
-        <li>
-          <a href="https://github.com/haydenw2005/ArbiTrade" target="_blank" class="inline-link">ArbiTrade</a>:
-          LLM + vector db aggregation to surface mispriced Kalshi markets via sentiment and real-time data. Turned $20 -> $5.3k over three months using the tool in 2024 when markets were less efficient
-        </li>
-        <li>
-          <a href="https://upliftme.framer.website/" target="_blank" class="inline-link">UpliftMe</a>:
-          AI roadmap generator; agentic planning + curated resource suggestions. Was an early experiment into tool use and structured output generation. Project is inactive
-        </li>
-        <li>
-          <a href="https://github.com/haydenw2005/Competitive-Programming/tree/main" target="_blank" class="inline-link">Competitive Programming</a>:
-          ongoing problem-solving archive (Python/algorithms).
-        </li>
-      </ul>
-    </section>
-
-    <section class="mb-12 fade-up" style="--i:3">
-      <h2 class="section-label">Experience</h2>
-      <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-date">Mar 2025 - Present</span>
-          <p class="tl-role"><a class="inline-link" href="https://revyl.ai" target="_blank">Revyl.ai</a>, Founding Engineer</p>
-          <p class="tl-desc">Infrastructure and agents for mobile app development.</p>
-        </div>
-        <div class="tl-item">
-          <span class="tl-date">Oct 2023 - Jul 2024</span>
-          <p class="tl-role"><a class="inline-link" href="https://www.oneshot.ai" target="_blank">Oneshot.ai</a>, Full-Stack SWE</p>
-          <p class="tl-desc">Outbound prospecting agents for sales teams.</p>
-        </div>
-        <div class="tl-item">
-          <span class="tl-date">Summer 2022</span>
-          <p class="tl-role"><a class="inline-link" href="https://floopedu.com" target="_blank">Floop</a>, SWE Intern</p>
-          <p class="tl-desc">Feedback-driven education platform for students and teachers.</p>
-        </div>
-        <div class="tl-item">
-          <span class="tl-date">Winter 2022</span>
-          <p class="tl-role"><a class="inline-link" href="https://summitatsnoqualmie.com" target="_blank">Summit at Snoqualmie</a>, Ski Instructor</p>
-          <p class="tl-desc">Teaching kids intermediate skiing.</p>
-
-        </div>
-        <div class="tl-item">
-          <span class="tl-date">Summer 2021</span>
-          <p class="tl-role"><a class="inline-link" href="https://www.genui.com" target="_blank">GenUI</a>, Intern</p>
-          <p class="tl-desc">Software consulting for enterprise clients.</p>
-        </div>
       </div>
-    </section>
 
-    <section class="mb-12 fade-up" style="--i:4">
-      <h2 class="section-label">Education</h2>
-      <div class="edu-card">
-        <div class="edu-header">
-          <p class="edu-school">Purdue University</p>
-          <span class="edu-years">2023 - 2025</span>
+      <!-- <aside class="books" aria-label="Books Hayden loves">
+        <h2>Books I Love</h2>
+        <div class="book-list">
+          <article class="book">
+            <img src="/images/books/foundation.jpg" alt="Foundation by Isaac Asimov" loading="lazy" />
+            <div>
+              <strong>Foundation</strong>
+              <p>Isaac Asimov</p>
+            </div>
+          </article>
+          <article class="book">
+            <img src="/images/books/exhalation.jpg" alt="Exhalation by Ted Chiang" loading="lazy" />
+            <div>
+              <strong>Exhalation</strong>
+              <p>Ted Chiang</p>
+            </div>
+          </article>
+          <article class="book">
+            <img src="/images/books/prisoners-of-geography.jpg" alt="Prisoners of Geography by Tim Marshall" loading="lazy" />
+            <div>
+              <strong>Prisoners of Geography</strong>
+              <p>Tim Marshall</p>
+            </div>
+          </article>
+          <article class="book">
+            <img src="/images/books/snow-crash.jpg" alt="Snow Crash by Neal Stephenson" loading="lazy" />
+            <div>
+              <strong>Snow Crash</strong>
+              <p>Neal Stephenson</p>
+            </div>
+          </article>
         </div>
-        <p class="edu-degree">B.S. Computer Science</p>
-        <div class="edu-tags">
-          <span>Dean's List</span>
-          <span>Data Mine</span>
-          <span>Systems Architecture</span>
-          <span>Computer Security</span>
-          <span>Artificial Intelligence</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="mb-12 fade-up" style="--i:5">
-      <h2 class="section-label">Current Interests</h2>
-      <div class="interest-tags">
-        <span>Mobile agents</span>
-        <span>Computer-use</span>
-        <span>Device automation</span>
-        <span>Mac infrastructure</span>
-        <span>Systems tooling</span>
-        <span>Product design</span>
-        <span>Developer experience</span>
-        <span>LLMs</span>
-        <span>Structured generation</span>
-        <span>Agent architectures</span>
-      </div>
-    </section>
-
-    <section class="mb-12 fade-up" style="--i:6">
-      <h2 class="section-label">Favorite Books</h2>
-      <div class="book-grid">
-        <div class="book">
-          <img src="/images/books/foundation.jpg" alt="Foundation by Isaac Asimov" loading="lazy" />
-          <p class="book-title">Foundation</p>
-          <p class="book-author">Isaac Asimov</p>
-        </div>
-        <div class="book">
-          <img src="/images/books/exhalation.jpg" alt="Exhalation by Ted Chiang" loading="lazy" />
-          <p class="book-title">Exhalation</p>
-          <p class="book-author">Ted Chiang</p>
-        </div>
-        <div class="book">
-          <img src="/images/books/prisoners-of-geography.jpg" alt="Prisoners of Geography by Tim Marshall" loading="lazy" />
-          <p class="book-title">Prisoners of Geography</p>
-          <p class="book-author">Tim Marshall</p>
-        </div>
-        <div class="book">
-          <img src="/images/books/snow-crash.jpg" alt="Snow Crash by Neal Stephenson" loading="lazy" />
-          <p class="book-title">Snow Crash</p>
-          <p class="book-author">Neal Stephenson</p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="mt-8 pt-10 border-t border-[#ebebeb] fade-up" style="--i:7">
-      <p class="text-[12px] text-[#b5b5b5]">Hayden White &middot; 2026</p>
-    </footer>
+      </aside> -->
+    </div>
 
   </main>
+
+  <script is:inline>
+    const orbitDial = document.querySelector('.orbit-dial');
+    let dialBoost = 0;
+    let dialDecayTimer;
+
+    orbitDial?.addEventListener('click', () => {
+      dialBoost = Math.min(dialBoost + 0.11, 0.64);
+      orbitDial.style.setProperty('--dial-click-scale', String(1 + dialBoost));
+
+      window.clearTimeout(dialDecayTimer);
+      dialDecayTimer = window.setTimeout(() => {
+        dialBoost = 0;
+        orbitDial.style.setProperty('--dial-click-scale', '1');
+      }, 150);
+    });
+  </script>
 </LightLayout>
 
 <style>
-  .section-label {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    color: #a3a3a3;
-    margin-bottom: 1rem;
+  :global(.light-page) {
+    background:
+      radial-gradient(rgba(31, 31, 29, 0.035) 0.7px, transparent 0.7px) 0 0 / 4px 4px,
+      radial-gradient(rgba(31, 31, 29, 0.025) 0.6px, transparent 0.6px) 2px 2px / 5px 5px,
+      #fbfaf7;
   }
 
-  .about-text {
-    font-size: 15px;
-    line-height: 1.75;
-    color: #404040;
+  :global(html),
+  :global(body) {
+    overflow-x: hidden;
+   }
+
+  .resume-page {
+    --content-inset: clamp(52px, 6vw, 92px);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #1f1f1d;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
-  .nav-link {
-    color: #737373;
-    text-decoration: none;
-    padding-bottom: 1px;
-    border-bottom: 1px solid transparent;
-    transition: color 0.15s ease, border-color 0.15s ease;
-  }
-  .nav-link:hover {
-    color: #171717;
-    border-bottom-color: #171717;
-  }
-
-  .arrow {
-    display: inline-block;
-    margin-left: 1px;
-    font-size: 10px;
-    opacity: 0;
-    transform: translateY(0.5px);
-    transition: opacity 0.15s ease, transform 0.15s ease;
-  }
-  .nav-link:hover .arrow {
-    opacity: 1;
-    transform: translate(1px, -1px);
-  }
-
-  .inline-link {
-    color: #171717;
-    font-weight: 500;
-    text-decoration: underline;
-    text-decoration-color: #d4d4d4;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
-    transition: text-decoration-color 0.15s ease;
-  }
-  .inline-link:hover {
-    text-decoration-color: #525252;
-  }
-
-  .entry-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    color: #404040;
-    line-height: 1.7;
-    font-size: 15px;
-  }
-
-  .entry-list li {
-    padding: 0.5rem 0 0.5rem 1.125rem;
+  .hero-frame {
     position: relative;
-    border-radius: 6px;
-    transition: background-color 0.15s ease;
-    margin-left: -0.5rem;
-    padding-right: 0.5rem;
+    width: 100%;
+    height: 40vh;
+    min-height: 280px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(31, 31, 29, 0.08);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 14px 26px rgba(68, 58, 44, 0.07);
   }
 
-  .entry-list li:hover {
-    background-color: #f5f5f4;
-  }
-
-  .entry-list li::before {
+  .hero-frame::after {
     content: '';
     position: absolute;
-    left: 0.625rem;
-    top: 1rem;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: #d4d4d4;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 46px;
+    background:
+      linear-gradient(to bottom, rgba(251, 250, 247, 0) 0%, rgba(251, 250, 247, 0.5) 62%, #fbfaf7 100%),
+      radial-gradient(ellipse at 38% 100%, rgba(251, 250, 247, 0.64), rgba(251, 250, 247, 0) 62%);
+    pointer-events: none;
   }
 
-  .timeline {
-    position: relative;
-    padding-left: 24px;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 3px;
-    top: 10px;
-    bottom: 6px;
-    width: 1px;
-    background: #ebebeb;
-  }
-
-  .tl-item {
-    position: relative;
-    padding-bottom: 24px;
-  }
-
-  .tl-item:last-child {
-    padding-bottom: 0;
-  }
-
-  .tl-item::before {
-    content: '';
-    position: absolute;
-    left: -24px;
-    top: 7px;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #d4d4d4;
-  }
-
-  .tl-item:first-child::before {
-    background: #171717;
-  }
-
-  .tl-date {
+  .hero-banner {
     display: block;
-    font-size: 12px;
-    color: #a3a3a3;
-    letter-spacing: 0.01em;
-    margin-bottom: 3px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 64%;
   }
 
-  .tl-role {
-    font-size: 15px;
-    color: #404040;
+  .image-peel {
+    display: none;
+  }
+
+  .collage-image,
+  .collage-quote {
+    display: none;
+  }
+
+  .resume-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1240px);
+    align-items: start;
+    width: min(1240px, calc(100vw - var(--content-inset) - 48px));
+    min-height: 60vh;
+    margin: 0 auto 0 var(--content-inset);
+    padding: var(--content-inset) 0 34px;
+  }
+
+  .left-column {
+    grid-column: 1;
+  }
+
+  .intro {
+    display: grid;
+    grid-template-columns: minmax(0, 800px);
+    row-gap: 26px;
+    max-width: 1240px;
+  }
+
+  .type-lockup {
+    width: min(800px, 100%);
+  }
+
+  h1 {
+    margin: 0;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: clamp(4rem, 6.05vw, 5.72rem);
+    line-height: 0.82;
+    font-weight: 650;
+    letter-spacing: -0.065em;
+  }
+
+  h1 span {
+    display: inline;
+  }
+
+  nav {
+    --origin: 36px;
+    --button: 48px;
+    --ring-1: 91px;
+    --ring-2: 189px;
+    --ring-3: 352px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    width: min(42vw, 448px);
+    height: min(42vw, 448px);
+    background:
+      radial-gradient(
+        circle at calc(100% - var(--origin)) calc(100% - var(--origin)),
+        transparent 0 calc(var(--ring-1) - 1px),
+        rgba(31, 31, 29, 0.24) calc(var(--ring-1) - 1px) var(--ring-1),
+        transparent var(--ring-1) calc(var(--ring-2) - 1px),
+        rgba(31, 31, 29, 0.22) calc(var(--ring-2) - 1px) var(--ring-2),
+        transparent var(--ring-2) calc(var(--ring-3) - 1px),
+        rgba(31, 31, 29, 0.2) calc(var(--ring-3) - 1px) var(--ring-3),
+        transparent var(--ring-3)
+      );
+  }
+
+  nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(
+        circle at calc(100% - var(--origin)) calc(100% - var(--origin)),
+        transparent 0 calc(var(--ring-1) - 1px),
+        rgba(157, 111, 19, 0.36) calc(var(--ring-1) - 1px) var(--ring-1),
+        transparent var(--ring-1) calc(var(--ring-2) - 1px),
+        rgba(157, 111, 19, 0.28) calc(var(--ring-2) - 1px) var(--ring-2),
+        transparent var(--ring-2) calc(var(--ring-3) - 1px),
+        rgba(157, 111, 19, 0.22) calc(var(--ring-3) - 1px) var(--ring-3),
+        transparent var(--ring-3)
+      );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease;
+  }
+
+  .orbit-dial {
+    --dial-img-scale: 0.82;
+    --dial-click-scale: 1;
+    position: absolute;
+    right: calc(var(--origin) - 18px);
+    bottom: calc(var(--origin) - 18px);
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    padding: 4px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(251, 250, 247, 0.9);
+    box-shadow: 0 0 0 8px rgba(31, 31, 29, 0.045), inset 0 0 0 1px rgba(31, 31, 29, 0.18);
+    cursor: pointer;
+    overflow: hidden;
+    transition:
+      background-color 180ms ease,
+      box-shadow 180ms ease,
+      transform 145ms cubic-bezier(0.2, 0.9, 0.2, 1.28),
+      width 180ms ease,
+      height 180ms ease,
+      right 180ms ease,
+      bottom 180ms ease;
+  }
+
+  .orbit-dial img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(var(--dial-img-scale)) rotate(0deg);
+    transition: filter 140ms ease, transform 210ms cubic-bezier(0.2, 0.9, 0.2, 1.18);
+  }
+
+  nav:has(a:is(:hover, :focus-visible)) .orbit-dial,
+  .orbit-dial:hover,
+  .orbit-dial:focus-visible {
+    --dial-img-scale: 0.76;
+    right: calc(var(--origin) - 22px);
+    bottom: calc(var(--origin) - 22px);
+    width: 44px;
+    height: 44px;
+    background: rgba(251, 250, 247, 0.96);
+    box-shadow: 0 0 0 9px rgba(31, 31, 29, 0.05), 0 0 0 21px rgba(157, 111, 19, 0.1);
+    transform: scale(calc(var(--dial-click-scale) * 1.04));
+    outline: none;
+  }
+
+  .orbit-dial:active {
+    transform: scale(calc(var(--dial-click-scale) * 1.11));
+  }
+
+  nav:has(a:is(:hover, :focus-visible)) .orbit-dial img,
+  .orbit-dial:hover img,
+  .orbit-dial:focus-visible img {
+    filter: contrast(1.05);
+    transform: scale(var(--dial-img-scale)) rotate(180deg);
+  }
+
+  nav:has(a:is(:hover, :focus-visible))::before {
+    opacity: 1;
+  }
+
+  nav:has(.orbit-dial:is(:hover, :focus-visible)) {
+    background: transparent;
+  }
+
+  nav:has(.orbit-dial:is(:hover, :focus-visible))::before,
+  nav:has(.orbit-dial:is(:hover, :focus-visible)) a {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .bio {
+    grid-column: 1;
+    max-width: 710px;
+    margin-top: 0;
+    color: #35332f;
+    font-size: clamp(1rem, 1.15vw, 1.12rem);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+
+  .bio-highlight {
+    color: #9d6f13;
+    font-weight: 700;
+  }
+
+  .books {
+    grid-column: 2;
+  }
+
+  a {
+    color: #111;
+    text-decoration: underline;
+    text-decoration-color: rgba(31, 31, 29, 0.28);
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.18em;
+    transition: text-decoration-color 150ms ease, color 150ms ease;
+  }
+
+  a:hover {
+    color: #000;
+    text-decoration-color: #9d6f13;
+  }
+
+  nav a {
+    --orbit-x: 0px;
+    --orbit-y: 0px;
+    --hover-x: 0px;
+    --hover-y: 0px;
+    position: absolute;
+    z-index: 1;
+    right: calc(var(--origin) - (var(--button) / 2));
+    bottom: calc(var(--origin) - (var(--button) / 2));
+    display: inline-grid;
+    place-items: center;
+    width: var(--button);
+    height: var(--button);
+    border: 1px solid rgba(31, 31, 29, 0.24);
+    border-radius: 999px;
+    background: rgba(251, 250, 247, 0.84);
+    backdrop-filter: blur(8px);
+    color: #2a2925;
+    text-decoration: none;
+    overflow: hidden;
+    transform: translate(var(--orbit-x), var(--orbit-y));
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease,
+      box-shadow 150ms ease,
+      transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  nav a::before {
+    content: '';
+    position: absolute;
+    inset: -7px;
+    border-radius: 999px;
+    border: 1px solid rgba(190, 148, 70, 0);
+    transform: scale(0.72);
+    transition: border-color 150ms ease, transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 999px;
+    background:
+      radial-gradient(ellipse at 34% 28%, rgba(255, 255, 255, 0.95) 0 18%, transparent 42%),
+      linear-gradient(118deg, transparent 0 36%, rgba(255, 255, 255, 0.5) 44%, rgba(157, 111, 19, 0.16) 52%, transparent 66%),
+      radial-gradient(circle at 50% 50%, rgba(249, 245, 235, 0.92), rgba(232, 219, 189, 0.62) 72%);
+    filter: blur(0.15px);
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+    transition:
+      opacity 180ms ease,
+      transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  nav a:nth-child(1) {
+    --orbit-x: -109px;
+    --orbit-y: -335px;
+  }
+
+  nav a:nth-child(2) {
+    --orbit-x: -89px;
+    --orbit-y: -167px;
+  }
+
+  nav a:nth-child(3) {
+    --orbit-x: -66px;
+    --orbit-y: -63px;
+  }
+
+  nav a:nth-child(4) {
+    --orbit-x: -178px;
+    --orbit-y: -65px;
+  }
+
+  nav a:nth-child(5) {
+    --orbit-x: -257px;
+    --orbit-y: -241px;
+  }
+
+  nav a:hover,
+  nav a:focus-visible {
+    background: rgba(249, 245, 235, 0.92);
+    border-color: rgba(157, 111, 19, 0.55);
+    box-shadow: 0 10px 22px rgba(31, 31, 29, 0.14), 0 0 0 8px rgba(157, 111, 19, 0.12);
+    color: #1f1f1d;
+    outline: none;
+    animation: social-node-pulse 680ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translate(var(--orbit-x), var(--orbit-y)) scale(1.08);
+  }
+
+  nav a:hover::after,
+  nav a:focus-visible::after {
+    opacity: 1;
+    transform: rotate(18deg) scale(1);
+  }
+
+  nav a:hover svg,
+  nav a:focus-visible svg {
+    animation: social-icon-kick 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  nav a:hover::before,
+  nav a:focus-visible::before {
+    border-color: rgba(157, 111, 19, 0.45);
+    transform: scale(1);
+  }
+
+  @keyframes social-node-pulse {
+    0% {
+      box-shadow: 0 10px 22px rgba(31, 31, 29, 0.1), 0 0 0 0 rgba(157, 111, 19, 0);
+    }
+    55% {
+      box-shadow: 0 12px 24px rgba(31, 31, 29, 0.15), 0 0 0 10px rgba(157, 111, 19, 0.12);
+    }
+    100% {
+      box-shadow: 0 10px 22px rgba(31, 31, 29, 0.14), 0 0 0 7px rgba(157, 111, 19, 0.1);
+    }
+  }
+
+  @keyframes social-icon-kick {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+    45% {
+      transform: scale(1.14) rotate(-5deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+
+  nav svg {
+    position: relative;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  nav a:nth-child(2) svg,
+  nav a:nth-child(3) svg,
+  nav a:nth-child(5) svg {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  @media (min-width: 821px) {
+    .image-peel {
+      position: fixed;
+      inset: 0;
+      z-index: 15;
+      display: grid;
+      grid-template-columns: minmax(260px, 0.34fr) minmax(0, 0.66fr);
+      grid-template-rows: minmax(0, 0.54fr) minmax(0, 0.46fr);
+      grid-template-areas:
+        'hari main'
+        'hari cylinder';
+      gap: clamp(8px, 0.9vw, 14px);
+      padding: clamp(8px, 0.9vw, 14px);
+      background: #fbfaf7;
+      clip-path: circle(0 at calc(100% - 36px) calc(100% - 36px));
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(1.018);
+      transform-origin: 100% 100%;
+      will-change: clip-path, opacity, transform;
+      transition:
+        clip-path 980ms cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 980ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 980ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .collage-image,
+    .collage-quote {
+      display: block;
+    }
+
+    .collage-image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-width: 0;
+      min-height: 0;
+      border: 0;
+      background: rgba(251, 250, 247, 0.12);
+      box-shadow: none;
+      object-fit: cover;
+      opacity: 0;
+      filter: saturate(0.92) contrast(1.04);
+      transition:
+        opacity 640ms ease,
+        transform 1100ms cubic-bezier(0.16, 1, 0.3, 1),
+        filter 900ms ease;
+    }
+
+    .collage-main {
+      grid-area: main;
+      object-position: center 62%;
+      transform: translate(34px, -26px) scale(0.97);
+      transition-delay: 80ms;
+    }
+
+    .collage-hari {
+      grid-area: hari;
+      object-position: center top;
+      transform: translate(-28px, 24px) scale(0.97);
+      transition-delay: 30ms;
+    }
+
+    .collage-cylinder {
+      grid-area: cylinder;
+      object-position: center center;
+      transform: translate(34px, 28px) scale(0.97);
+      transition-delay: 150ms;
+    }
+
+    .collage-quote {
+      position: absolute;
+      top: clamp(34px, 6vh, 78px);
+      left: clamp(32px, 4vw, 72px);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      max-width: min(27vw, 430px);
+      margin: 0;
+      padding: clamp(14px, 1.5vw, 22px) clamp(16px, 1.7vw, 24px);
+      border: 0;
+      background:
+        linear-gradient(135deg, rgba(20, 19, 17, 0.58), rgba(20, 19, 17, 0.24));
+      backdrop-filter: blur(2px);
+      color: #fbfaf7;
+      opacity: 0;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.72), 0 8px 38px rgba(0, 0, 0, 0.54);
+      transform: translate(0, -18px);
+      transition:
+        opacity 520ms ease 120ms,
+        transform 860ms cubic-bezier(0.16, 1, 0.3, 1) 120ms;
+    }
+
+    .collage-quote blockquote {
+      margin: 0;
+      color: inherit;
+      font-size: clamp(1.3rem, 1.9vw, 2.25rem);
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: -0.045em;
+    }
+
+    .collage-quote figcaption {
+      margin-top: 12px;
+      color: rgba(251, 250, 247, 0.72);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .resume-page:has(.orbit-dial:is(:hover, :focus-visible)) .image-peel {
+      clip-path: circle(150vmax at calc(100% - 36px) calc(100% - 36px));
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .resume-page:has(.orbit-dial:is(:hover, :focus-visible)) .collage-image,
+    .resume-page:has(.orbit-dial:is(:hover, :focus-visible)) .collage-quote {
+      opacity: 1;
+    }
+
+    .resume-page:has(.orbit-dial:is(:hover, :focus-visible)) .collage-main {
+      transform: translate(0, 0) scale(1);
+    }
+
+    .resume-page:has(.orbit-dial:is(:hover, :focus-visible)) .collage-cylinder {
+      transform: translate(0, 0) scale(1);
+    }
+
+    .resume-page:has(.orbit-dial:is(:hover, :focus-visible)) .collage-hari {
+      transform: translate(0, 0) scale(1);
+    }
+
+    .resume-page:has(.orbit-dial:is(:hover, :focus-visible)) .collage-quote {
+      transform: translate(0, 0);
+    }
+  }
+
+  section {
+    padding: 11px 0;
+    border-bottom: 1px solid #e5e1d8;
+  }
+
+  h2 {
+    margin: 0 0 8px;
+    color: #777268;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+    color: #35332f;
+    font-size: 1rem;
     line-height: 1.5;
   }
 
-  .tl-desc {
-    font-size: 14px;
-    color: #888;
-    line-height: 1.5;
-    margin-top: 2px;
+  .entry + .entry {
+    margin-top: 8px;
   }
 
-  .edu-card {
-    border: 1px solid #ebebeb;
-    border-radius: 8px;
-    padding: 1.25rem 1.5rem;
-    transition: border-color 0.15s ease;
+  .entry > a,
+  strong {
+    font-size: 1rem;
+    font-weight: 600;
   }
 
-  .edu-card:hover {
-    border-color: #d4d4d4;
+  .entry p,
+  .split-row p,
+  .tag-list,
+  .compact-line {
+    margin-top: 4px;
+    color: #56524b;
   }
 
-  .edu-header {
+  .split-row {
     display: flex;
     justify-content: space-between;
+    gap: 24px;
     align-items: baseline;
   }
 
-  .edu-school {
-    font-size: 15px;
-    font-weight: 500;
-    color: #171717;
+  .split-row span {
+    flex: 0 0 auto;
+    color: #777268;
+    font-size: 0.92rem;
   }
 
-  .edu-years {
-    font-size: 12px;
-    color: #a3a3a3;
-  }
-
-  .edu-degree {
-    font-size: 14px;
-    color: #737373;
-    margin-top: 2px;
-  }
-
-  .edu-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 0.875rem;
-  }
-
-  .edu-tags span {
-    font-size: 12px;
-    color: #737373;
-    background: #f5f5f4;
-    padding: 3px 10px;
-    border-radius: 100px;
-  }
-
-  .interest-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .interest-tags span {
-    font-size: 13px;
-    color: #525252;
-    background: #f5f5f4;
-    padding: 5px 14px;
-    border-radius: 100px;
-    border: 1px solid #ebebeb;
-    transition: border-color 0.15s ease, color 0.15s ease;
-  }
-
-  .interest-tags span:hover {
-    border-color: #d4d4d4;
-    color: #171717;
-  }
-
-  .book-grid {
+  .book-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
+    gap: 12px;
   }
 
-  @media (max-width: 480px) {
-    .book-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
+  .book {
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
   }
 
   .book img {
-    width: 100%;
+    width: 54px;
     aspect-ratio: 2 / 3;
     object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(18, 17, 15, 0.16);
   }
 
-  .book:hover img {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  .book strong {
+    display: block;
+    line-height: 1.25;
   }
 
-  .book-title {
-    margin-top: 0.625rem;
-    font-size: 13px;
-    font-weight: 500;
-    color: #171717;
-    line-height: 1.3;
+  .book p {
+    margin-top: 2px;
+    color: #777268;
+    font-size: 0.9rem;
+    line-height: 1.35;
   }
 
-  .book-author {
-    margin-top: 0.125rem;
-    font-size: 12px;
-    color: #a3a3a3;
-  }
-
-  .fade-up {
-    opacity: 0;
-    transform: translateY(8px);
-    animation: fadeUp 0.5s ease-out forwards;
-    animation-delay: calc(var(--i, 0) * 60ms);
-  }
-
-  @keyframes fadeUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  @media (max-width: 820px) {
+    .resume-shell {
+      grid-template-columns: 1fr;
+      align-items: start;
+      align-content: center;
+      justify-items: stretch;
+      min-height: 65svh;
+      margin-right: auto;
+      margin-left: auto;
+      gap: 0;
+      text-align: left;
     }
+
+    .books {
+      grid-column: 1;
+      grid-row: auto;
+      padding-top: 0;
+    }
+
+    .intro {
+      grid-template-columns: 1fr;
+      justify-items: stretch;
+      text-align: left;
+    }
+
+    .bio {
+      grid-row: 2;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    nav {
+      position: static;
+      grid-row: 3;
+      justify-self: start;
+      left: 50%;
+      right: auto;
+      display: flex;
+      justify-content: flex-start;
+      width: auto;
+      height: auto;
+      gap: 10px;
+      margin-top: 16px;
+      margin-bottom: 10px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      background-image: none;
+      backdrop-filter: none;
+      box-shadow: none;
+      transform: none;
+    }
+
+    nav::before,
+    nav::after {
+      display: none;
+    }
+
+    .orbit-dial {
+      display: none;
+    }
+
+    nav a,
+    nav a:nth-child(n) {
+      position: static;
+      width: 40px;
+      height: 40px;
+      transform: none;
+    }
+
+    nav a::before {
+      display: none;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      background: rgba(251, 250, 247, 0.84);
+      border-color: rgba(31, 31, 29, 0.22);
+      box-shadow: 0 6px 14px rgba(31, 31, 29, 0.1);
+      color: #2a2925;
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hero-banner {
+      object-position: center 64%;
+    }
+
+    .hero-frame {
+      height: 35svh;
+      min-height: 250px;
+      max-height: 340px;
+    }
+
+    .resume-shell {
+      width: calc(100% - 28px);
+      margin-right: auto;
+      margin-left: auto;
+      padding-top: 0;
+      padding-bottom: 24px;
+    }
+
+    .intro,
+    .type-lockup,
+    .bio {
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .intro {
+      row-gap: 20px;
+    }
+
+    h1 {
+      max-width: 100%;
+      font-size: clamp(2.2rem, 10.2vw, 2.8rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      white-space: nowrap;
+      overflow-wrap: normal;
+    }
+
+    h1 span {
+      display: inline;
+    }
+
+    .bio {
+      font-size: 0.88rem;
+      line-height: 1.46;
+      overflow-wrap: break-word;
+    }
+
+    .split-row {
+      display: block;
+    }
+
+    .split-row span {
+      display: block;
+      margin-top: 6px;
+    }
+
   }
 </style>
