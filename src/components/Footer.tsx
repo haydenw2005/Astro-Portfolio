@@ -14,14 +14,6 @@ export default function Footer() {
           >
             GitHub
           </a>
-          <a
-            href="https://www.linkedin.com/in/hayden-s-white"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white"
-          >
-            LinkedIn
-          </a>
           <a href="mailto:white929@purdue.edu" className="hover:text-white">
             Email
           </a>

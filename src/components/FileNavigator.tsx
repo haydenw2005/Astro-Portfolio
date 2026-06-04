@@ -93,15 +93,6 @@ export function FileTree() {
               </File> */}
             </Folder>
             <Folder value="9" element="contact">
-              <File value="10">
-                <a
-                  href="https://www.linkedin.com/in/hayden-s-white"
-                  target="_blank"
-                >
-                  <p>linkedin</p>
-                </a>
-              </File>
-
               <File value="11">
                 <a href="https://github.com/haydenw2005" target="_blank">
                   <p>github</p>{" "}
@@ -188,11 +179,6 @@ export function FileTree() {
 //         isSelectable: false,
 //         name: "contact",
 //         children: [
-//           {
-//             id: "11",
-//             isSelectable: false,
-//             name: "linkedin",
-//           },
 //           {
 //             id: "12",
 //             isSelectable: false,
